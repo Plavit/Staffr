@@ -2,7 +2,10 @@
 Staffr is a simple REACT/Java-based tool to administer employees in a workplace. 
 
 # **Team**
-Team TBD
+|Name| Nick |
+| -------- | -------- |
+|Marek Szeles| @szelemar |
+|Kryštof Sýkora| @sykorkry |
 
 # **Documentation**
 CP0 link TBD
@@ -26,4 +29,4 @@ https://www.udemy.com/the-complete.../learn/v4/overview
 
 https://www.udemy.com/java-ee.../learn/v4/overview
 
-Much love also hoes to Ho Minh Thanh, our REACT mentor
+*Much love also hoes to Ho Minh Thanh, our REACT mentor*
