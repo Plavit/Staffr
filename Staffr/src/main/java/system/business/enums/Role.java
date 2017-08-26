@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * Created by HMT on 23.11.2016.
+ * Created by Krystof on 26.08.2016.
  */
 
 public enum Role {

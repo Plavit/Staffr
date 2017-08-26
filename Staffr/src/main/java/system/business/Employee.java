@@ -1,4 +1,4 @@
-package system.bo;
+package system.business;
 
 import javax.persistence.*;
 import java.util.Set;
