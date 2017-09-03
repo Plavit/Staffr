@@ -1,7 +1,5 @@
 package system.business;
 
-import system.business.enums.User;
-
 import javax.persistence.*;
 import javax.swing.text.Position;
 import java.util.Set;

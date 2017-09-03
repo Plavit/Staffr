@@ -1,5 +1,6 @@
 package system.dao;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.*;
 import system.business.Employee;
 
@@ -9,6 +10,7 @@ import java.util.Objects;
 /**
  * Created by krystof on 9/3/17.
  */
+@Repository
 public class EmployeeDao extends BaseDao<Employee>{
 
     protected EmployeeDao() {

@@ -1,0 +1,230 @@
+/* for resize */
+html,
+body {
+   margin: 0;
+}
+
+body {
+   font: small "Arial";
+   font-size: 90%;
+}
+
+path.link {
+   fill: none;
+   stroke: #666;
+   stroke-width: 1.5px;
+}
+
+marker#INJECT {
+   fill: #999;
+}
+path.link.INJECT {
+   stroke: #555;
+}
+
+marker#EVENT {
+   fill: blue;
+}
+path.link.EVENT {
+   stroke: blue;
+   stroke-dasharray: 0,1 1;
+}
+
+marker#PRODUCES {
+   fill: #EB9100;
+}
+path.link.PRODUCES {
+   stroke: #EB9100;
+   stroke-dasharray: 0,6 6;
+}
+
+marker#OBSERVES {
+   fill: blue;
+}
+path.link.OBSERVES {
+   stroke: blue;
+   stroke-dasharray: 0,4 2;
+}
+
+marker#INSTANCE {
+   fill: #0a0;
+}
+path.link.INSTANCE {
+   stroke: #0a0;
+   stroke-dasharray: 2,4 1;
+}
+
+marker#RESOURCE {
+   fill: #ba0;
+}
+path.link.RESOURCE {
+   stroke: #ba0;
+   stroke-dasharray: 12,4 1;
+}
+
+marker#EJB {
+   fill: #999;
+}
+path.link.EJB {
+   stroke: red;
+   stroke-dasharray: 0,8 8;
+}
+
+marker#ONE_TO_ONE, marker#ONE_TO_MANY, marker#MANY_TO_ONE, marker#MANY_TO_MANY {
+   fill: #005;
+}
+path.link.ONE_TO_ONE {
+   stroke: #005;
+}
+path.link.ONE_TO_MANY {
+   stroke: #008;
+}
+path.link.MANY_TO_ONE {
+   stroke: #00a;
+}
+path.link.MANY_TO_MANY {
+   stroke: #00f;
+}
+
+div#tweakgraph, div#searching {
+   font-size: medium;
+   color:#000;
+   padding: 5px 10px 5px 10px;
+}
+
+div#tweakgraph-open:hover, div#tweakgraph-close:hover {
+   text-decoration:none;
+   color:#222;
+   text-shadow: 0.18em 0.18em 0.18em #999;
+   transition: color, text-shadow 0.3s;
+   cursor: default;
+}
+
+label#activeFilters {
+   font-size: large;
+   padding: 0px 0px 0px 25px;
+}
+div#activeFilters-content {
+   font-size: small;
+   padding: 0px 0px 0px 25px;
+}
+
+label#help {
+   font-size: large;
+   padding: 0px 0px 0px 25px;
+}
+div#help-content {
+   font-size: small;
+   padding: 0px 0px 0px 25px;
+}
+
+div#pop-up {
+   font-family: Arial, sans-serif;
+   display: none;
+   position: absolute;
+   color: white;
+   font-size: small;
+   text-shadow: 0.1em 0.1em 0.05em #333;
+   background: rgba(0,0,0,0.4);
+   padding: 5px 10px 5px 10px;
+   border-radius: 8px 8px;
+   top: 100px;
+   left: 100px;
+   box-shadow: 6px 6px 6px #666;
+}
+div#pop-up-buttons {
+   font-size: large;
+   font-weight: bold;
+   width:10px;
+   color:#eee;
+   margin-left: auto;
+   margin-right: 0;
+   float: right;
+}
+div#pop-up-buttons:hover {
+   text-decoration:none;
+   color:#fff;
+   text-shadow: 0.16em 0.16em 0.16em #333;
+   transition: color, text-shadow 0.1s;
+   cursor: default;
+}
+div#pop-up-title {
+   font-size: large;
+   font-weight: bolder;
+   margin-left: 0;
+   margin-right: auto;
+   margin-bottom: 4px;
+}
+div#pop-up-content {
+   font-size: medium;
+}
+div#pop-description {
+   width: 600px;
+   font-size: small;
+   background: rgba(0,0,0,0.3);
+}
+textarea#pop-sourcecode {
+   width: 600px;
+   height: 240px;
+   font-family:"Courier New";
+   font-size: small;
+   background-color: rgba(255,255,255,0.8);
+}
+
+.table {
+   display:table;
+}
+.table div {
+   display:table-row;
+}
+.table div div {
+   display:table-cell;
+   width:50%;
+}
+
+svg {
+   border-right-style: solid;
+   border-left-style: solid;
+   border-bottom-style: solid;
+   border-top-style: solid;
+   border-right-width: 2px;
+   border-left-width: 2px;
+   border-bottom-width: 2px;
+   border-top-width: 2px;
+   border-right-color: #ccc;
+   border-left-color: #ccc;
+   border-bottom-color: #ccc;
+   border-top-color: #ccc;
+}
+
+.node {
+   cursor: pointer;
+}
+
+h1 {
+   font-size: large;
+   text-shadow: 0.07em 0.07em 0.07em #999;
+   padding: 0px 0px 0px 5px;
+}
+
+a {
+   font-size: medium;
+   font-weight:bold;
+   color:#333;
+   text-shadow: 0.07em 0.07em 0.07em #999;
+   padding: 0px 0px 0px 25px;
+   text-decoration:none;
+}
+a:hover {
+   text-decoration:none;
+   color:#555;
+   padding: 0px 0px 0px 24px;
+   text-shadow: 0.18em 0.18em 0.18em #999;
+   transition: color, text-shadow 0.3s;
+}
+
+.created {
+   font-size: x-small;
+   text-shadow: 0.05em 0.05em 0.05em #999;
+   padding: 0px 0px 0px 10px;
+}
