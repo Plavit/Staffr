@@ -6,6 +6,12 @@ import javax.persistence.*;
 import javax.swing.text.Position;
 import java.util.Set;
 
+@NamedQueries({
+        @NamedQuery(name = "Employee.findByName",
+        query = "SELECT l FROM Employee l WHERE LOWER(l.firstName) = :firstName AND LOWER(l.lastName) = :lastName"),
+
+        @NamedQuery(name = "Employee.findAll", query = "SELECT l FROM Employee l")
+})
 @Entity
 public class Employee {
 
