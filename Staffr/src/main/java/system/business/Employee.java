@@ -1,5 +1,7 @@
 package system.business;
 
+import system.business.enums.User;
+
 import javax.persistence.*;
 import javax.swing.text.Position;
 import java.util.Set;
@@ -24,6 +26,10 @@ public class Employee {
 
     @Column
     private int phoneNumber;
+
+    @OneToOne
+    @JoinColumn(name="USER_ID")
+    private User user;
 
     @ManyToMany()
     @JoinTable(name = "EMPLOYEE_EMPLOYEE",
