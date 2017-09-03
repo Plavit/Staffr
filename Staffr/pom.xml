@@ -7,6 +7,13 @@
     <groupId>system</groupId>
     <artifactId>Staffr</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>4.3.2.RELEASE</version>
+        </dependency>
+    </dependencies>
 
 
 </project>
