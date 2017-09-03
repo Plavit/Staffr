@@ -24,20 +24,37 @@ public class Employee {
     @Column
     private int phoneNumber;
 
-    //TODO: isSupervisorOf
+    @ManyToMany()
+    @JoinTable(name = "EMPLOYEE_EMPLOYEE",
+            joinColumns = @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "MANAGER_ID", referencedColumnName = "ID")
+    )
+    private Set<Employee> managers;
 
-    @OneToMany()
-    @JoinTable(name = "EMPLOYEE_DEGREE",
-            joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID"),
-            inverseJoinColumns = @JoinColumn(name = "DEGREE_ID", referencedColumnName = "ID"))
-    private Set<Object> employeeDegrees;
+    @OneToMany(mappedBy = "Employee")
+    private Set<Degree> degrees;
 
 
     @OneToOne
-    @JoinTable(name = "EMPLOYEE_POSITION",
-            joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID"),
-            inverseJoinColumns = @JoinColumn(name = "POSITION_ID", referencedColumnName = "ID"))
-    private Set<Object> employeePosition;
+    @JoinColumn(name="POSITION_ID")
+    private Set<Position> positions;
 
-    // TODO: Missing relations to other classes
+    @OneToMany(mappedBy = "Employee")
+    private Set<Skill> skills;
+
+    @ManyToOne()
+    @JoinColumn(name="OFFICE_ID")
+    private Office office;
+
+    @ManyToOne()
+    @JoinTable(name = "ADDRESS_ID")
+    private Address address;
+
+    @OneToMany(mappedBy = "Employee")
+    private Set<Experience> experiences;
+
+    @OneToMany(mappedBy = "Employee")
+    private Set<UserProject> userProjects;
+
+
 }
