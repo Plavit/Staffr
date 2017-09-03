@@ -24,4 +24,8 @@ public class Degree {
 
     @Column()
     private Date to;
+
+    @ManyToOne()
+    @JoinColumn(name="UNIVERSITY_ID")
+    private University university;
 }
