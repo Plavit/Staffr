@@ -1,6 +1,5 @@
-package system.bo.enums;
+package system.business.enums;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
 /**
