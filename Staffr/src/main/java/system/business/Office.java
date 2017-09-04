@@ -15,8 +15,12 @@ public class Office extends AbstractBusinessObject {
     @Column()
     private String note;
 
+    //relations
+
+    /*
     @ManyToOne()
     @JoinColumn(name="ADDRESS_ID")
     private Address address;
+    */
 
 }

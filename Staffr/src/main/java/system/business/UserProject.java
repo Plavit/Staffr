@@ -2,8 +2,6 @@ package system.business;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.util.Date;
 
 /**
@@ -12,10 +10,6 @@ import java.util.Date;
 
 @Entity()
 public class UserProject extends AbstractBusinessObject {
-
-    @ManyToOne()
-    @JoinColumn(name="PROJECT_ID")
-    private Project project;
 
     @Column()
     private String role;
@@ -26,4 +20,13 @@ public class UserProject extends AbstractBusinessObject {
     @Column()
     private Date end;
 
+//relations
+
+    /*
+
+    @ManyToOne()
+    @JoinColumn(name="PROJECT_ID")
+    private Project project;
+
+    */
 }

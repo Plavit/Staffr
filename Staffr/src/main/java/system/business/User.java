@@ -13,6 +13,8 @@ import javax.persistence.*;
 @NamedQueries(
         {@NamedQuery(name = "User.findByUsername", query = "SELECT p FROM User p WHERE p.username=:username"),
                 @NamedQuery(name = "User.deleteById", query = "DELETE FROM User p WHERE p.id=:id")})
+
+@Entity
 public class User extends AbstractBusinessObject {
     @Column
     private String userName;
@@ -58,6 +60,7 @@ public class User extends AbstractBusinessObject {
     public void erasePassword() {
         this.password = null;
     }
+
     @Column
     private Role role;
 

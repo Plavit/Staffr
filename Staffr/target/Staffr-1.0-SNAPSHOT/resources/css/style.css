@@ -1,6 +1,19 @@
 /**
- * Created by HMT on 01.02.2017.
+ * Created by Marek on 03.09.2017.
  */
 #content {
     padding-left: 12%;
 }
+.overlord {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.center {
+    display: table-cell;
+    vertical-align: middle;
+	color: red;
+}
+

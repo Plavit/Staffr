@@ -1,7 +1,6 @@
 package system.business;
 
 import system.business.enums.DegreeType;
-import system.business.enums.SkillProfficiency;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -11,7 +10,7 @@ import java.util.Date;
  */
 
 @Entity
-public class Degree {
+public class Degree extends AbstractBusinessObject {
 
     @Enumerated()
     private DegreeType type;
@@ -25,7 +24,11 @@ public class Degree {
     @Column()
     private Date to;
 
+    //relations
+
+    /*
     @ManyToOne()
     @JoinColumn(name="UNIVERSITY_ID")
     private University university;
+    */
 }

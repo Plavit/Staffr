@@ -31,15 +31,18 @@ public class Employee extends AbstractBusinessObject {
     @Column
     private int phoneNumber;
 
+    //relations
+
+    /*
     @OneToOne
     @JoinColumn(name="USER_ID")
     private User user;
 
-    /*@ManyToMany()
+    @ManyToMany()
     @JoinTable(name = "EMPLOYEE_EMPLOYEE",
             joinColumns = @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "ID"),
             inverseJoinColumns = @JoinColumn(name = "MANAGER_ID", referencedColumnName = "ID")
-    )*/
+    )
 
     private Set<Employee> managers;
 
@@ -50,9 +53,9 @@ public class Employee extends AbstractBusinessObject {
     @OneToOne
     @JoinColumn(name="POSITION_ID")
     private Set<Position> positions;
-/*
+
     @OneToMany(mappedBy = "Employee")
-    private Set<Skill> skills;*/
+    private Set<Skill> skills;
 
     @ManyToOne()
     @JoinColumn(name="OFFICE_ID")
@@ -62,11 +65,11 @@ public class Employee extends AbstractBusinessObject {
     @JoinTable(name = "ADDRESS_ID")
     private Address address;
 
-    /*@OneToMany(mappedBy = "Employee")
+    @OneToMany(mappedBy = "Employee")
     private Set<Experience> experiences;
 
     @OneToMany(mappedBy = "Employee")
-    private Set<UserProject> userProjects;*/
-
+    private Set<UserProject> userProjects;
+*/
 
 }
