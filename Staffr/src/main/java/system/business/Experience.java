@@ -8,7 +8,7 @@ import java.util.Date;
  */
 
 @Entity
-public class Experience {
+public class Experience extends AbstractBusinessObject{
 
     @Column()
     private String name;

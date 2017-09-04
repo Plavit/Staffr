@@ -10,7 +10,7 @@ import java.util.Set;
  */
 
 @Entity()
-public class Project {
+public class Project extends AbstractBusinessObject {
     @Column()
     private String name;
 

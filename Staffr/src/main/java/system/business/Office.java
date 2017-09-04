@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 
 @Entity
-public class Office {
+public class Office extends AbstractBusinessObject {
 
     @Column()
     private String name;

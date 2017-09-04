@@ -46,7 +46,7 @@ public class PersistenceConfig {
         final LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(ds);
         emf.setJpaVendorAdapter(new EclipseLinkJpaVendorAdapter());
-        emf.setPackagesToScan("system.bo"); // Look for entities in this package
+        emf.setPackagesToScan("system.business"); // Look for entities in this package
 
         final Properties props = new Properties();
         props.setProperty("databasePlatform", environment.getRequiredProperty("jpa.platform"));

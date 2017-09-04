@@ -6,11 +6,12 @@ package system.business;
 
 import system.business.enums.SkillProfficiency;
 
-import javax.persistence.*;
-import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 
 @Entity
-public class Skill {
+public class Skill extends AbstractBusinessObject {
 
     @Column()
     private String name;

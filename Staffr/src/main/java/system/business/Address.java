@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 
 @Entity()
-public class Address {
+public class Address  extends AbstractBusinessObject{
 
     @Column()
     private String country;

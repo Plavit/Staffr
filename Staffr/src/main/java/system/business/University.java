@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 
 @Entity
-public class University {
+public class University extends AbstractBusinessObject {
 
     @Column()
     private String name;

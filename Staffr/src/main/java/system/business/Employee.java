@@ -11,7 +11,7 @@ import java.util.Set;
         @NamedQuery(name = "Employee.findAll", query = "SELECT l FROM Employee l")
 })
 @Entity
-public class Employee {
+public class Employee extends AbstractBusinessObject {
 
     @Column()
     String firstName;
@@ -35,11 +35,12 @@ public class Employee {
     @JoinColumn(name="USER_ID")
     private User user;
 
-    @ManyToMany()
+    /*@ManyToMany()
     @JoinTable(name = "EMPLOYEE_EMPLOYEE",
             joinColumns = @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "ID"),
             inverseJoinColumns = @JoinColumn(name = "MANAGER_ID", referencedColumnName = "ID")
-    )
+    )*/
+
     private Set<Employee> managers;
 
     @OneToMany(mappedBy = "Employee")
@@ -49,9 +50,9 @@ public class Employee {
     @OneToOne
     @JoinColumn(name="POSITION_ID")
     private Set<Position> positions;
-
+/*
     @OneToMany(mappedBy = "Employee")
-    private Set<Skill> skills;
+    private Set<Skill> skills;*/
 
     @ManyToOne()
     @JoinColumn(name="OFFICE_ID")
@@ -61,11 +62,11 @@ public class Employee {
     @JoinTable(name = "ADDRESS_ID")
     private Address address;
 
-    @OneToMany(mappedBy = "Employee")
+    /*@OneToMany(mappedBy = "Employee")
     private Set<Experience> experiences;
 
     @OneToMany(mappedBy = "Employee")
-    private Set<UserProject> userProjects;
+    private Set<UserProject> userProjects;*/
 
 
 }

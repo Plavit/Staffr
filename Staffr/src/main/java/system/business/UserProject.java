@@ -11,7 +11,7 @@ import java.util.Date;
  */
 
 @Entity()
-public class UserProject {
+public class UserProject extends AbstractBusinessObject {
 
     @ManyToOne()
     @JoinColumn(name="PROJECT_ID")
