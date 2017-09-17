@@ -21,4 +21,8 @@ public class Experience extends AbstractBusinessObject{
 
     @Column()
     private String note;
+
+    public Experience() {
+
+    }
 }

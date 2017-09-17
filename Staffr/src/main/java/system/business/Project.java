@@ -26,4 +26,8 @@ public class Project extends AbstractBusinessObject {
     @Column()
     private Date endOfProject;
 
+    public Project() {
+
+    }
+
 }

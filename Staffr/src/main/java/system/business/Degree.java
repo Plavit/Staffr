@@ -24,6 +24,9 @@ public class Degree extends AbstractBusinessObject {
     @Column()
     private Date to;
 
+    public Degree() {
+
+    }
     //relations
 
     /*

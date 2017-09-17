@@ -19,4 +19,7 @@ public class Skill extends AbstractBusinessObject {
     @Enumerated()
     private SkillProfficiency profficiency;
 
+    public Skill() {
+
+    }
 }

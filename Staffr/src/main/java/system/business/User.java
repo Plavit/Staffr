@@ -33,6 +33,10 @@ public class User extends AbstractBusinessObject {
         this.userName = userName;
     }
 
+    public User() {
+
+    }
+
     public String getUserName() {
         return userName;
     }

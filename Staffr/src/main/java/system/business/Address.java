@@ -23,4 +23,8 @@ public class Address  extends AbstractBusinessObject{
 
     @Column()
     private String cp;
+
+    public Address() {
+
+    }
 }

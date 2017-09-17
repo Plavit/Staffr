@@ -11,4 +11,8 @@ public class Position extends AbstractBusinessObject {
 
     @Column()
     private String name;
+
+    public Position() {
+
+    }
 }

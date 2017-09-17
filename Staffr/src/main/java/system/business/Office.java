@@ -15,6 +15,10 @@ public class Office extends AbstractBusinessObject {
     @Column()
     private String note;
 
+    public Office() {
+
+    }
+
     //relations
 
     /*

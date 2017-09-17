@@ -11,4 +11,8 @@ public class University extends AbstractBusinessObject {
 
     @Column()
     private String name;
+
+    public University() {
+
+    }
 }

@@ -31,6 +31,10 @@ public class Employee extends AbstractBusinessObject {
     @Column
     private int phoneNumber;
 
+    public Employee() {
+
+    }
+
     //relations
 
     /*

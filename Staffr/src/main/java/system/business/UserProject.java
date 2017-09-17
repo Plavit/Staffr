@@ -20,6 +20,10 @@ public class UserProject extends AbstractBusinessObject {
     @Column()
     private Date end;
 
+    public UserProject() {
+
+    }
+
 //relations
 
     /*
