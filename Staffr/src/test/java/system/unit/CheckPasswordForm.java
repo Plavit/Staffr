@@ -1,12 +1,10 @@
 /*
  * A set of tests designed to check username errors at login/registration
  */
-package sit.ear.semestral.UnitTests;
+package system.unit;
 
 import org.junit.AfterClass;
-import static org.junit.Assert.assertEquals;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * This is a template prepared to test a password form and its possible invalid inputs
