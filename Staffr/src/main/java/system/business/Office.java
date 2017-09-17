@@ -1,6 +1,7 @@
 package system.business;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by krystof on 9/3/17.
@@ -14,6 +15,9 @@ public class Office extends AbstractBusinessObject {
 
     @Column()
     private String note;
+
+    @OneToMany()
+    private Set<Employee> employee;
 
     public Office() {
 

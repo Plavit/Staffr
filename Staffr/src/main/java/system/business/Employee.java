@@ -1,7 +1,6 @@
 package system.business;
 
 import javax.persistence.*;
-import javax.swing.text.Position;
 import java.util.Set;
 
 @NamedQueries({
@@ -50,16 +49,17 @@ public class Employee extends AbstractBusinessObject {
     )
     private Set<Employee> managers;
 
-    /*
-    @OneToMany(mappedBy = "Employee")
+    @OneToMany(mappedBy = "employee")
     private Set<Degree> degrees;
 
-    /*
-    @OneToOne
-    @JoinColumn(name="POSITION_ID")
+    @ManyToMany()
+    @JoinTable(name = "EMPLOYEE_POSITION",
+            joinColumns = @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "POSITION_ID", referencedColumnName = "ID")
+    )
     private Set<Position> positions;
-
-    @OneToMany(mappedBy = "Employee")
+    /**/
+    @OneToMany(mappedBy = "employee")
     private Set<Skill> skills;
 
     @ManyToOne()
@@ -70,11 +70,10 @@ public class Employee extends AbstractBusinessObject {
     @JoinTable(name = "ADDRESS_ID")
     private Address address;
 
-    @OneToMany(mappedBy = "Employee")
+    @OneToMany(mappedBy = "employee")
     private Set<Experience> experiences;
 
-    @OneToMany(mappedBy = "Employee")
+    @OneToMany(mappedBy = "employee")
     private Set<UserProject> userProjects;
-*/
-
+/**/
 }

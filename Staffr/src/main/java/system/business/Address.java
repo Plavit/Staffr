@@ -1,6 +1,7 @@
 package system.business;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by krystof on 9/3/17.
@@ -23,6 +24,9 @@ public class Address  extends AbstractBusinessObject{
 
     @Column()
     private String cp;
+
+    @OneToMany()
+    private Set<Employee> employees;
 
     public Address() {
 

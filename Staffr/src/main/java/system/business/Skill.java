@@ -9,6 +9,7 @@ import system.business.enums.SkillProfficiency;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Skill extends AbstractBusinessObject {
@@ -18,6 +19,9 @@ public class Skill extends AbstractBusinessObject {
 
     @Enumerated()
     private SkillProfficiency profficiency;
+
+    @ManyToOne
+    Employee employee;
 
     public Skill() {
 
