@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="Staffr:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="ear-setup.war">
-      <element id="artifact" artifact-name="Staffr:war exploded" />
-    </root>
-  </artifact>
-</component>
