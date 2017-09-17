@@ -14,10 +14,10 @@ public class UserProject extends AbstractBusinessObject {
     @Column()
     private String role;
 
-    @Column()
-    private Date start;
+    @Column(name = "starting_date")
+    private Date from;
 
-    @Column()
+    @Column(name = "ending_date")
     private Date end;
 
     public UserProject() {

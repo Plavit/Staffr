@@ -37,23 +37,24 @@ public class Employee extends AbstractBusinessObject {
 
     //relations
 
-    /*
+
     @OneToOne
     @JoinColumn(name="USER_ID")
     private User user;
+
 
     @ManyToMany()
     @JoinTable(name = "EMPLOYEE_EMPLOYEE",
             joinColumns = @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "ID"),
             inverseJoinColumns = @JoinColumn(name = "MANAGER_ID", referencedColumnName = "ID")
     )
-
     private Set<Employee> managers;
 
+    /*
     @OneToMany(mappedBy = "Employee")
     private Set<Degree> degrees;
 
-
+    /*
     @OneToOne
     @JoinColumn(name="POSITION_ID")
     private Set<Position> positions;

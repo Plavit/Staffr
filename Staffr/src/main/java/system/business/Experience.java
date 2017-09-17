@@ -13,10 +13,10 @@ public class Experience extends AbstractBusinessObject{
     @Column()
     private String name;
 
-    @Column()
+    @Column(name = "startingFrom")
     private Date from;
 
-    @Column()
+    @Column(name = "endingDate")
     private Date to;
 
     @Column()

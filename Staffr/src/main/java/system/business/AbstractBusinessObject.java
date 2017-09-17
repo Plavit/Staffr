@@ -13,7 +13,7 @@ import java.io.Serializable;
 @MappedSuperclass
 public abstract class AbstractBusinessObject implements Serializable{
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     protected int id;
 
     public int getId() {

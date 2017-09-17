@@ -18,11 +18,14 @@ public class Degree extends AbstractBusinessObject {
     @Column()
     private String name;
 
-    @Column()
+    @Column(name = "startingDate")
     private Date from;
 
-    @Column()
+    @Column(name = "endingDate")
     private Date to;
+
+//    @ManyToOne
+//    Employee employee;
 
     public Degree() {
 
