@@ -112,4 +112,36 @@ public class Employee extends AbstractBusinessObject {
     @OneToMany(mappedBy = "employee")
     private Set<UserProject> userProjects;
 
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String nfirstName) {
+        this.firstName = nfirstName;
+    }
+
+    public String getLastName() {
+        return firstName;
+    }
+
+    public void setLastName(String nlastName) {
+        this.lastName = nlastName;
+    }
+
+    public int getPhone() { return phoneNumber; }
+
+    public void setPhone(int phone) {
+        this.phoneNumber = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String mail) {
+        this.email = mail;
+    }
+
+
 }

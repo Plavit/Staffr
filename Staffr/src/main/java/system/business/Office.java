@@ -19,6 +19,15 @@ public class Office extends AbstractBusinessObject {
     @OneToMany()
     private Set<Employee> employee;
 
+
+    public String getOfficeName() {
+        return name;
+    }
+
+    public void setOfficeName(String officeName) {
+        this.name = officeName;
+    }
+
     public Office() {
 
     }
