@@ -1,4 +1,4 @@
-package system.service.security;
+package system.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,10 +10,10 @@ import system.dao.EmployeeDao;
  */
 
 @Service
-public class EmployeeService {
+public class EmployeeService{
 
-        @Autowired
-        private EmployeeDao employeDao;
+    @Autowired
+    private EmployeeDao employeDao;
 
     public void persist(Employee employee) {
         employeDao.persist(employee);
@@ -22,5 +22,4 @@ public class EmployeeService {
     public void update(Employee employee){
         employeDao.update(employee);
     }
-
 }
