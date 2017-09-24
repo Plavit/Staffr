@@ -24,7 +24,7 @@ public class Office extends AbstractBusinessObject {
     }
 
     @ManyToOne()
-    @JoinColumn(name="ADDRESS_ID")
+    @JoinColumn(name = "ADDRESS_ID")
     private Address address;
 
 }

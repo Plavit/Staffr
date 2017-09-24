@@ -18,6 +18,40 @@ public class Employee extends AbstractBusinessObject {
 
     }
 
+    public Employee(String firstName,
+                    String lastName,
+                    int birthYear,
+                    String email,
+                    String note,
+                    int phoneNumber,
+                    Status active,
+                    User user,
+                    Set<Employee> managers,
+                    Set<Degree> degrees,
+                    Set<Position> positions,
+                    Set<Skill> skills,
+                    Office office,
+                    Address address,
+                    Set<Experience> experiences,
+                    Set<UserProject> userProjects) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthYear = birthYear;
+        this.email = email;
+        this.note = note;
+        this.phoneNumber = phoneNumber;
+        this.active = active;
+        this.user = user;
+        this.managers = managers;
+        this.degrees = degrees;
+        this.positions = positions;
+        this.skills = skills;
+        this.office = office;
+        this.address = address;
+        this.experiences = experiences;
+        this.userProjects = userProjects;
+    }
+
     @Column()
     String firstName;
 
@@ -69,7 +103,7 @@ public class Employee extends AbstractBusinessObject {
     private Office office;
 
     @ManyToOne()
-    @JoinTable(name = "ADDRESS_ID")
+    @JoinColumn(name = "ADDRESS_ID")
     private Address address;
 
     @OneToMany(mappedBy = "employee")
@@ -77,4 +111,5 @@ public class Employee extends AbstractBusinessObject {
 
     @OneToMany(mappedBy = "employee")
     private Set<UserProject> userProjects;
+
 }

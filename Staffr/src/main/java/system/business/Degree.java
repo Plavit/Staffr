@@ -24,17 +24,16 @@ public class Degree extends AbstractBusinessObject {
     @Column(name = "endingDate")
     private Date to;
 
-    @ManyToOne
-    Employee employee;
-
     public Degree() {
 
     }
-    //relations
 
-    /*
+    @ManyToOne()
+    @JoinColumn(name = "EMPLOYEE_ID")
+    private Employee employee;
+
     @ManyToOne()
     @JoinColumn(name="UNIVERSITY_ID")
     private University university;
-    */
+
 }

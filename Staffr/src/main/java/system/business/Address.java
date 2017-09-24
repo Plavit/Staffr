@@ -25,8 +25,11 @@ public class Address  extends AbstractBusinessObject{
     @Column()
     private String cp;
 
-    @OneToMany()
+    @OneToMany(mappedBy = "address")
     private Set<Employee> employees;
+
+    @OneToMany(mappedBy = "address")
+    private Set<Office> offices;
 
     public Address() {
 

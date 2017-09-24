@@ -24,6 +24,7 @@ public class Experience extends AbstractBusinessObject{
     private String note;
 
     @ManyToOne()
+    @JoinColumn(name="EMPLOYEE_ID")
     private Employee employee;
 
     public Experience() {

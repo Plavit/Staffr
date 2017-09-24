@@ -37,6 +37,12 @@ public class User extends AbstractBusinessObject {
 
     }
 
+    public User(String userName, String password, Role role) {
+        this.userName = userName;
+        this.password = password;
+        this.role = role;
+    }
+
     public String getUserName() {
         return userName;
     }
