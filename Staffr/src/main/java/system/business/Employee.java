@@ -1,5 +1,7 @@
 package system.business;
 
+import system.business.enums.Status;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -11,6 +13,10 @@ import java.util.Set;
 })
 @Entity
 public class Employee extends AbstractBusinessObject {
+
+    public Employee() {
+
+    }
 
     @Column()
     String firstName;
@@ -30,12 +36,8 @@ public class Employee extends AbstractBusinessObject {
     @Column
     private int phoneNumber;
 
-    public Employee() {
-
-    }
-
-    //relations
-
+    @Column
+    private Status active;
 
     @OneToOne
     @JoinColumn(name="USER_ID")
@@ -58,7 +60,7 @@ public class Employee extends AbstractBusinessObject {
             inverseJoinColumns = @JoinColumn(name = "POSITION_ID", referencedColumnName = "ID")
     )
     private Set<Position> positions;
-    /**/
+
     @OneToMany(mappedBy = "employee")
     private Set<Skill> skills;
 
@@ -75,5 +77,4 @@ public class Employee extends AbstractBusinessObject {
 
     @OneToMany(mappedBy = "employee")
     private Set<UserProject> userProjects;
-/**/
 }
