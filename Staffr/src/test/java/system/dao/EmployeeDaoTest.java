@@ -20,7 +20,7 @@ public class EmployeeDaoTest extends BaseDaoTestRunner{
     private EmployeeDao employeeDao;
 
     @Test
-    public void findVolunteerByName(){
+    public void findEmployeeByName(){
         final Office prague = new Office();
         prague.setOfficeName("Prague");
         //locationDao.persist(Prague);
@@ -55,15 +55,17 @@ public class EmployeeDaoTest extends BaseDaoTestRunner{
         ar.add(berlin);
 
         final Employee v = new Employee();
-        v.setFirstName("Pavel");
-        v.setLastName("KrulecThePussyDestroyer69");
-        v.setEmail("Something@Something.cz");
+        v.setFirstName("Antonin");
+        v.setLastName("Smith");
+        v.setEmail("Smith@Something.com");
         v.setPhone(111222333);
         employeeDao.persist(v);
         final Employee result = employeeDao.findByName(v.getFirstName(), v.getLastName());
 
         //testprint result
         System.out.println(result);
+
+        //check if result not empty
         assertNotNull(result);
         assertEquals(v.getId(), result.getId());
 
