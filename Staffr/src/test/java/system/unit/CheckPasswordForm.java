@@ -10,6 +10,7 @@ import org.junit.BeforeClass;
  * This is a template prepared to test a password form and its possible invalid inputs
  * @author Szeles Marek
  */
+
 public class CheckPasswordForm {
     
     @BeforeClass

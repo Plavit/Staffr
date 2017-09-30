@@ -19,13 +19,11 @@ public class OfficeDao extends BaseDao<Office>{
     }
 
     @Transactional(readOnly = true)
-    public Office findByName(String firstName, String lastName) {
-        Objects.requireNonNull(firstName);
-        Objects.requireNonNull(lastName);
+    public Office findByName(String name) {
+        Objects.requireNonNull(name);
         try {
             return em.createNamedQuery("Office.findByName", Office.class)
-                    .setParameter("firstName", firstName.toLowerCase())
-                    .setParameter("lastName", lastName.toLowerCase())
+                    .setParameter("name", name.toLowerCase())
                     .getSingleResult();
         } catch (NoResultException e) {
             return null;
