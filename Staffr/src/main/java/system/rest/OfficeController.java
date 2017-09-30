@@ -6,30 +6,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import system.business.Employee;
-import system.dao.EmployeeDao;
+import system.business.Office;
+import system.dao.OfficeDao;
 
 import java.util.List;
 
 /**
- * Created by krystof on 9/3/17.
+ * Created by Marek on 9/30/17.
  */
 
 @RestController
-@RequestMapping("/employee")
-public class EmployeeController {
+@RequestMapping("/office")
+public class OfficeController {
 
     @Autowired
-    private EmployeeDao employeeDao;
+    private OfficeDao officeDao;
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Employee> getAll() {
-        return employeeDao.findAll();
+    public List<Office> getAll() {
+        return officeDao.findAll();
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void create(@RequestBody Employee emp) {
-        employeeDao.persist(emp);
+    public void create(@RequestBody Office office) {
+        officeDao.persist(office);
     }
 
 }

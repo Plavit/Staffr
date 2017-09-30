@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
- * Created by HMT on 27.11.2016.
+ * Created by Marek on 30.09.2017.
  */
 public class OfficeDaoTest extends BaseDaoTestRunner{
 

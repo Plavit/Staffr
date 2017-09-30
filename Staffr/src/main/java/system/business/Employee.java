@@ -11,6 +11,8 @@ import java.util.Set;
 
         @NamedQuery(name = "Employee.findAll", query = "SELECT l FROM Employee l")
 })
+
+
 @Entity
 public class Employee extends AbstractBusinessObject {
 
