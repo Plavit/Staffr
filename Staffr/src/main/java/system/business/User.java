@@ -22,25 +22,28 @@ public class User extends AbstractBusinessObject {
     @Column
     private String password;
 
-    public void encodePassword(PasswordEncoder encoder) {
-        if (password == null || password.isEmpty()) {
-            throw new IllegalStateException("Cannot encode an empty password.");
-        }
-        this.password = encoder.encode(password);
+    @Column
+    private Role role;
+
+    public User() {
+
     }
 
     public User(String userName) {
         this.userName = userName;
     }
 
-    public User() {
-
-    }
-
     public User(String userName, String password, Role role) {
         this.userName = userName;
         this.password = password;
         this.role = role;
+    }
+
+    public void encodePassword(PasswordEncoder encoder) {
+        if (password == null || password.isEmpty()) {
+            throw new IllegalStateException("Cannot encode an empty password.");
+        }
+        this.password = encoder.encode(password);
     }
 
     public String getUserName() {
@@ -66,12 +69,4 @@ public class User extends AbstractBusinessObject {
     public void setRole(Role role) {
         this.role = role;
     }
-
-    public void erasePassword() {
-        this.password = null;
-    }
-
-    @Column
-    private Role role;
-
 }

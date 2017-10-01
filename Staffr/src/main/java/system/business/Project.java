@@ -30,4 +30,43 @@ public class Project extends AbstractBusinessObject {
 
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Set<String> getGoals() {
+        return goals;
+    }
+
+    public void setGoals(Set<String> goals) {
+        this.goals = goals;
+    }
+
+    public Date getStartOfProject() {
+        return startOfProject;
+    }
+
+    public void setStartOfProject(Date startOfProject) {
+        this.startOfProject = startOfProject;
+    }
+
+    public Date getEndOfProject() {
+        return endOfProject;
+    }
+
+    public void setEndOfProject(Date endOfProject) {
+        this.endOfProject = endOfProject;
+    }
 }

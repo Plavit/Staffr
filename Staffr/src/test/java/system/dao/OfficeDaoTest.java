@@ -18,11 +18,11 @@ public class OfficeDaoTest extends BaseDaoTestRunner{
     @Test
     public void findByLocationName(){
         final Office o = new Office();
-        o.setOfficeName("Prague");
+        o.setName("Prague");
 
         officeDao.persist(o);
 
-        final Office result = officeDao.findByName(o.getOfficeName());
+        final Office result = officeDao.findByName(o.getName());
         assertNotNull(result);
         assertEquals(o.getId(), result.getId());
     }

@@ -119,31 +119,127 @@ public class Employee extends AbstractBusinessObject {
         return firstName;
     }
 
-    public void setFirstName(String nfirstName) {
-        this.firstName = nfirstName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
-        return firstName;
+        return lastName;
     }
 
-    public void setLastName(String nlastName) {
-        this.lastName = nlastName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public int getPhone() { return phoneNumber; }
+    public int getBirthYear() {
+        return birthYear;
+    }
 
-    public void setPhone(int phone) {
-        this.phoneNumber = phone;
+    public void setBirthYear(int birthYear) {
+        this.birthYear = birthYear;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String mail) {
-        this.email = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
+    public String getNote() {
+        return note;
+    }
 
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Status getActive() {
+        return active;
+    }
+
+    public void setActive(Status active) {
+        this.active = active;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Set<Employee> getManagers() {
+        return managers;
+    }
+
+    public void setManagers(Set<Employee> managers) {
+        this.managers = managers;
+    }
+
+    public Set<Degree> getDegrees() {
+        return degrees;
+    }
+
+    public void setDegrees(Set<Degree> degrees) {
+        this.degrees = degrees;
+    }
+
+    public Set<Position> getPositions() {
+        return positions;
+    }
+
+    public void setPositions(Set<Position> positions) {
+        this.positions = positions;
+    }
+
+    public Set<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(Set<Skill> skills) {
+        this.skills = skills;
+    }
+
+    public Office getOffice() {
+        return office;
+    }
+
+    public void setOffice(Office office) {
+        this.office = office;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Set<Experience> getExperiences() {
+        return experiences;
+    }
+
+    public void setExperiences(Set<Experience> experiences) {
+        this.experiences = experiences;
+    }
+
+    public Set<UserProject> getUserProjects() {
+        return userProjects;
+    }
+
+    public void setUserProjects(Set<UserProject> userProjects) {
+        this.userProjects = userProjects;
+    }
 }
