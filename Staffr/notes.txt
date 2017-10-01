@@ -1,0 +1,6 @@
+login authentication in postman test:
+use
+username xxx
+password xxx
+in POST localhost:8080/j_spring_security_check
+as x-www-form-urlencoded
