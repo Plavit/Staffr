@@ -18,7 +18,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/project")
+@RequestMapping("/address")
 public class AddressController {
 
     @Autowired
