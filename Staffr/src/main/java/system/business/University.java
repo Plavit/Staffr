@@ -15,4 +15,12 @@ public class University extends AbstractBusinessObject {
     public University() {
 
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

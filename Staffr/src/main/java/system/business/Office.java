@@ -30,21 +30,43 @@ public class Office extends AbstractBusinessObject {
     @OneToMany()
     private Set<Employee> employee;
 
-
-    public String getOfficeName() {
-        return name;
-    }
-
-    public void setOfficeName(String officeName) {
-        this.name = officeName;
-    }
+    @ManyToOne()
+    @JoinColumn(name = "ADDRESS_ID")
+    private Address address;
 
     public Office() {
 
     }
 
-    @ManyToOne()
-    @JoinColumn(name = "ADDRESS_ID")
-    private Address address;
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public Set<Employee> getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Set<Employee> employee) {
+        this.employee = employee;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 }

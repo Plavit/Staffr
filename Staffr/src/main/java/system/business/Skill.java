@@ -23,15 +23,31 @@ public class Skill extends AbstractBusinessObject {
     @ManyToOne
     Employee employee;
 
-    public String getSkillName() {
+    public Skill() {
+
+    }
+
+    public String getName() {
         return name;
     }
 
-    public void setSkillName(String skillName) {
-        this.name = skillName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Skill() {
+    public SkillProfficiency getProfficiency() {
+        return profficiency;
+    }
 
+    public void setProfficiency(SkillProfficiency profficiency) {
+        this.profficiency = profficiency;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }
