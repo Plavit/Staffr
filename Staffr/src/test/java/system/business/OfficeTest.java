@@ -15,7 +15,7 @@ public class OfficeTest {
     public void setUp() throws Exception {
         o = new Office();
         tstOffice="Brno";
-        o.setOfficeName(tstOffice);
+        o.setName(tstOffice);
 
     }
 
@@ -26,14 +26,14 @@ public class OfficeTest {
 
     @Test
     public void getOfficeName() throws Exception {
-        assert (o.getOfficeName()== tstOffice);
+        assert (o.getName()== tstOffice);
     }
 
     @Test
     public void setOfficeName() throws Exception {
-        o.setOfficeName("Lisbon");
-        assert (o.getOfficeName()=="Lisbon");
-        o.setOfficeName(tstOffice);
+        o.setName("Lisbon");
+        assert (o.getName()=="Lisbon");
+        o.setName(tstOffice);
     }
 
 }
