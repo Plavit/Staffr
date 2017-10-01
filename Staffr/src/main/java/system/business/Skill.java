@@ -6,10 +6,14 @@ package system.business;
 
 import system.business.enums.SkillProfficiency;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+
+@NamedQueries({
+        @NamedQuery(name = "Skill.findByName",
+                query = "SELECT l FROM Skill l WHERE LOWER(l.name) = :name"),
+
+        @NamedQuery(name = "Skill.findAll", query = "SELECT l FROM Skill l")
+})
 
 @Entity
 public class Skill extends AbstractBusinessObject {

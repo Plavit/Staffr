@@ -8,6 +8,13 @@ import java.util.Set;
  * Created by Marek on 3.9.2017.
  */
 
+@NamedQueries({
+        @NamedQuery(name = "Experience.findByName",
+                query = "SELECT l FROM Experience l WHERE LOWER(l.name) = :name"),
+
+        @NamedQuery(name = "Experience.findAll", query = "SELECT l FROM Experience l")
+})
+
 @Entity
 public class Experience extends AbstractBusinessObject{
 

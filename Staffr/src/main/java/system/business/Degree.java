@@ -9,6 +9,13 @@ import java.util.Date;
  * Created by Marek on 3.9.2017.
  */
 
+@NamedQueries({
+        @NamedQuery(name = "Degree.findByName",
+                query = "SELECT l FROM Degree l WHERE LOWER(l.name) = :name"),
+
+        @NamedQuery(name = "Degree.findAll", query = "SELECT l FROM Degree l")
+})
+
 @Entity
 public class Degree extends AbstractBusinessObject {
 

@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import system.business.Project;
+import system.business.Skill;
 import system.dao.ProjectDao;
+import system.dao.SkillDao;
 
 import java.util.List;
 
@@ -16,19 +18,19 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/project")
-public class ProjectController {
+@RequestMapping("/skill")
+public class SkillController {
 
     @Autowired
-    private ProjectDao dao;
+    private SkillDao dao;
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Project> getAll() {
+    public List<Skill> getAll() {
         return dao.findAll();
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void create(@RequestBody Project project) {
-        dao.persist(project);
+    public void create(@RequestBody Skill skill) {
+        dao.persist(skill);
     }
 }

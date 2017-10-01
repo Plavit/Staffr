@@ -1,5 +1,6 @@
 package system.dao;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import system.business.Position;
 
@@ -9,6 +10,8 @@ import java.util.Objects;
 /**
  * Created by krystof on 10/1/17.
  */
+
+@Repository
 public class PositionDao extends BaseDao<Position>{
 
     protected PositionDao() {

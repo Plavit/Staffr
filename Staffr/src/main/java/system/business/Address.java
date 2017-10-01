@@ -7,6 +7,10 @@ import java.util.Set;
  * Created by krystof on 9/3/17.
  */
 
+@NamedQueries({
+        @NamedQuery(name = "Address.findAll", query = "SELECT l FROM Address l")
+})
+
 @Entity()
 public class Address  extends AbstractBusinessObject{
 

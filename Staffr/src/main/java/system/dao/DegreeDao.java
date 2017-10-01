@@ -21,7 +21,7 @@ public class DegreeDao extends BaseDao<Degree>{
     public Degree findByName(String name) {
         Objects.requireNonNull(name);
         try {
-            return em.createNamedQuery("Experience.findByName", Degree.class)
+            return em.createNamedQuery("Degree.findByName", Degree.class)
                     .setParameter("name", name.toLowerCase())
                     .getSingleResult();
         } catch (NoResultException e) {
