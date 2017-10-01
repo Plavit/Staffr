@@ -13,13 +13,13 @@ import system.dao.OfficeDao;
 public class OfficeService{
 
     @Autowired
-    private OfficeDao employeDao;
+    private OfficeDao dao;
 
-    public void persist(Office employee) {
-        employeDao.persist(employee);
+    public void persist(Office e) {
+        dao.persist(e);
     }
 
-    public void update(Office employee){
-        employeDao.update(employee);
+    public void update(Office e){
+        dao.update(e);
     }
 }

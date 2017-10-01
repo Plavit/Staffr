@@ -2,12 +2,20 @@ package system.business;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import java.util.Date;
 import java.util.Set;
 
 /**
  * Created by krystof on 9/3/17.
  */
+@NamedQueries({
+        @NamedQuery(name = "Project.findByName",
+                query = "SELECT l FROM Project l WHERE LOWER(l.name) = :name"),
+
+        @NamedQuery(name = "Project.findAll", query = "SELECT l FROM Project l")
+})
 
 @Entity()
 public class Project extends AbstractBusinessObject {
