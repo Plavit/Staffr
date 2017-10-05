@@ -13,13 +13,13 @@ Staffr is a simple REACT/Java-based tool to administer employees in a workplace.
 |Name| Start | Scheduled end | Real end |
 | -------- | -------- | -------- | -------- |
 |CP0| 1. 7. 2017 | 3. 7. 2017 | 3. 7. 2017 |
-|CP1| 4. 7. 2017 | 31. 8. 2017 | -------- |
+|CP1| 4. 7. 2017 | 31. 8. 2017 | 1. 10. 2017 |
 |CP2| 1. 9. 2017 | 31. 9. 2017 | -------- |
 
 # **Documentation**
 [CP0 Document (.pdf)](https://gitlab.fel.cvut.cz/szelemar/EAR_Staffr/raw/cf0ba8187bea4dda5f136b2c715cd75672a9d6fd/docs/CP00.pdf)
 
-CP1 link TBD
+[CP1 Document (.pdf)](https://gitlab.fel.cvut.cz/szelemar/EAR_Staffr/raw/11412f91423393b7be7c685e00a7b68dda8a7896/docs/CP01.pdf)
 
 CP2 link TBD
 
@@ -40,4 +40,4 @@ https://www.udemy.com/java-ee.../learn/v4/overview
 
 ---
 
-*Many kudos also go to Jika Sebek for help with architecture and Ho Minh Thanh, our REACT mentor*
+*Much* :hearts: *also goes to Jirka Šebek for help with architecture, Pavel Krulec, our JavaEE debugger and Ho Minh Thanh, our REACT mentor*
