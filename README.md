@@ -19,7 +19,7 @@ Staffr is a simple REACT/Java-based tool to administer employees in a workplace.
 # **Documentation**
 [CP0 Document (.pdf)](https://gitlab.fel.cvut.cz/szelemar/EAR_Staffr/raw/cf0ba8187bea4dda5f136b2c715cd75672a9d6fd/docs/CP00.pdf)
 
-[CP1 Document (.pdf)](https://gitlab.fel.cvut.cz/szelemar/EAR_Staffr/raw/cf0ba8187bea4dda5f136b2c715cd75672a9d6fd/docs/CP01.pdf)
+[CP1 Document (.pdf)](https://gitlab.fel.cvut.cz/szelemar/EAR_Staffr/raw/11412f91423393b7be7c685e00a7b68dda8a7896/docs/CP01.pdf)
 
 CP2 link TBD
 
