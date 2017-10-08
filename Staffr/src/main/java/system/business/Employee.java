@@ -30,7 +30,7 @@ public class Employee extends AbstractBusinessObject {
                     User user,
                     Set<Employee> managers,
                     Set<Degree> degrees,
-                    Set<Position> positions,
+                    Set<EmployeePosition> employeePositions,
                     Set<Skill> skills,
                     Office office,
                     Address address,
@@ -46,7 +46,7 @@ public class Employee extends AbstractBusinessObject {
         this.user = user;
         this.managers = managers;
         this.degrees = degrees;
-        this.positions = positions;
+        this.employeePositions = employeePositions;
         this.skills = skills;
         this.office = office;
         this.address = address;
@@ -90,12 +90,8 @@ public class Employee extends AbstractBusinessObject {
     @OneToMany(mappedBy = "employee")
     private Set<Degree> degrees;
 
-    @ManyToMany()
-    @JoinTable(name = "EMPLOYEE_POSITION",
-            joinColumns = @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "ID"),
-            inverseJoinColumns = @JoinColumn(name = "POSITION_ID", referencedColumnName = "ID")
-    )
-    private Set<Position> positions;
+    @OneToMany(mappedBy = "employee")
+    private Set<EmployeePosition> employeePositions;
 
     @OneToMany(mappedBy = "employee")
     private Set<Skill> skills;
@@ -113,7 +109,6 @@ public class Employee extends AbstractBusinessObject {
 
     @OneToMany(mappedBy = "employee")
     private Set<UserProject> userProjects;
-
 
     public String getFirstName() {
         return firstName;
@@ -195,12 +190,12 @@ public class Employee extends AbstractBusinessObject {
         this.degrees = degrees;
     }
 
-    public Set<Position> getPositions() {
-        return positions;
+    public Set<EmployeePosition> getEmployeePositions() {
+        return employeePositions;
     }
 
-    public void setPositions(Set<Position> positions) {
-        this.positions = positions;
+    public void setEmployeePositions(Set<EmployeePosition> employeePositions) {
+        this.employeePositions = employeePositions;
     }
 
     public Set<Skill> getSkills() {

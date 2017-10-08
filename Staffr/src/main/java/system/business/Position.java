@@ -20,9 +20,6 @@ public class Position extends AbstractBusinessObject {
     @Column()
     private String name;
 
-    @ManyToMany(mappedBy = "positions")
-    Set<Employee> employee;
-
     public Position() {
 
     }
@@ -35,11 +32,4 @@ public class Position extends AbstractBusinessObject {
         this.name = name;
     }
 
-    public Set<Employee> getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Set<Employee> employee) {
-        this.employee = employee;
-    }
 }
