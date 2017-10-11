@@ -2,7 +2,6 @@ package system.business;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
 
 /**
  * Created by Marek on 10.10.2017.
@@ -17,7 +16,7 @@ public class AddressTest {
     public void tearDown() throws Exception {
 
     }
-
+    /*
     @Test
     public void getCountry() throws Exception {
 
@@ -86,6 +85,6 @@ public class AddressTest {
     @Test
     public void setOffices() throws Exception {
 
-    }
+    }*/
 
 }

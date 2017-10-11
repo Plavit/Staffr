@@ -3,6 +3,7 @@ package system.business;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import system.business.enums.Status;
 
 /**
  * Created by Marek on 10.10.2017.
@@ -11,14 +12,27 @@ public class EmployeeTest {
     Employee tstE;
     String tstName;
     String tstLast;
+    int tstBday;
+    Status tstSt;
+    String tstMail;
+    Address tstAdr;
 
     @Before
     public void setUp() throws Exception {
         tstE = new Employee();
         tstName="Pavel";
         tstLast="Destroyer";
+        tstBday=1998;
+        tstSt=Status.ACTIVE;
+
+
+
         tstE.setFirstName(tstName);
         tstE.setLastName(tstLast);
+        tstE.setActive(tstSt);
+        tstE.setAddress(tstAdr);
+        tstE.setBirthYear(tstBday);
+        tstE.setEmail(tstMail);
     }
 
     @After
@@ -52,6 +66,7 @@ public class EmployeeTest {
         tstE.setLastName(tstLast);
     }
 
+    /*
     @Test
     public void getBirthYear() throws Exception {
 
@@ -190,6 +205,6 @@ public class EmployeeTest {
     @Test
     public void setUserProjects() throws Exception {
 
-    }
+    }*/
 
 }
