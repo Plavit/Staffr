@@ -16,6 +16,9 @@ public class EmployeeTest {
     Status tstSt;
     String tstMail;
     Address tstAdr;
+    int tstPhone;
+    String tstNote;
+
 
     @Before
     public void setUp() throws Exception {
@@ -24,8 +27,9 @@ public class EmployeeTest {
         tstLast="Destroyer";
         tstBday=1998;
         tstSt=Status.ACTIVE;
-
-
+        tstMail="tst@tst.tst";
+        tstPhone=123456789;
+        tstNote="testnote";
 
         tstE.setFirstName(tstName);
         tstE.setLastName(tstLast);
@@ -33,6 +37,8 @@ public class EmployeeTest {
         tstE.setAddress(tstAdr);
         tstE.setBirthYear(tstBday);
         tstE.setEmail(tstMail);
+        tstE.setPhoneNumber(tstPhone);
+        tstE.setNote(tstNote);
     }
 
     @After
@@ -66,57 +72,69 @@ public class EmployeeTest {
         tstE.setLastName(tstLast);
     }
 
-    /*
+
     @Test
     public void getBirthYear() throws Exception {
-
+        assert(tstE.getBirthYear()==tstBday);
     }
 
     @Test
     public void setBirthYear() throws Exception {
-
+        tstE.setBirthYear(1202);
+        assert(tstE.getBirthYear()==1202);
     }
 
     @Test
     public void getEmail() throws Exception {
-
+        assert tstE.getEmail()==tstMail;
     }
 
     @Test
     public void setEmail() throws Exception {
-
+        tstE.setEmail("test2@gloglo.cz");
+        assert tstE.getEmail()=="test2@gloglo.cz";
     }
 
     @Test
     public void getNote() throws Exception {
-
+        assert(tstE.getNote()==tstNote);
     }
 
     @Test
     public void setNote() throws Exception {
-
+        tstE.setNote("poop");
+        assert(tstE.getNote()=="poop");
     }
 
     @Test
     public void getPhoneNumber() throws Exception {
-
+        assert (tstE.getPhoneNumber()==tstPhone);
     }
 
     @Test
     public void setPhoneNumber() throws Exception {
-
+        tstE.setPhoneNumber(98765432);
+        assert (tstE.getPhoneNumber()==98765432);
     }
 
     @Test
     public void getActive() throws Exception {
-
+        assert(tstE.getActive()==tstSt);
     }
 
     @Test
     public void setActive() throws Exception {
-
+        tstE.setActive(Status.INACTIVE);
+        assert(tstE.getActive()==Status.INACTIVE);
+        tstE.setActive(Status.ACTIVE);
+        assert(tstE.getActive()==Status.ACTIVE);
+        tstE.setActive(Status.MATERNITY_LEAVE);
+        assert(tstE.getActive()==Status.MATERNITY_LEAVE);
+        tstE.setActive(Status.RETIRED);
+        assert(tstE.getActive()==Status.RETIRED);
     }
 
+    /*
     @Test
     public void getUser() throws Exception {
 
