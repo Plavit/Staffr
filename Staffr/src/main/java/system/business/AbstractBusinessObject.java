@@ -23,4 +23,6 @@ public abstract class AbstractBusinessObject implements Serializable{
     public void setId(int id) {
         this.id = id;
     }
+
+    //TODO: implement stuff like delete here for the objects to use
 }

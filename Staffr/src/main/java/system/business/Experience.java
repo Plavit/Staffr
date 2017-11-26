@@ -8,18 +8,9 @@ import java.util.Set;
  * Created by Marek on 3.9.2017.
  */
 
-@NamedQueries({
-        @NamedQuery(name = "Experience.findByName",
-                query = "SELECT l FROM Experience l WHERE LOWER(l.name) = :name"),
-
-        @NamedQuery(name = "Experience.findAll", query = "SELECT l FROM Experience l")
-})
-
 @Entity
-public class Experience extends AbstractBusinessObject{
+public class Experience extends Skill{
 
-    @Column()
-    private String name;
 
     @Column(name = "startingFrom")
     private Date from;
@@ -27,25 +18,9 @@ public class Experience extends AbstractBusinessObject{
     @Column(name = "endingDate")
     private Date to;
 
-    @Column()
-    private String note;
-
-    @ManyToOne()
-    @JoinColumn(name="EMPLOYEE_ID")
-    private Employee employee;
-
     public Experience() {
 
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Date getFrom() {
         return from;
     }
@@ -62,19 +37,4 @@ public class Experience extends AbstractBusinessObject{
         this.to = to;
     }
 
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
 }

@@ -25,7 +25,7 @@ public class Skill extends AbstractBusinessObject {
     private SkillProfficiency profficiency;
 
     @ManyToOne
-    Employee employee;
+    User user;
 
     public Skill() {
 
@@ -47,11 +47,11 @@ public class Skill extends AbstractBusinessObject {
         this.profficiency = profficiency;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public User getEmployee() {
+        return user;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setEmployee(User user) {
+        this.user = user;
     }
 }

@@ -24,5 +24,5 @@ public class DegreeDaoTest extends BaseDaoTestRunner{
         assertNotNull(result);
         assertEquals(degree.getId(), result.getId());
     }
-
+//TODO add test that doesnt find if not exists
 }

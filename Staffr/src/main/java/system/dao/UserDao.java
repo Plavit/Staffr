@@ -29,6 +29,7 @@ public class UserDao extends BaseDao<User> {
         try {
             em.createNamedQuery("User.deleteById", User.class).setParameter("id", id).executeUpdate();
 
+
         } catch (NoResultException e) {
             e.printStackTrace();
         }

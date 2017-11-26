@@ -30,7 +30,7 @@ public class Address  extends AbstractBusinessObject{
     private String cp;
 
     @OneToMany(mappedBy = "address")
-    private Set<Employee> employees;
+    private Set<User> users;
 
     @OneToMany(mappedBy = "address")
     private Set<Office> offices;
@@ -79,12 +79,12 @@ public class Address  extends AbstractBusinessObject{
         this.cp = cp;
     }
 
-    public Set<Employee> getEmployees() {
-        return employees;
+    public Set<User> getEmployees() {
+        return users;
     }
 
-    public void setEmployees(Set<Employee> employees) {
-        this.employees = employees;
+    public void setEmployees(Set<User> users) {
+        this.users = users;
     }
 
     public Set<Office> getOffices() {

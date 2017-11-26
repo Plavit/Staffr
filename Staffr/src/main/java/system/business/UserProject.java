@@ -2,7 +2,6 @@ package system.business;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
 
 /**
  * Created by krystof on 9/3/17.
@@ -21,7 +20,7 @@ public class UserProject extends AbstractBusinessObject {
     private Date end;
 
     @ManyToOne()
-    private Employee employee;
+    private User user;
 
     @ManyToOne()
     @JoinColumn(name = "PROJECT_ID")
@@ -55,12 +54,12 @@ public class UserProject extends AbstractBusinessObject {
         this.end = end;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public User getEmployee() {
+        return user;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setEmployee(User user) {
+        this.user = user;
     }
 
     public Project getProject() {

@@ -3,8 +3,6 @@ package system.dao;
 import java.util.Collection;
 import java.util.List;
 
-
-
 /**
  * Base interface for data access objects.
  */

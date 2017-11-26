@@ -2,7 +2,6 @@ package system.dao;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import system.business.Employee;
 import system.business.Experience;
 
 import javax.persistence.NoResultException;

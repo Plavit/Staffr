@@ -28,7 +28,7 @@ public class Office extends AbstractBusinessObject {
     private String note;
 
     @OneToMany()
-    private Set<Employee> employee;
+    private Set<User> user;
 
     @ManyToOne()
     @JoinColumn(name = "ADDRESS_ID")
@@ -54,12 +54,12 @@ public class Office extends AbstractBusinessObject {
         this.note = note;
     }
 
-    public Set<Employee> getEmployee() {
-        return employee;
+    public Set<User> getEmployee() {
+        return user;
     }
 
-    public void setEmployee(Set<Employee> employee) {
-        this.employee = employee;
+    public void setEmployee(Set<User> user) {
+        this.user = user;
     }
 
     public Address getAddress() {

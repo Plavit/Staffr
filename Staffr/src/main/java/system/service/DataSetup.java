@@ -2,7 +2,6 @@ package system.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import system.business.Employee;
 import system.business.User;
 import system.business.enums.Role;
 import system.business.enums.Status;
@@ -14,18 +13,12 @@ import javax.annotation.PostConstruct;
 public class DataSetup {
 
     @Autowired
-    private EmployeeService employeeService;
-
-    @Autowired
     private UserService userService;
 
-    private Employee initEmployee(User user) {
-        return new Employee("Marek", "Selezszzs", 1996,
+    private User initEmployee(User user) {
+        return new User("Marek", "Selezszzs", 1996,
                 "theBigD@staffr.com", "cool guy",
-                111111111, Status.MATERNITY_LEAVE,
-                user,
-                null, null, null, null, null,
-                null, null, null);
+                111111111, Status.MATERNITY_LEAVE);
     }
 
     private User initUser() {
@@ -35,9 +28,10 @@ public class DataSetup {
     @PostConstruct
     private void setupData() {
         User user = initUser();
-        Employee employee = initEmployee(user);
+        User employee = initEmployee(user);
         userService.persist(user);
-        employeeService.persist(employee);
+        userService.persist(employee);
+
     }
 }
 
