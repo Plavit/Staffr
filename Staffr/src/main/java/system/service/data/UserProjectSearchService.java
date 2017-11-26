@@ -1,6 +1,7 @@
 package system.service.data;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import system.business.*;
 import system.business.UserProject;
 import system.dao.ProjectDao;
@@ -10,6 +11,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+@Service
 public class UserProjectSearchService {
 
     @Autowired

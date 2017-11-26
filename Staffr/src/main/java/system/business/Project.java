@@ -1,9 +1,6 @@
 package system.business;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
@@ -19,20 +16,23 @@ import java.util.Set;
 
 @Entity()
 public class Project extends AbstractBusinessObject {
-    @Column()
+
     private String name;
 
-    @Column()
+
     private String description;
 
-    @Column()
+
     private Set<String> goals;
 
-    @Column()
+
     private Date startOfProject;
 
-    @Column()
+
     private Date endOfProject;
+
+    @OneToMany(mappedBy = "project",cascade = CascadeType.PERSIST)
+    private Set<UserProject> userProject;
 
     public Project() {
 
@@ -76,5 +76,13 @@ public class Project extends AbstractBusinessObject {
 
     public void setEndOfProject(Date endOfProject) {
         this.endOfProject = endOfProject;
+    }
+
+    public Set<UserProject> getUserProject() {
+        return userProject;
+    }
+
+    public void setUserProject(Set<UserProject> userProject) {
+        this.userProject = userProject;
     }
 }

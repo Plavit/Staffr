@@ -16,6 +16,7 @@ import java.util.Set;
 
 
 @Entity
+@Table(name = "usr")
 public class User extends AbstractBusinessObject {
 
     private String userName;
@@ -60,7 +61,7 @@ public class User extends AbstractBusinessObject {
     @JoinColumn(name = "ADDRESS_ID")
     private Address address;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",cascade = CascadeType.PERSIST)
     private Set<UserProject> userProjects;
 
     public User() {

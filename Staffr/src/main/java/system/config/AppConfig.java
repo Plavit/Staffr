@@ -26,8 +26,8 @@ import org.springframework.context.annotation.Import;
  */
 // This annotation is required when services without separate interfaces are used. It causes cglib-based proxies of
 // the services to be used - see http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/annotation/EnableAspectJAutoProxy.html#proxyTargetClass--
-@EnableAspectJAutoProxy(proxyTargetClass = true)
 @Configuration  // This class is a Spring configuration
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 @Import({WebAppConfig.class, PersistenceConfig.class, ServiceConfig.class}) // Import additional configuration classes
 public class AppConfig {
 }

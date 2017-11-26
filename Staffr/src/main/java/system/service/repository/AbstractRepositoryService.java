@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
-public abstract class BaseRepositoryService<T> implements BaseService<T> {
+public abstract class AbstractRepositoryService<T> implements RepositoryService<T> {
 
     protected abstract GenericDao<T> getPrimaryDao();
 
@@ -81,5 +81,4 @@ public abstract class BaseRepositoryService<T> implements BaseService<T> {
     void postLoad(T instance) {
         // Do nothing, intended for overriding
     }
-
 }

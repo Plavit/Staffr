@@ -13,9 +13,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
-/**
- * Created by HMT on 25.11.2016.
- */
 @Configuration
 @PropertySources(
         {@PropertySource("classpath:jpa.properties"),
@@ -30,9 +27,6 @@ public class PersistenceConfig {
 
     @Bean
     public DataSource dataSource() {
-        // Data source definition.
-        // Notice that in contrast to the application version, where jdbc is set for a PostgreSQL db,
-        // tests use in-memory H2 db, which is discarded after each test
         final BoneCPDataSource ds = new BoneCPDataSource();
         ds.setDriverClass(environment.getRequiredProperty("jdbc.driverClassName"));
         ds.setJdbcUrl(environment.getRequiredProperty("jdbc.url"));

@@ -1,13 +1,23 @@
 package system.service.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import system.business.Project;
+import system.dao.GenericDao;
 import system.dao.ProjectDao;
 
-/**
- * Created by krystof on 10/1/17.
- */
-public class ProjectService {
+@Service
+public class ProjectService extends AbstractRepositoryService<Project> {
+
+    private final ProjectDao dao;
+
     @Autowired
-    private ProjectDao dao;
+    public ProjectService(ProjectDao dao) {
+        this.dao = dao;
+    }
+
+    @Override
+    protected GenericDao<Project> getPrimaryDao() {
+        return dao;
+    }
 }
