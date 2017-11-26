@@ -1,4 +1,4 @@
-package system.service;
+package system.service.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,11 +15,4 @@ public class OfficeService{
     @Autowired
     private OfficeDao dao;
 
-    public void persist(Office e) {
-        dao.persist(e);
-    }
-
-    public void update(Office e){
-        dao.update(e);
-    }
 }

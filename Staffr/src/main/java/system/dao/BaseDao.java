@@ -1,7 +1,5 @@
 package system.dao;
 
-import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
@@ -24,14 +22,14 @@ public abstract class BaseDao<T> implements GenericDao<T> {
         this.type = type;
     }
 
-    @Transactional(readOnly = true)
+    //    @Transactional(readOnly = true)
     @Override
     public T find(Integer id) {
         Objects.requireNonNull(id);
         return em.find(type, id);
     }
 
-    @Transactional(readOnly = true)
+    //    @Transactional(readOnly = true)
     @Override
     public List<T> findAll() {
         try {
@@ -41,7 +39,7 @@ public abstract class BaseDao<T> implements GenericDao<T> {
         }
     }
 
-    @Transactional
+    //    @Transactional
     @Override
     public void persist(T entity) {
         Objects.requireNonNull(entity);
@@ -52,7 +50,7 @@ public abstract class BaseDao<T> implements GenericDao<T> {
         }
     }
 
-    @Transactional
+    //    @Transactional
     @Override
     public void persist(Collection<T> entities) {
         Objects.requireNonNull(entities);
@@ -66,7 +64,7 @@ public abstract class BaseDao<T> implements GenericDao<T> {
         }
     }
 
-    @Transactional
+    //    @Transactional
     @Override
     public T update(T entity) {
         Objects.requireNonNull(entity);
@@ -77,7 +75,7 @@ public abstract class BaseDao<T> implements GenericDao<T> {
         }
     }
 
-    @Transactional
+    //    @Transactional
     @Override
     public void remove(T entity) {
         Objects.requireNonNull(entity);
@@ -91,7 +89,7 @@ public abstract class BaseDao<T> implements GenericDao<T> {
         }
     }
 
-    @Transactional
+    //    @Transactional
     @Override
     public void remove(Collection<T> entities) {
         Objects.requireNonNull(entities);
@@ -101,7 +99,7 @@ public abstract class BaseDao<T> implements GenericDao<T> {
         entities.forEach(this::remove);
     }
 
-    @Transactional(readOnly = true)
+    //    @Transactional(readOnly = true)
     @Override
     public boolean exists(Integer id) {
         return id != null && em.find(type, id) != null;

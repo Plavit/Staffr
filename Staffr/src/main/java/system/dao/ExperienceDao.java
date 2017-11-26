@@ -13,20 +13,7 @@ import java.util.Objects;
 
 @Repository
 public class ExperienceDao extends BaseDao<Experience>{
-
     protected ExperienceDao() {
         super(Experience.class);
-    }
-
-    @Transactional(readOnly = true)
-    public Experience findByName(String name) {
-        Objects.requireNonNull(name);
-        try {
-            return em.createNamedQuery("Experience.findByName", Experience.class)
-                    .setParameter("name", name.toLowerCase())
-                    .getSingleResult();
-        } catch (NoResultException e) {
-            return null;
-        }
     }
 }

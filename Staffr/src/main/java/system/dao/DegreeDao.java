@@ -17,7 +17,7 @@ public class DegreeDao extends BaseDao<Degree>{
         super(Degree.class);
     }
 
-    @Transactional(readOnly = true)
+//    @Transactional(readOnly = true)
     public Degree findByName(String name) {
         Objects.requireNonNull(name);
         try {

@@ -15,14 +15,4 @@ public class ExperienceDaoTest extends BaseDaoTestRunner {
     @Autowired
     private ExperienceDao experienceDao;
 
-    @Test
-    public void findByName() throws Exception {
-        final Experience experience = new Experience();
-        experience.setName("Garbage collection");
-        experienceDao.persist(experience);
-        final Experience result = experienceDao.findByName(experience.getName());
-        assertNotNull(result);
-        assertEquals(experience.getId(), result.getId());
-    }
-
 }

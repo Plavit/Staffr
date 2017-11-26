@@ -5,6 +5,8 @@ import org.springframework.transaction.annotation.Transactional;
 import system.business.Project;
 
 import javax.persistence.NoResultException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -28,4 +30,13 @@ public class ProjectDao extends BaseDao<Project> {
             return null;
         }
     }
+
+//    public List<Project> getAllProjectsById(List<int> ids){
+//        List<Project> ret = new LinkedList<>();
+//
+//        for (int id: ids) {
+//            find(id);
+//        }
+//
+//    }
 }

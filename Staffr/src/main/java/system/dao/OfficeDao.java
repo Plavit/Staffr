@@ -17,7 +17,7 @@ public class OfficeDao extends BaseDao<Office>{
         super(Office.class);
     }
 
-    @Transactional(readOnly = true)
+//    @Transactional(readOnly = true)
     public Office findByName(String name) {
         Objects.requireNonNull(name);
         try {

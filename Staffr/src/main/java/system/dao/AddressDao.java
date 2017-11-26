@@ -9,7 +9,6 @@ import system.business.Address;
 
 @Repository
 public class AddressDao extends BaseDao<Address>{
-
     protected AddressDao() {
         super(Address.class);
     }

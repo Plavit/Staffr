@@ -15,7 +15,6 @@ public class UserDao extends BaseDao<User> {
         super(User.class);
     }
 
-    @Transactional(readOnly = true)
     public User findByUsername(String username) {
         try {
             return em.createNamedQuery("User.findByUsername", User.class).setParameter("username", username)
@@ -24,16 +23,4 @@ public class UserDao extends BaseDao<User> {
             return null;
         }
     }
-    @Transactional
-    public void deleteById(int id) {
-        try {
-            em.createNamedQuery("User.deleteById", User.class).setParameter("id", id).executeUpdate();
-
-
-        } catch (NoResultException e) {
-            e.printStackTrace();
-        }
-    }
-
-
 }

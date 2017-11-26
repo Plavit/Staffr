@@ -7,6 +7,12 @@ import java.util.Date;
  * Created by krystof on 9/3/17.
  */
 
+@NamedQueries({
+        @NamedQuery(name = "UserProject.findByUserAndStartingDate",
+                query = "SELECT l FROM UserProject l WHERE l.user_id = :userID " +
+                        "AND l.from = :startingDate"),
+})
+
 @Entity()
 public class UserProject extends AbstractBusinessObject {
 
@@ -20,6 +26,7 @@ public class UserProject extends AbstractBusinessObject {
     private Date end;
 
     @ManyToOne()
+    @JoinColumn(name = "USER_ID")
     private User user;
 
     @ManyToOne()

@@ -18,7 +18,7 @@ public class PositionDao extends BaseDao<Position>{
         super(Position.class);
     }
 
-    @Transactional(readOnly = true)
+//    @Transactional(readOnly = true)
     public Position findByName(String name) {
         Objects.requireNonNull(name);
         try {

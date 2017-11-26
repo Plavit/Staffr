@@ -8,10 +8,10 @@ import javax.persistence.*;
 import java.util.Set;
 
 @NamedQueries({
-        @NamedQuery(name = "Employee.findByName", query = "SELECT l FROM User l WHERE LOWER(l.firstName) = :firstName AND LOWER(l.lastName) = :lastName"),
+        @NamedQuery(name = "User.findByName", query = "SELECT l FROM User l WHERE LOWER(l.firstName) = :firstName AND LOWER(l.lastName) = :lastName"),
         @NamedQuery(name = "User.findByUsername", query = "SELECT p FROM User p WHERE p.userName=:username"),
         @NamedQuery(name = "User.deleteById", query = "DELETE FROM User p WHERE p.id=:id"),
-        @NamedQuery(name = "Employee.findAll", query = "SELECT l FROM User l")
+        @NamedQuery(name = "User.findAll", query = "SELECT l FROM User l")
 })
 
 
@@ -43,13 +43,13 @@ public class User extends AbstractBusinessObject {
     )
     private Set<User> users;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", orphanRemoval=true)
     private Set<Degree> degrees;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", orphanRemoval=true)
     private Set<Position> positions;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", orphanRemoval=true)
     private Set<Skill> skills;
 
     @ManyToOne()
@@ -59,9 +59,6 @@ public class User extends AbstractBusinessObject {
     @ManyToOne()
     @JoinColumn(name = "ADDRESS_ID")
     private Address address;
-
-    @OneToMany(mappedBy = "user")
-    private Set<Experience> experiences;
 
     @OneToMany(mappedBy = "user")
     private Set<UserProject> userProjects;
@@ -239,14 +236,6 @@ public class User extends AbstractBusinessObject {
 
     public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public Set<Experience> getExperiences() {
-        return experiences;
-    }
-
-    public void setExperiences(Set<Experience> experiences) {
-        this.experiences = experiences;
     }
 
     public Set<UserProject> getUserProjects() {

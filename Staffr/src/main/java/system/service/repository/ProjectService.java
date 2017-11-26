@@ -1,4 +1,4 @@
-package system.service;
+package system.service.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import system.business.Project;
@@ -10,12 +10,4 @@ import system.dao.ProjectDao;
 public class ProjectService {
     @Autowired
     private ProjectDao dao;
-
-    public void persist(Project e) {
-        dao.persist(e);
-    }
-
-    public void update(Project e){
-        dao.update(e);
-    }
 }

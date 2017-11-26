@@ -1,11 +1,13 @@
-package system.service;
+package system.service.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import system.business.Project;
 import system.business.User;
 import system.dao.UserDao;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,6 +16,7 @@ import java.util.List;
 
 @Service
 public class UserService {
+
     @Autowired
     UserDao userDao;
 
@@ -27,7 +30,7 @@ public class UserService {
     public void persist(User user) {
         if (exists(user.getUserName())) {
             //TODO: USERNAME ALLREADY IN USE
-        }else {
+        } else {
             try {
                 user.encodePassword(passwordEncoder);
             } catch (IllegalStateException e) {
@@ -37,10 +40,10 @@ public class UserService {
         }
     }
 
-    public void update(User user){
+    public void update(User user) {
         if (exists(user.getUserName())) {
             //TODO: USERNAME DOES NOT EXIST
-        }else {
+        } else {
             try {
                 user.encodePassword(passwordEncoder);
             } catch (IllegalStateException e) {
@@ -48,9 +51,5 @@ public class UserService {
             }
             userDao.update(user);
         }
-    }
-
-    public void remove(int id){
-        userDao.deleteById(id);
     }
 }
