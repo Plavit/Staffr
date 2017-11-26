@@ -17,8 +17,11 @@ import java.util.Set;
 @Entity
 public class Position extends AbstractBusinessObject {
 
-    @Column()
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name="USER_ID", nullable=false)
+    public User user;
 
     public Position() {
 

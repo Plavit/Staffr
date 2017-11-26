@@ -43,13 +43,13 @@ public class User extends AbstractBusinessObject {
     )
     private Set<User> users;
 
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(mappedBy = "user")
     private Set<Degree> degrees;
 
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(mappedBy = "user")
     private Set<Position> positions;
 
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(mappedBy = "user")
     private Set<Skill> skills;
 
     @ManyToOne()
@@ -60,10 +60,10 @@ public class User extends AbstractBusinessObject {
     @JoinColumn(name = "ADDRESS_ID")
     private Address address;
 
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(mappedBy = "user")
     private Set<Experience> experiences;
 
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(mappedBy = "user")
     private Set<UserProject> userProjects;
 
     public User() {
