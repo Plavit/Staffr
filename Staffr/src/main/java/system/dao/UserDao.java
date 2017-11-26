@@ -7,7 +7,7 @@ import system.business.User;
 import javax.persistence.NoResultException;
 
 /**
- * Created by HMT on 06.01.2017.
+ * Created by Krystof&Marek on 06.01.2017.
  */
 @Repository
 public class UserDao extends BaseDao<User> {

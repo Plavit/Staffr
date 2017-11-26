@@ -8,7 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * Created by HMT on 25.11.2016.
+ * Created by Krystof&Marek on 25.11.2016.
  */
 @Configuration
 @ComponentScan(basePackages = "system.service")

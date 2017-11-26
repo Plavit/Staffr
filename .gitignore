@@ -1,4 +1,5 @@
-Staffr/.idea/
+Staffr/
+.idea/
 target/
 *.properties
 
