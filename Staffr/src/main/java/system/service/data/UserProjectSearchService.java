@@ -7,7 +7,7 @@ import system.business.UserProject;
 import system.dao.ProjectDao;
 import system.dao.UserProjectDao;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,11 +20,11 @@ public class UserProjectSearchService {
     @Autowired
     ProjectDao projectDao;
 
-    public List<Project> getUsersProjectsFromDate(int userId, Date start) {
+    public List<Project> getUsersProjectsFromDate(User userId, LocalDate start) {
         List<Project> ret = new LinkedList<>();
         List<UserProject> upList = userProjectDao.findByUserAndStartingDate(userId, start);
         for (UserProject up : upList) {
-            ret.add(projectDao.find(up.getId()));
+            ret.add(up.getProject());
         }
         return ret;
     }

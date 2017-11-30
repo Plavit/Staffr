@@ -50,7 +50,7 @@ public class User extends AbstractBusinessObject {
     @OneToMany(mappedBy = "user", orphanRemoval=true)
     private Set<Position> positions;
 
-    @OneToMany(mappedBy = "user", orphanRemoval=true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
     private Set<Skill> skills;
 
     @ManyToOne()

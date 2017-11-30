@@ -1,30 +1,26 @@
 package system.dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import system.business.Skill;
+import system.business.User;
 
 import javax.persistence.NoResultException;
+import java.util.List;
 import java.util.Objects;
-
-/**
- * Created by krystof on 10/1/17.
- */
+import java.util.Set;
 
 @Repository
-public class SkillDao extends BaseDao<Skill> {
-
+public class SkillDao extends BaseDao<Skill>{
     protected SkillDao() {
         super(Skill.class);
     }
 
-    @Transactional(readOnly = true)
-    public Skill findByName(String name) {
-        Objects.requireNonNull(name);
+    public List<Skill> getAllSkillsByUser(User user){
         try {
-            return em.createNamedQuery("Skill.findByName", Skill.class)
-                    .setParameter("name", name.toLowerCase())
-                    .getSingleResult();
+            return em.createNamedQuery("Skill.findByUser", Skill.class)
+                    .setParameter("user", user)
+                    .getResultList();
         } catch (NoResultException e) {
             return null;
         }

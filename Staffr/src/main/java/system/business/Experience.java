@@ -1,6 +1,7 @@
 package system.business;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 
@@ -13,27 +14,28 @@ public class Experience extends Skill{
 
 
     @Column(name = "startingFrom")
-    private Date from;
+    private LocalDate from;
 
     @Column(name = "endingDate")
-    private Date to;
+    private LocalDate to;
 
     public Experience() {
 
     }
-    public Date getFrom() {
+
+    public LocalDate getFrom() {
         return from;
     }
 
-    public void setFrom(Date from) {
+    public void setFrom(LocalDate from) {
         this.from = from;
     }
 
-    public Date getTo() {
+    public LocalDate getTo() {
         return to;
     }
 
-    public void setTo(Date to) {
+    public void setTo(LocalDate to) {
         this.to = to;
     }
 

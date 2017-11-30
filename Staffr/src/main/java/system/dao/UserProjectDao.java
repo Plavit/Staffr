@@ -1,10 +1,11 @@
 package system.dao;
 
 import org.springframework.stereotype.Repository;
+import system.business.User;
 import system.business.UserProject;
 
 import javax.persistence.NoResultException;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -18,10 +19,11 @@ public class UserProjectDao extends BaseDao<UserProject> {
         super(UserProject.class);
     }
 
-    public List<UserProject> findByUserAndStartingDate(Integer userID, Date startingDate) {
+    public List<UserProject> findByUserAndStartingDate(User userID, LocalDate startingDate) {
         try {
-            return em.createNamedQuery("UserProject.findByUserAndStartingDate", UserProject.class)
-                            .setParameter(userID, startingDate).getResultList();
+            List<UserProject> ret = em.createNamedQuery("UserProject.findByUserAndStartingDate", UserProject.class)
+                    .setParameter("userID",userID).setParameter("startingDate",startingDate).getResultList();
+            return ret;
         } catch (NoResultException e) {
             return null;
         }

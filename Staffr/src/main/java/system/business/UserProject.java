@@ -1,29 +1,28 @@
 package system.business;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * Created by krystof on 9/3/17.
  */
 
-//@NamedQueries({
-//        @NamedQuery(name = "UserProject.findByUserAndStartingDate",
-//                query = "SELECT l FROM UserProject l WHERE l.user_id = :userID " +
-//                        "AND l.from = :startingDate"),
-//})
+@NamedQueries({
+        @NamedQuery(name = "UserProject.findByUserAndStartingDate",
+                query = "SELECT l FROM UserProject l WHERE l.user = :userID " +
+                        "AND l.from >= :startingDate"),
+})
 
 @Entity()
 public class UserProject extends AbstractBusinessObject {
 
-    @Column()
     private String role;
 
     @Column(name = "starting_date")
-    private Date from;
+    private LocalDate from;
 
     @Column(name = "ending_date")
-    private Date end;
+    private LocalDate end;
 
     @ManyToOne()
     @JoinColumn(name = "USER_ID")
@@ -45,19 +44,19 @@ public class UserProject extends AbstractBusinessObject {
         this.role = role;
     }
 
-    public Date getFrom() {
+    public LocalDate getFrom() {
         return from;
     }
 
-    public void setFrom(Date from) {
+    public void setFrom(LocalDate from) {
         this.from = from;
     }
 
-    public Date getEnd() {
+    public LocalDate getEnd() {
         return end;
     }
 
-    public void setEnd(Date end) {
+    public void setEnd(LocalDate end) {
         this.end = end;
     }
 

@@ -2,6 +2,7 @@ package system.dao;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import system.business.Skill;
 import system.business.User;
 
 import javax.persistence.NoResultException;
@@ -22,5 +23,19 @@ public class UserDao extends BaseDao<User> {
         } catch (NoResultException e) {
             return null;
         }
+    }
+
+    public boolean exists(String username) {
+        try {
+            return em.createNamedQuery("User.findByUsername", User.class)
+                    .setParameter("username", username)
+                    .getResultList().size() > 0;
+        } catch (NoResultException e) {
+            return false;
+        }
+    }
+
+    public void addSkill(Skill newSkill) {
+//        em.createNamedQuery("User.addSkill", User.class).setParameter("newSkill", newSkill).executeUpdate();
     }
 }
