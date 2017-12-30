@@ -2,6 +2,7 @@ package system.service.data;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import system.business.*;
 import system.business.UserProject;
 import system.dao.ProjectDao;
@@ -12,6 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Service
+@Transactional
 public class UserProjectSearchService {
 
     @Autowired
