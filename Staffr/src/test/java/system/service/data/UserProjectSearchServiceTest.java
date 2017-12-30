@@ -23,6 +23,9 @@ import java.util.Set;
 @ContextConfiguration(classes = {ServiceConfig.class})
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 @Transactional(transactionManager = "txManager")
+
+//Inject in context OR use mock...
+
 public class UserProjectSearchServiceTest {
 
     @Autowired

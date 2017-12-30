@@ -31,16 +31,16 @@ public class User extends AbstractBusinessObject {
     private Status active;
 
     @ManyToMany()
-    @JoinTable(name = "EMPLOYEE_MANAGER",
-            joinColumns = @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "ID"),
+    @JoinTable(name = "USER_MANAGER",
+            joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID"),
             inverseJoinColumns = @JoinColumn(name = "MANAGER_ID", referencedColumnName = "ID")
     )
     private Set<User> managers;
 
     @ManyToMany()
-    @JoinTable(name = "MANAGER_EMPLOYEE",
+    @JoinTable(name = "MANAGER_USER",
             joinColumns = @JoinColumn(name = "MANAGER_ID", referencedColumnName = "ID"),
-            inverseJoinColumns = @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "ID")
+            inverseJoinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
     )
     private Set<User> users;
 

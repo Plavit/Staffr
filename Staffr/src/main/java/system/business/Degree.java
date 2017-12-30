@@ -36,7 +36,7 @@ public class Degree extends AbstractBusinessObject {
     }
 
     @ManyToOne()
-    @JoinColumn(name = "EMPLOYEE_ID")
+    @JoinColumn(name = "USER_ID")
     private User user;
 
     @ManyToOne()
@@ -75,11 +75,11 @@ public class Degree extends AbstractBusinessObject {
         this.to = to;
     }
 
-    public User getEmployee() {
+    public User getUser() {
         return user;
     }
 
-    public void setEmployee(User user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

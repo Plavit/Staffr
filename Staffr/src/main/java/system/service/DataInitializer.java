@@ -62,7 +62,7 @@ public class DataInitializer {
         experience.setName("EXP1");
         experience.setFrom(LocalDate.of(2005,1,1));
         experience.setTo(LocalDate.of(2007,1,1));
-        experience.setEmployee(u);
+        experience.setUser(u);
         skills.add(experience);
         u.setSkills(skills);
 

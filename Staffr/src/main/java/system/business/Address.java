@@ -79,11 +79,11 @@ public class Address  extends AbstractBusinessObject{
         this.cp = cp;
     }
 
-    public Set<User> getEmployees() {
+    public Set<User> getUsers() {
         return users;
     }
 
-    public void setEmployees(Set<User> users) {
+    public void setUsers(Set<User> users) {
         this.users = users;
     }
 

@@ -54,11 +54,11 @@ public class Office extends AbstractBusinessObject {
         this.note = note;
     }
 
-    public Set<User> getEmployee() {
+    public Set<User> getUser() {
         return user;
     }
 
-    public void setEmployee(Set<User> user) {
+    public void setUser(Set<User> user) {
         this.user = user;
     }
 

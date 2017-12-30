@@ -53,11 +53,11 @@ public class Skill extends AbstractBusinessObject {
         this.profficiency = profficiency;
     }
 
-    public User getEmployee() {
+    public User getUser() {
         return user;
     }
 
-    public void setEmployee(User user) {
+    public void setUser(User user) {
         this.user = user;
     }
 }
