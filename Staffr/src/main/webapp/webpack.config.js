@@ -24,7 +24,7 @@ module.exports = {
     watch: true,
     output: {
         path: path.resolve(__dirname + "/"),
-        filename: path.join("../../../target/Centralni-Databaze-Dobrovolniku-1.0-SNAPSHOT/js/bundle.js")
+        filename: path.join("../../../target/Staffr-1.0-SNAPSHOT/js/bundle.js")
     },
     plugins: debug ? [] : [
         new webpack.optimize.DedupePlugin(),
