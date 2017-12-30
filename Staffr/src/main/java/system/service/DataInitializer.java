@@ -46,6 +46,8 @@ public class DataInitializer {
         up.setEmployee(u);
         up.setFrom(LocalDate.now());
 
+        u.setId(123);
+
         Set<UserProject> upSet = new HashSet<>();
 
         upSet.add(up);

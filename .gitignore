@@ -1,4 +1,7 @@
-
+Staffr/.idea/
+Staffr/target/
+Staffr/visualee/
+Staffr/src/main/webapp/node_modules/
 .idea/
 target/
 *.properties
