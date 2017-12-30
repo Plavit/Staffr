@@ -1,9 +1,8 @@
 package system.business;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.Set;
 
 /**
  * Created by Marek on 3.9.2017.
@@ -12,6 +11,8 @@ import java.util.Set;
 @Entity
 public class Experience extends Skill{
 
+    @Column()
+    private String institution;
 
     @Column(name = "startingFrom")
     private LocalDate from;
@@ -21,6 +22,21 @@ public class Experience extends Skill{
 
     public Experience() {
 
+    }
+
+    public Experience(String name,String institution, LocalDate from, LocalDate to) {
+        this.setName(name);
+        this.setInstitution(institution);
+        this.setFrom(from);
+        this.setTo(to);
+    }
+
+    public String getInstitution() {
+        return institution;
+    }
+
+    public void setInstitution(String institution) {
+        this.institution = institution;
     }
 
     public LocalDate getFrom() {

@@ -17,12 +17,16 @@ import java.util.Set;
 @Component
 public class DataInitializer {
 
+    @Autowired
     private final ProjectService projectService;
 
+    @Autowired
     private final UserService userService;
 
+    @Autowired
     private final UserProjectSearchService userProjectSearchService;
 
+    @Autowired
     private final SkillService skillService;
 
     @Autowired
@@ -35,46 +39,71 @@ public class DataInitializer {
 
     @PostConstruct
     private void init() {
-        Skill sk = new Experience();
-        sk.setName("Not the right one");
-        skillService.persist(sk);
 
+        /**
+         * Initializing interface hierarchy
+         *
+         * [User]Peter_Smith
+         * -[Experience]exp_asMoE
+         * -[Experience]exp_csMoF
+         * -[SoftSkill]skl_excel_1
+         * -[SoftSkill]skl_word_3
+         * -[Project]prj_duedil1
+         *
+         * [User]Charlotte_Guido
+         * -[Experience]exp_asMoE
+         * -[Experience]exp_csMoF
+         * -[SoftSkill]skl_excel_3
+         * -[SoftSkill]skl_word_2
+         * -[Project]prj_duedil1
+         *
+         *
+         */
+
+
+        //SKILLS
+
+
+        //EXPERIENCES
+        Skill exp = new Experience();
+        exp.setName("SkillExp extend test");
+        skillService.persist(exp);
+
+        //PROJECTS
         final Project p = new Project();
+
+        //USERS
         final User u = new User();
+        u.setId(123);
+        p.setName("Project1");
+        p.setDescription("Test project");
+        projectService.persist(p);
+
+        //USERPROJECTS //TODO: this might be this should be handled by service
         final UserProject up = new UserProject();
         up.setProject(p);
         up.setEmployee(u);
         up.setFrom(LocalDate.now());
-
-        u.setId(123);
-
         Set<UserProject> upSet = new HashSet<>();
-
         upSet.add(up);
-
-        p.setName("Project1");
-        p.setDescription("Test project");
-//        p.setUserProject(upSet);
-
-        projectService.persist(p);
-
         u.setUserProjects(upSet);
+
         Set<Skill> skills = new HashSet<>();
-        Experience experience = new Experience();
-        experience.setName("EXP1");
-        experience.setFrom(LocalDate.of(2005,1,1));
-        experience.setTo(LocalDate.of(2007,1,1));
-        experience.setUser(u);
-        skills.add(experience);
+        Experience exp_asMoE = new Experience("Assistant","Ministry of Education",LocalDate.of(2005,1,1),LocalDate.of(2005,1,1));
+        exp_asMoE.setUser(u);
+
+        skills.add(exp_asMoE);
         u.setSkills(skills);
 
         userService.persist(u);
 
+        //ALL-CONTAINING SETS INIT
         List<User> users = userService.findAll();
 
         List<Project> projectsRet = userProjectSearchService.getUsersProjectsFromDate(u,LocalDate.of(2000,1,1));
         List<Skill> skillsRet = skillService.getAllSkillsByUser(u);
-        System.out.println("Done");
+
+        System.out.println("Data initialization complete");
 
     }
 }
