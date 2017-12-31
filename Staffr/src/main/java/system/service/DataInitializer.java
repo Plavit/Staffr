@@ -83,12 +83,12 @@ public class DataInitializer {
         final Project prj_pmi1 = new Project();
         prj_pmi1.setName("PMI for Avast-AVG");
         prj_pmi1.setDescription("Post Merger Integration for a large Software company.");
-        projectService.persist(p);
+        projectService.persist(prj_pmi1);
 
         final Project prj_duedil1 = new Project();
         prj_duedil1.setName("DD for Danske Bank");
         prj_duedil1.setDescription("Due Dilligence for major European Bank");
-        projectService.persist(p);
+        projectService.persist(prj_duedil1);
 
         //USERS
         final User u = new User();
