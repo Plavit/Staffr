@@ -24,7 +24,8 @@ public class Skill extends AbstractBusinessObject {
     @Enumerated()
     private SkillProfficiency profficiency;
 
-    @ManyToOne
+//    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne()
     @JoinColumn(name = "USER_ID")
     private User user;
 

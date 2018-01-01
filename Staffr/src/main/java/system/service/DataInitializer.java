@@ -3,6 +3,7 @@ package system.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import system.business.*;
+import system.business.enums.Role;
 import system.business.enums.SkillProfficiency;
 import system.service.data.UserProjectSearchService;
 import system.service.repository.ProjectService;
@@ -71,9 +72,6 @@ public class DataInitializer {
          */
 
 
-
-
-
         //PROJECTS
         final Project p = new Project();
         p.setName("Project1");
@@ -95,6 +93,9 @@ public class DataInitializer {
         u.setFirstName("Anon");
         u.setLastName("Anonymous");
         u.setEmail("anon@4chan.org");
+        u.setUserName("admin");
+        u.setPassword("heslo");
+        u.setRole(Role.ADMIN_ROLE);
         //u.setId(123);
 
         final User Peter_Smith = new User();
@@ -205,12 +206,12 @@ public class DataInitializer {
         skillService.persist(exp);
 
         Experience exp_asMoE = new Experience("Assistant","Ministry of Education",LocalDate.of(2005,1,1),LocalDate.of(2007,1,1));
-        exp_asMoE.setUser(Peter_Smith);
-        skillService.persist(exp_asMoE);
+//        exp_asMoE.setUser(Peter_Smith);
+//        skillService.persist(exp_asMoE);
 
         Experience exp_csMoF = new Experience("Consultant","Ministry of Finance",LocalDate.of(2015,1,1),LocalDate.of(2017,1,1));
-        exp_csMoF.setUser(Charlotte_Guido);
-        skillService.persist(exp_csMoF);
+//        exp_csMoF.setUser(Charlotte_Guido);
+//        skillService.persist(exp_csMoF);
 
 
         //FINISH - Skill to user stick
