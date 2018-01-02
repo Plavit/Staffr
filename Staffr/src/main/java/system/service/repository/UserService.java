@@ -7,8 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 import system.business.User;
 import system.dao.GenericDao;
 import system.dao.UserDao;
+import system.service.security.SecurityUtils;
 
-import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -20,13 +21,18 @@ public class UserService extends AbstractRepositoryService<User> {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(UserDao dao) {
+    public UserService(UserDao dao, SecurityUtils securityUtils) {
         this.dao = dao;
     }
 
     @Override
     protected GenericDao<User> getPrimaryDao() {
         return dao;
+    }
+
+    @Override
+    void prePersist(User instance) {
+        persistSkills(instance);
     }
 
     @Override
@@ -52,5 +58,18 @@ public class UserService extends AbstractRepositoryService<User> {
     public boolean exists(String username) {
 //        Objects.requireNonNull(username);
         return dao.exists(username);
+    }
+
+    private void persistSkills(User instance) {
+        Optional.ofNullable(instance.getSkills())
+                .ifPresent(
+                        skills -> skills.stream()
+                                .filter(t -> t.getUser() == null)
+                                .forEach(
+                                        t -> {
+                                            t.setUser(instance);
+                                        }
+                                )
+                );
     }
 }

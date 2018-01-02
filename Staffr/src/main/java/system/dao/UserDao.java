@@ -36,6 +36,6 @@ public class UserDao extends BaseDao<User> {
     }
 
     public void addSkill(Skill newSkill) {
-//        em.createNamedQuery("User.addSkill", User.class).setParameter("newSkill", newSkill).executeUpdate();
+        em.createNamedQuery("User.addSkill", User.class).setParameter("newSkill", newSkill).executeUpdate();
     }
 }

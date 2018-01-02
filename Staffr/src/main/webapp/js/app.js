@@ -6,10 +6,11 @@ import {browserHistory, hashHistory, IndexRoute, Route, Router} from "react-rout
 import loginPage from "./component/Login";
 import userInterface from "./component/UserInterface"
 import requireAuth from "./component/RequireAuth"
+import Actions from "./actions/Actions"
 
 const app = document.getElementById('app');
 
-// Actions.userInit();
+Actions.userInit();
 
 ReactDOM.render(
     <Router history={hashHistory}>

@@ -27,6 +27,7 @@ public class ProjectDao extends BaseDao<Project> {
                     .setParameter("name", name.toLowerCase())
                     .getSingleResult();
         } catch (NoResultException e) {
+            System.out.println("No project found");
             return null;
         }
     }
