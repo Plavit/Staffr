@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 import system.business.User;
 import system.dao.GenericDao;
 import system.dao.UserDao;
-import system.service.security.SecurityUtils;
 
 import java.util.Optional;
 
@@ -21,7 +20,7 @@ public class UserService extends AbstractRepositoryService<User> {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(UserDao dao, SecurityUtils securityUtils) {
+    public UserService(UserDao dao) {
         this.dao = dao;
     }
 

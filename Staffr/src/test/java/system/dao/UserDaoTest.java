@@ -4,41 +4,28 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import system.business.User;
+import system.business.enums.Role;
+import system.business.enums.Status;
 
 import java.util.*;
 
 import static org.junit.Assert.assertTrue;
 
-public class UserDaoTest {
+public class UserDaoTest  extends BaseDaoTestRunner {
 
     @Autowired
     private UserDao dao;
 
-    @Autowired
-    private SkillDao skillDao;
-
     @Test
     public void findAllReturnsUsersOrderedByNameDescending() {
 
-        final User Peter_Smith = new User();
-        Peter_Smith.setFirstName("Peter");
-        Peter_Smith.setLastName("Smith");
-        Peter_Smith.setEmail("P.SmithYo@Yahoo.com");
-        //u.setId(124);
+        final User Peter_Smith = new User("PS","PSW", Role.USER_ROLE,"Peter","Smith",1986,"P.SmithYo@Yahoo.com","",3, Status.ACTIVE);
 
-        final User Charlotte_Guido = new User();
-        Charlotte_Guido.setFirstName("Charlotte");
-        Charlotte_Guido.setLastName("Guido");
-        Charlotte_Guido.setEmail("CG-see-gay@seznam.cz");
-        //u.setId(125);
+        final User Charlotte_Guido = new User("CG","PSW", Role.USER_ROLE,"Charlotte","Guido",1986,"CG-see-gay@seznam.cz","",3, Status.ACTIVE);
 
-        final User Ivan_Terrible = new User();
-        Ivan_Terrible.setFirstName("Ivan");
-        Ivan_Terrible.setLastName("Terrible");
-        Ivan_Terrible.setEmail("Impala@google.com");
-        //u.setId(126);
+        final User Ivan_Terrible = new User("IT","PSW", Role.USER_ROLE,"Ivan","Terrible",1986,"Impala@google.com","",3, Status.ACTIVE);
 
-        List<User> users = new LinkedList<User>();
+        List<User> users = new LinkedList<>();
         users.add(Ivan_Terrible);
         users.add(Charlotte_Guido);
         users.add(Peter_Smith);
