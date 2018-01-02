@@ -10,7 +10,9 @@ import system.business.Project;
 import system.business.User;
 import system.dao.ProjectDao;
 import system.dao.UserDao;
+import system.service.repository.UserService;
 
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -21,15 +23,22 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    private UserDao dao;
+    private UserService service;
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<User> getAll() {
-        return dao.findAll();
+        return service.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value="/current", produces=MediaType.APPLICATION_JSON_VALUE)
+    public String getCurrent(Principal pr) {
+        String userName = pr.getName();
+        User ret = service.findUserByUsername(userName);
+        return ret.getUserName();
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void create(@RequestBody User user) {
-        dao.persist(user);
+        service.persist(user);
     }
 }

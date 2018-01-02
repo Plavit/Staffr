@@ -1,7 +1,11 @@
+'use strict';
+
 import React from "react";
 import ReactDOM from "react-dom";
 import {browserHistory, hashHistory, IndexRoute, Route, Router} from "react-router";
 import loginPage from "./component/Login";
+import userInterface from "./component/UserInterface"
+import requireAuth from "./component/RequireAuth"
 
 const app = document.getElementById('app');
 
@@ -9,23 +13,13 @@ const app = document.getElementById('app');
 
 ReactDOM.render(
     <Router history={hashHistory}>
-        {/*<Route path="/">*/}
-            {/*<Route component={requireAuth}>*/}
-                {/*<IndexRoute component={welcomePage}/>*/}
-                {/*<Route path="filter" component={filterPage}/>*/}
-                {/*<Route path="test" component={testPage}/>*/}
-                {/*<Route path="result" component={resultPage}/>*/}
-                {/*<Route path="logintest" components={loginTestPage}/>*/}
-                {/*<Route path="administrace" components={adminPage}/>*/}
-                {/*<Route path="resultUser" components={resultUser}/>*/}
-                {/*<Route path="deleted" components={deleteUser}/>*/}
-                {/*<Route path="resultDetails" components={resultDetails}/>*/}
-            {/*</Route>*/}
-
-            <Route path="login" component={loginPage}/>
-            {/*<Route path="register" component={volunteerRegisterPage}/>*/}
-            {/*<Route path="success" component={successPage}/>*/}
-        {/*</Route>*/}
+            <Route path="/">
+                    <Route component={requireAuth}>
+                            <Route component={userInterface}/>
+                        {/*<Route path="userInterface" component={userInterface}/>*/}
+                    </Route>
+                    <Route path="login" component={loginPage}/>
+            </Route>
     </Router>,
-    app
+app
 );
