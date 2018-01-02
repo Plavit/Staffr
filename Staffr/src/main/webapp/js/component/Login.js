@@ -1,13 +1,11 @@
-'use strict';
-
 import React from "react";
-import Reflux from "reflux"
+import Reflux from "reflux";
 import {Alert, Button, Panel} from "react-bootstrap";
 import {Link, Router, hashHistory} from "react-router";
 import axios from "axios";
 import querystring from "querystring";
 
-export default class Login extends Reflux.Component {
+export default class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -35,13 +33,22 @@ export default class Login extends Reflux.Component {
 
     login(e) {
         e.preventDefault();
-        axios.post("j_spring_security_check"
-            , querystring.stringify({username: this.state.username, password: this.state.password})
-        ).then(function (response) {
-            hashHistory.push({patchname: ""});
+        console.log(this.state.username + " - " + this.state.password + "\n");
+        console.log(querystring.stringify({
+            username: this.state.username,
+            password: this.state.password
+        }));
+
+        axios.post('j_spring_security_check', querystring.stringify({
+            username: this.state.username,
+            password: this.state.password
+        })).then(function (response) {
+            hashHistory.push({pathname: ""});
         }).catch(function (error) {
+            // console.log(error.toString());
             alert("Authentification error.");
         });
+        return false;
     };
 
     // register = () => {
@@ -58,7 +65,7 @@ export default class Login extends Reflux.Component {
                                                                       onChange={this.onChange}/></p>
                     <p><label for="password">Password: </label><input type='password' name='password' id='password'
                                                                       onChange={this.onChange}/></p>
-                    <p><input type='button' name="submit" onClick={this.login.bind(this)}/></p>
+                    <p><input type='button' name="submit" value="login" onClick={this.login.bind(this)}/></p>
                 </form>
             </div>
         );

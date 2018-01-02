@@ -18,8 +18,8 @@ import java.util.Set;
 
 public class UserServiceTest extends BaseServiceTestRunner {
 
-    @Autowired
-    UserDao ud;
+//    @Autowired
+//    UserDao ud;
 
     @Autowired
     UserService us;

@@ -1,19 +1,19 @@
-'use strict';
-
 import React from "react";
 import Reflux from "reflux";
 import {Alert, Button, Panel} from "react-bootstrap";
 import {Link, Router, hashHistory} from "react-router";
-import Actions from "../actions/Actions"
+import Actions from "../actions/Actions";
 import UserStore from "../store/UserStore";
 
 export default class UserInterface extends Reflux.Component {
     constructor(props) {
+        console.log("user interface constructor");
         super(props);
         this.state = {};
     }
 
     componentDidMount() {
+        console.log("user interface did mount");
         Actions.userInit();
     }
 

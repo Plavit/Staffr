@@ -1,5 +1,4 @@
 'use strict';
-
 import Reflux from "reflux";
 import React from "react";
 import {Alert, Button, Panel} from "react-bootstrap";
@@ -9,6 +8,7 @@ import axios from "axios";
 
 export default class UserStore extends Reflux.Store {
     constructor(props) {
+        console.log("user store constructor")
         super(props);
         this.state = {
             users: {}
@@ -17,15 +17,15 @@ export default class UserStore extends Reflux.Store {
     }
 
     onUserInit() {
-        console.log("User is trying to log in.")
+        console.log("User is trying to log in.");
         axios.get("/rest/user/current").then((response) => {
             this.setState({
                 users: response.data
             });
-            console.log(this.state)
+            console.log(this.state);
         }).catch((error) => {
-            console.log(error)
-            hashHistory.push("/login")
+            console.log(error);
+            hashHistory.push("/login");
         })
     }
 }

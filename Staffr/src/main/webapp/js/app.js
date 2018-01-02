@@ -1,26 +1,25 @@
-'use strict';
-
 import React from "react";
 import ReactDOM from "react-dom";
 import {browserHistory, hashHistory, IndexRoute, Route, Router} from "react-router";
 import loginPage from "./component/Login";
-import userInterface from "./component/UserInterface"
-import requireAuth from "./component/RequireAuth"
-import Actions from "./actions/Actions"
+import userInterface from "./component/UserInterface";
+import requireAuth from "./component/RequireAuth";
+import Actions from "./actions/Actions";
 
 const app = document.getElementById('app');
 
 Actions.userInit();
+console.log("Hello");
 
 ReactDOM.render(
     <Router history={hashHistory}>
-            <Route path="/">
-                    <Route component={requireAuth}>
-                            <Route component={userInterface}/>
-                        {/*<Route path="userInterface" component={userInterface}/>*/}
-                    </Route>
-                    <Route path="login" component={loginPage}/>
+        <Route path="/">
+            <Route component={requireAuth}>
+                {/*<Route component={userInterface}/>*/}
+                <Route path="userInterface" component={userInterface}/>
             </Route>
+            <Route path="login" component={loginPage}/>
+        </Route>
     </Router>,
-app
+    app
 );
