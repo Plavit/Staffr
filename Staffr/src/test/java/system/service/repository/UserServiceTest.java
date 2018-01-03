@@ -9,6 +9,8 @@ import system.business.User;
 import system.business.enums.Role;
 import system.business.enums.SkillProfficiency;
 import system.business.enums.Status;
+import system.dao.UserDao;
+import system.service.repository.UserService;
 import system.service.BaseServiceTestRunner;
 
 import java.util.HashSet;
@@ -17,16 +19,11 @@ import java.util.Set;
 
 public class UserServiceTest extends BaseServiceTestRunner {
 
-//    @Autowired
-//    UserDao ud;
-
     @Autowired
-    UserService us;
+    UserService userService; //todo this fails bc of application context
 
     @Test
     public void persistCascadesForSkills() {
-
-
         final User user = new User("plavit","PSW", Role.USER_ROLE,"Marek","Szeles",1996,"a@b.com","",3, Status.ACTIVE);
         Set<Skill> skills=new HashSet<>();
         Skill skl_excel_3=new SoftSkill();
@@ -39,9 +36,9 @@ public class UserServiceTest extends BaseServiceTestRunner {
         skills.add(skl_word_3);
 
         user.setSkills(skills);
-        us.persist(user);
+        userService.persist(user);
 
-        final User result = us.find(user.getId());
+        final User result = userService.find(user.getId());
         Assert.assertEquals(skills.size(), result.getSkills().size());
     }
 }
