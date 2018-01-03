@@ -51,6 +51,7 @@ public class User extends AbstractBusinessObject {
     private Set<Position> positions;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
+    @OrderBy("name")
     private Set<Skill> skills;
 
     @ManyToOne()

@@ -43,7 +43,7 @@ export default class Login extends React.Component {
             username: this.state.username,
             password: this.state.password
         })).then(function (response) {
-            hashHistory.push({pathname: ""});
+            hashHistory.push({pathname: "/userInterface"});
         }).catch(function (error) {
             // console.log(error.toString());
             alert("Authentification error.");

@@ -9,7 +9,6 @@ import system.business.User;
 import system.business.enums.Role;
 import system.business.enums.SkillProfficiency;
 import system.business.enums.Status;
-import system.dao.UserDao;
 import system.service.BaseServiceTestRunner;
 
 import java.util.HashSet;
@@ -23,16 +22,6 @@ public class UserServiceTest extends BaseServiceTestRunner {
 
     @Autowired
     UserService us;
-
-    @Test
-    public void findUserByUsername() throws Exception {
-        //todo
-    }
-
-    @Test
-    public void exists() throws Exception {
-        //todo
-    }
 
     @Test
     public void persistCascadesForSkills() {

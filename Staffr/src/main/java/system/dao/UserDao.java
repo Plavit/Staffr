@@ -6,6 +6,7 @@ import system.business.Skill;
 import system.business.User;
 
 import javax.persistence.NoResultException;
+import java.util.List;
 
 /**
  * Created by Krystof&Marek on 06.01.2017.
@@ -20,6 +21,16 @@ public class UserDao extends BaseDao<User> {
         try {
             return em.createNamedQuery("User.findByUsername", User.class).setParameter("username", username)
                     .getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public List<User> findAll() {
+        try {
+            return em.createNamedQuery("User.findAll", User.class)
+                    .getResultList();
         } catch (NoResultException e) {
             return null;
         }
