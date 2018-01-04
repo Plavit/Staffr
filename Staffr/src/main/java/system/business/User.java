@@ -116,6 +116,12 @@ public class User extends AbstractBusinessObject {
         return password;
     }
 
+    @Override
+    public String toString() {
+        String out=("F:["+this.getFirstName()+"], L:["+this.getLastName()+"], R:["+this.getRole()+"] ");
+        return out;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
