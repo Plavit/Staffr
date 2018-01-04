@@ -8,8 +8,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
-@ComponentScan(basePackages = "system.service.data")
+@ComponentScan(basePackages = "system.service")
 public class TestServiceConfig {
+
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
     @Bean
     public RestTemplate restTemplate() {
