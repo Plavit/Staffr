@@ -37,6 +37,13 @@ public class UserController {
         return ret.getUserName();
     }
 
+    @RequestMapping(method = RequestMethod.GET, value="/admin", produces=MediaType.APPLICATION_JSON_VALUE)
+    public User getAdmin() {
+        User ret = service.findUserByUsername("admin");
+//        return ret.getUserName();
+        return ret;
+    }
+
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void create(@RequestBody User user) {
         service.persist(user);

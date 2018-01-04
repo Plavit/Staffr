@@ -13,7 +13,6 @@ export default class UserInterface extends Reflux.Component {
     }
 
     componentDidMount() {
-        console.log("user interface did mount");
         Actions.userInit();
     }
 

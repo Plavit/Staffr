@@ -1,8 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {browserHistory, hashHistory, IndexRoute, Route, Router} from "react-router";
+
 import loginPage from "./component/Login";
 import userInterface from "./component/UserInterface";
+import testPage from "./component/TestPage";
+import projectPage from "./component/ProjectPage";
+
 import requireAuth from "./component/RequireAuth";
 import Actions from "./actions/Actions";
 
@@ -19,6 +23,8 @@ ReactDOM.render(
                 <Route path="userInterface" component={userInterface}/>
             </Route>
             <Route path="login" component={loginPage}/>
+            <Route path="test" component={testPage}/>
+            <Route path="projects" component={projectPage}/>
         </Route>
     </Router>,
     app
