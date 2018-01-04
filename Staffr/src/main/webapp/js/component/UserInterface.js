@@ -27,6 +27,7 @@ export default class UserInterface extends Reflux.Component {
         return (
             <div>
                 <h1>Congratulations, you are logged in.</h1>
+                <Link to={`/projects`} activeClassName="active">Project</Link>
             </div>
         );
     }

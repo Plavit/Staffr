@@ -1,11 +1,9 @@
 package system.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import system.business.Project;
 import system.business.User;
 import system.dao.ProjectDao;
@@ -35,6 +33,12 @@ public class UserController {
         String userName = pr.getName();
         User ret = service.findUserByUsername(userName);
         return ret.getUserName();
+    }
+
+    @RequestMapping(value = "/current", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateCurrentUser(@RequestBody User user) {
+        service.update(user);
     }
 
     @RequestMapping(method = RequestMethod.GET, value="/admin", produces=MediaType.APPLICATION_JSON_VALUE)

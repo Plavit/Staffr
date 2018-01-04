@@ -26,10 +26,13 @@ export default class ProjectPage extends Reflux.Component {
             <div>
                 <h1>Projects</h1>
                 <table>
+                    <thead>
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
                     </tr>
+                    </thead>
+                    <tbody>
                 {
                     this.state.projects.map(function(project) {
                         return (
@@ -40,7 +43,9 @@ export default class ProjectPage extends Reflux.Component {
                         );
                     })
                 }
+                    </tbody>
                 </table>
+                <p><Link to={`/`} activeClassName="active">back to main page</Link></p>
             </div>
         );
     }

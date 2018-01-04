@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {browserHistory, hashHistory, IndexRoute, Route, Router} from "react-router";
+import {browserHistory, hashHistory, IndexRoute, Route, Router, Redirect} from "react-router";
 
-import loginPage from "./component/Login";
+import loginPage from "./component/LoginPage";
 import userInterface from "./component/UserInterface";
 import testPage from "./component/TestPage";
 import projectPage from "./component/ProjectPage";
@@ -20,6 +20,7 @@ ReactDOM.render(
         <Route path="/">
             <Route component={requireAuth}>
                 {/*<Route component={userInterface}/>*/}
+                <IndexRoute component={userInterface}/>
                 <Route path="userInterface" component={userInterface}/>
             </Route>
             <Route path="login" component={loginPage}/>
