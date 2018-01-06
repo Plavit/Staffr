@@ -5,6 +5,7 @@ import system.business.enums.Role;
 import system.business.enums.Status;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @NamedQueries({
@@ -252,5 +253,10 @@ public class User extends AbstractBusinessObject {
 
     public void setUserProjects(Set<UserProject> userProjects) {
         this.userProjects = userProjects;
+    }
+
+    public void addUserProject(UserProject up){
+        if(userProjects==null) userProjects=new HashSet<>();
+        userProjects.add(up);
     }
 }

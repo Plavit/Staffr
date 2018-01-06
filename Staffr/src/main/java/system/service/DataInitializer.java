@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import system.business.*;
 import system.business.enums.Role;
 import system.business.enums.SkillProfficiency;
+import system.service.data.UserProjectJoinService;
 import system.service.data.UserProjectSearchService;
 import system.service.repository.ProjectService;
 import system.service.repository.SkillService;
@@ -32,15 +33,27 @@ public class DataInitializer {
     private final SkillService skillService;
 
     @Autowired
-    public DataInitializer(ProjectService projectService, UserService userService, UserProjectSearchService userProjectSearchService, SkillService skillService) {
+    private final UserProjectJoinService userProjectJoinService;
+
+    @Autowired
+    public DataInitializer(ProjectService projectService, UserService userService, UserProjectSearchService userProjectSearchService, SkillService skillService, UserProjectJoinService userProjectJoinService) {
         this.projectService = projectService;
         this.userService = userService;
         this.userProjectSearchService = userProjectSearchService;
         this.skillService = skillService;
+        this.userProjectJoinService = userProjectJoinService;
     }
 
     @PostConstruct
     private void init() {
+
+//        User u1 = new User();
+//        Project p1 = new Project();
+//        projectService.persist(p1);
+//        UserProject up1 = new UserProject();
+//        userProjectJoinService.joinUserWithProject(u1,p1,up1);
+//        System.out.println();
+
 
         /**
          * Initializing interface hierarchy
@@ -120,41 +133,25 @@ public class DataInitializer {
         //USERPROJECTS
         //TODO: This should properly be handled by service
         final UserProject up = new UserProject();
-        up.setProject(p);
-        up.setEmployee(u);
         up.setFrom(LocalDate.now());
-        Set<UserProject> upSet = new HashSet<>();
-        upSet.add(up);
-        u.setUserProjects(upSet);
+        userProjectJoinService.joinUserWithProject(u,p,up);
 
         final UserProject upPS = new UserProject();
-        upPS.setProject(prj_duedil1);
-        upPS.setEmployee(Peter_Smith);
         upPS.setFrom(LocalDate.now());
-        Set<UserProject> upSetPS = new HashSet<>();
-        upSetPS.add(upPS);
-        Peter_Smith.setUserProjects(upSetPS);
+        userProjectJoinService.joinUserWithProject(Peter_Smith,prj_duedil1,upPS);
 
         final UserProject upCG1 = new UserProject();
-        upCG1.setProject(prj_duedil1);
-        upCG1.setEmployee(Charlotte_Guido);
         upCG1.setFrom(LocalDate.now());
+        userProjectJoinService.joinUserWithProject(Charlotte_Guido,prj_duedil1,upCG1);
+
         final UserProject upCG2 = new UserProject();
-        upCG2.setProject(prj_pmi1);
-        upCG2.setEmployee(Charlotte_Guido);
         upCG2.setFrom(LocalDate.now());
-        Set<UserProject> upSetCG = new HashSet<>();
-        upSetCG.add(upCG1);
-        upSetCG.add(upCG2);
-        Charlotte_Guido.setUserProjects(upSetCG);
+        userProjectJoinService.joinUserWithProject(Charlotte_Guido,prj_pmi1,upCG1);
+        userProjectJoinService.joinUserWithProject(Charlotte_Guido,prj_duedil1,upCG1);
 
         final UserProject upIT = new UserProject();
-        upIT.setProject(prj_pmi1);
-        upIT.setEmployee(Ivan_Terrible);
         upIT.setFrom(LocalDate.now());
-        Set<UserProject> upSetIT = new HashSet<>();
-        upSetIT.add(upIT);
-        Ivan_Terrible.setUserProjects(upSetIT);
+        userProjectJoinService.joinUserWithProject(Ivan_Terrible,prj_pmi1,upIT);
 
 
         //SKILLS
@@ -224,16 +221,18 @@ public class DataInitializer {
         Charlotte_Guido.setSkills(skillsCG);
 
         //FINISH - create users
-        userService.create(u);
-        userService.create(Peter_Smith);
-        userService.create(Charlotte_Guido);
-        userService.create(Ivan_Terrible);
+        userService.update(u);
+        userService.update(Peter_Smith);
+        userService.update(Charlotte_Guido);
+        userService.update(Ivan_Terrible);
 
         //ALL-CONTAINING SETS INIT
         List<User> users = userService.findAll();
         List<Project> projectsRet = userProjectSearchService.getUsersProjectsFromDate(u,LocalDate.of(2000,1,1));
         List<Skill> skillsRet = skillService.getAllSkillsByUser(u);
 
+        projectService.remove(p);
+//        userService.remove(Ivan_Terrible);
         System.out.println("Data initialization complete");
 
     }

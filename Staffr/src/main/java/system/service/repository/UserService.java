@@ -57,6 +57,22 @@ public class UserService extends AbstractRepositoryService<User> {
         }
     }
 
+    @Override
+    public void update(User instance) {
+        try {
+            if (!exists(instance.getUserName())) {
+                System.out.println("User doesn't exists");
+            } else {
+                if (instance.getPassword() != null) {
+                    instance.encodePassword(passwordEncoder);
+                }
+                super.update(instance);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public User findUserByUsername(String username) {
         return dao.findByUsername(username);
     }

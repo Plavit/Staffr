@@ -31,13 +31,4 @@ public class ProjectDao extends BaseDao<Project> {
             return null;
         }
     }
-
-//    public List<Project> getAllProjectsById(List<int> ids){
-//        List<Project> ret = new LinkedList<>();
-//
-//        for (int id: ids) {
-//            find(id);
-//        }
-//
-//    }
 }

@@ -6,7 +6,9 @@ import system.business.Skill;
 import system.business.User;
 
 import javax.persistence.NoResultException;
+import javax.persistence.PersistenceException;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Krystof&Marek on 06.01.2017.
@@ -33,6 +35,17 @@ public class UserDao extends BaseDao<User> {
                     .getResultList();
         } catch (NoResultException e) {
             return null;
+        }
+    }
+
+    @Override
+    @Transactional
+    public User update(User entity) {
+        Objects.requireNonNull(entity);
+        try {
+            return em.merge(entity);
+        } catch (RuntimeException e) {
+            throw new PersistenceException(e);
         }
     }
 

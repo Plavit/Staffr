@@ -2,6 +2,7 @@ package system.business;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -31,7 +32,7 @@ public class Project extends AbstractBusinessObject {
 
     private Date endOfProject;
 
-    @OneToMany(mappedBy = "project",cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "project",cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<UserProject> userProject;
 
     public Project() {
@@ -84,5 +85,10 @@ public class Project extends AbstractBusinessObject {
 
     public void setUserProject(Set<UserProject> userProject) {
         this.userProject = userProject;
+    }
+
+    public void addUserProject(UserProject up){
+        if(userProject==null) userProject=new HashSet<>();
+        userProject.add(up);
     }
 }
