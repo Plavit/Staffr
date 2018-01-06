@@ -17,7 +17,7 @@ export default class UserStore extends Reflux.Store {
         this.listenables = Actions;
     }
 
-    onGetAllProjects(){
+    onGetAllProjects() {
         console.log("onGetAllProjects");
         axios.get("/rest/project").then((response) => {
             this.setState({
@@ -29,14 +29,28 @@ export default class UserStore extends Reflux.Store {
         })
     }
 
-    onGetProject(id){
+    onGetProject(id) {
         console.log("onGetProject by id: " + id);
-        axios.get("/rest/project/"+id).then((response) => {
+        axios.get("/rest/project/" + id).then((response) => {
             this.setState({
                 currentProject: response.data
             });
             console.log("got it!")
         }).catch((error) => {
+            console.log(error);
+        })
+    }
+
+    onDeleteProject(id) {
+        console.log("Delete project " + id);
+        axios.delete("rest/project/" + id)
+            .then((response) => {
+                console.log(response);
+                hashHistory.push({
+                    pathname: '/projects',
+                    query: {del: true}
+                });
+            }).catch((error) => {
             console.log(error);
         })
     }

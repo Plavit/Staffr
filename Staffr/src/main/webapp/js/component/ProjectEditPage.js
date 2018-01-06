@@ -68,6 +68,11 @@ export default class ProjectEditPage extends Reflux.Component {
         return false;
     }
 
+    deleteProject() {
+        Actions.deleteProject(this.state.currentProject.id);
+        // Actions.deleteProject(this.state.curr.username, this.state.currentProject.id, this.state.userResponse.userRole);
+    };
+
     render() {
         console.log("project page render");
         return (
@@ -92,6 +97,9 @@ export default class ProjectEditPage extends Reflux.Component {
 
                     <p>
                         <input type='button' name="submit" value="update" onClick={this.update.bind(this)}/>
+                    </p>
+                    <p>
+                        <p><input type='button' name="delete" value="delete" onClick={this.deleteProject.bind(this)}/></p>
                     </p>
                 </form>
 

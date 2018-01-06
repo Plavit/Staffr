@@ -28,9 +28,16 @@ export default class ProjectPage extends Reflux.Component {
 
     render() {
         console.log("project page render");
+        var info = '';
+        if (this.props.location.query.del != null){
+            info = "Project deleted\n";
+        }
         return (
             <div>
+                <style>{`table td{border:1px solid black; padding: 5px}`}</style>
+                {info}
                 <h1>Projects</h1>
+                <form>
                 <table>
                     <thead>
                     <tr>
@@ -40,21 +47,23 @@ export default class ProjectPage extends Reflux.Component {
                     </tr>
                     </thead>
                     <tbody>
-                {
-                    this.state.projects.map(function(project) {
-                        return (
-                            <tr key={project.id}>
-                            <td id="foo">{project.name}</td>
-                            <td>{project.description}</td>
-                            <td>
-                                <Link to={`/projects/${project.id}`} activeClassName="active">show project page</Link>
-                            </td>
-                            </tr>
-                        );
-                    })
-                }
+                    {
+                        this.state.projects.map(project => {
+                            return (
+                                <tr key={project.id}>
+                                    <td id="foo">{project.name}</td>
+                                    <td>{project.description}</td>
+                                    <td>
+                                        <Link to={`/projects/${project.id}`} activeClassName="active">show project
+                                            page</Link>
+                                    </td>
+                                </tr>
+                            );
+                        })
+                    }
                     </tbody>
                 </table>
+                </form>
                 <p><Link to={`/`} activeClassName="active">back to main page</Link></p>
             </div>
         );
