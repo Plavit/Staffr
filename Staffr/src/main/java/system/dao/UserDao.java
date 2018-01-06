@@ -49,4 +49,11 @@ public class UserDao extends BaseDao<User> {
     public void addSkill(Skill newSkill) {
         em.createNamedQuery("User.addSkill", User.class).setParameter("newSkill", newSkill).executeUpdate();
     }
+
+    @Override
+    public void remove(User entity) {
+        em.createNamedQuery("User.deleteById", User.class)
+                .setParameter("id", entity.getId())
+                .executeUpdate();
+    }
 }

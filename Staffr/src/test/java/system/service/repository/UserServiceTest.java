@@ -1,24 +1,123 @@
 package system.service.repository;
 
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import system.business.Skill;
-import system.business.SoftSkill;
-import system.business.User;
+import system.business.*;
 import system.business.enums.Role;
 import system.business.enums.SkillProfficiency;
 import system.business.enums.Status;
 import system.service.BaseServiceTestRunner;
 
+import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
 public class UserServiceTest extends BaseServiceTestRunner {
 
+
     @Autowired
-    UserService userService; //todo this fails bc of application context
+    private UserService us;
+
+    @Autowired
+    private ProjectService projectService;
+
+    Skill testSkill1B = new Skill("testSkill1",SkillProfficiency.BEGINNER);
+    Skill testSkill1P = new Skill("testSkill1",SkillProfficiency.PROFFICIENT);
+    Skill testSkill2B = new Skill("testSkill2",SkillProfficiency.BEGINNER);
+    User testUser = new User("tstUser","tstPass",Role.USER_ROLE);
+    final Project p = new Project();
+    final UserProject up = new UserProject();
+    Set<UserProject> upSet = new HashSet<>();
+
+    @Before
+    public void setUp() throws Exception {
+        testUser.setFirstName("Pablo");
+        testUser.setLastName("Neruda");
+        testUser.setEmail("Poems@Yahoo.com");
+        testUser.setRole(Role.USER_ROLE);
+        Set<Skill> skillset=new HashSet<>();
+        skillset.add(testSkill1B);
+        testUser.setSkills(skillset);
+
+        p.setName("ProjectT1");
+        p.setDescription("Test project");
+        projectService.persist(p);
+
+
+        up.setProject(p);
+        up.setEmployee(testUser);
+        //2 weeks
+        up.setFrom(LocalDate.ofYearDay(2017,333));
+        up.setEnd(LocalDate.ofYearDay(2017,347));
+
+        upSet.add(up);
+        testUser.setUserProjects(upSet);
+
+        us.create(testUser);
+
+
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        //us.getPrimaryDao().remove(testUser);
+    }
+
+
+
+
+
+    @Test
+    public void findUsersBySkill() throws Exception {
+
+        List<User> output = us.findUsersBySkill(testSkill1B);
+        assert (output.contains(testUser));
+
+        output=us.findUsersBySkill(testSkill1P);
+        assert (output.contains(testUser));
+
+        output = us.findUsersBySkill(testSkill2B);
+        assert (!output.contains(testUser));
+    }
+
+    @Test
+    public void findUsersBySkillProfficiency() throws Exception {
+
+        List<User> output = us.findUsersBySkillProfficiency(testSkill1B);
+        assert (output.contains(testUser));
+
+        output=us.findUsersBySkillProfficiency(testSkill1P);
+        assert (!output.contains(testUser));
+
+        output = us.findUsersBySkillProfficiency(testSkill2B);
+        assert (!output.contains(testUser));
+    }
+
+    //TODO test project duration tests
+
+    @Test
+    public void findUsersByProject() throws Exception {
+        List<User> output = us.findUsersByProject(p);
+        assert (output.contains(testUser));
+    }
+
+    @Test
+    public void findUsersByProjectByDuration() throws Exception {
+        List<User> output = us.findUsersByProjectByDuration(p,1);
+        assert (output.contains(testUser));
+
+        output = us.findUsersByProjectByDuration(p,12);
+        assert (output.contains(testUser));
+
+        output = us.findUsersByProjectByDuration(p,32);
+        assert (!output.contains(testUser));
+    }
+
 
     @Test
     public void persistCascadesForSkills() {
@@ -34,9 +133,14 @@ public class UserServiceTest extends BaseServiceTestRunner {
         skills.add(skl_word_3);
 
         user.setSkills(skills);
-        userService.create(user);
+        us.create(user);
 
-        final User result = userService.find(user.getId());
+        final User result = us.find(user.getId());
         Assert.assertEquals(skills.size(), result.getSkills().size());
+
+        for (Skill s:skills
+             ) {
+            assert (result.getSkills().contains(s));
+        }
     }
 }
