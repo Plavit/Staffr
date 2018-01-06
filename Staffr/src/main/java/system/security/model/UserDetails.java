@@ -23,7 +23,7 @@ import java.util.*;
 
 public class UserDetails implements org.springframework.security.core.userdetails.UserDetails {
 
-    private static final String DEFAULT_ROLE = "COORDINATOR_ROLE";
+    private static final String DEFAULT_ROLE = "USER_ROLE";
 
     private static final String ADMIN_ROLE = "ADMIN_ROLE";
 

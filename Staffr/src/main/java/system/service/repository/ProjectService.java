@@ -22,4 +22,10 @@ public class ProjectService extends AbstractRepositoryService<Project> {
     protected GenericDao<Project> getPrimaryDao() {
         return dao;
     }
+
+    @Transactional
+    @Override
+    public void update(Project instance) {
+        super.update(instance);
+    }
 }

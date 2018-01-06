@@ -1,6 +1,7 @@
 package system.service.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -58,6 +59,7 @@ public class UserService extends AbstractRepositoryService<User> {
     }
 
     @Override
+    @PreAuthorize("(#instance.userName==principal.username)or(principal.authorities.contains('ADMIN_ROLE'))")//TODO - check if works - user can only edit own profile or if is admin
     public void update(User instance) {
         try {
             if (!exists(instance.getUserName())) {
