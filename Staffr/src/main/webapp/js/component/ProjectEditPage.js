@@ -14,7 +14,6 @@ export default class ProjectPage extends Reflux.Component {
             currentProject: {}
         }
         this.store = ProjectStore;
-
     }
 
     componentDidMount() {
@@ -33,11 +32,20 @@ export default class ProjectPage extends Reflux.Component {
         console.log("project page render");
         return (
             <div>
-                <h1>Every project needs a side dish...</h1>
-                <h2>{this.state.currentProject.name}</h2>
-                <p>{this.state.currentProject.description}</p>
-                <p><Link to={'/projects/edit/:id'}>edit</Link></p>
-                <p><Link to={`/projects`} activeClassName="active">back to projects page</Link></p>
+                <h1>...on a slightly smaller page.</h1>
+
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        Project Name:
+                        <input type="text" value={this.state.currentProject.name} onChange={this.handleChange} />
+                    </label><br/>
+                    <label>
+                        Project description:
+                        <input type="textarea" value={this.state.currentProject.description} onChange={this.handleChange} />
+                    </label><br/>
+                    <input type="submit" value="Submit changes" />
+                </form>
+                <p><Link to={'/projects/'+this.state.currentProject.id} activeClassName="active">back</Link></p>
             </div>
         );
     }

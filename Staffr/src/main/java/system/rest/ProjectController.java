@@ -2,12 +2,10 @@ package system.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import system.business.Project;
 import system.dao.ProjectDao;
+import system.service.repository.ProjectService;
 
 import java.util.List;
 
@@ -20,15 +18,20 @@ import java.util.List;
 public class ProjectController {
 
     @Autowired
-    private ProjectDao dao;
+    private ProjectService service;
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Project> getAll() {
-        return dao.findAll();
+        return service.findAll();
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void create(@RequestBody Project project) {
-        dao.persist(project);
+        service.persist(project);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public Project get(@PathVariable("id") int id) {
+        return service.find(id);
     }
 }

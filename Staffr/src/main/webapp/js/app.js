@@ -5,7 +5,9 @@ import {browserHistory, hashHistory, IndexRoute, Route, Router, Redirect} from "
 import loginPage from "./component/LoginPage";
 import userInterface from "./component/UserInterface";
 import testPage from "./component/TestPage";
-import projectPage from "./component/ProjectPage";
+import projectsPage from "./component/ProjectsPage";
+import projectPage from "./component/ProjectPage"
+import projectEditPage from "./component/ProjectEditPage";
 import logoutPage from "./component/LogoutPage";
 
 import requireAuth from "./component/RequireAuth";
@@ -27,7 +29,9 @@ ReactDOM.render(
             <Route path="logout" component={logoutPage}/>
             <Route path="login" component={loginPage}/>
             <Route path="test" component={testPage}/>
-            <Route path="projects" component={projectPage}/>
+            <Route path="projects" component={projectsPage}/>
+            <Route path="projects/:projectId" component={projectPage}/>
+            <Route path="projects/edit/:projectId" component={projectEditPage}/>
         </Route>
     </Router>,
     app
