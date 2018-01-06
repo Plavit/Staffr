@@ -36,7 +36,7 @@ export default class ProjectPage extends Reflux.Component {
                 <h1>Every project needs a side dish...</h1>
                 <h2>{this.state.currentProject.name}</h2>
                 <p>{this.state.currentProject.description}</p>
-                <p><Link to={'/projects/edit/:id'}>edit</Link></p>
+                <p><Link to={'/projects/edit/:'+this.state.currentProject.id}>edit</Link></p>
                 <p><Link to={`/projects`} activeClassName="active">back to projects page</Link></p>
             </div>
         );
