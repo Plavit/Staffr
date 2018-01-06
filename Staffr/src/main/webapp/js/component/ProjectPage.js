@@ -37,7 +37,7 @@ export default class ProjectPage extends Reflux.Component {
                     this.state.projects.map(function(project) {
                         return (
                             <tr key={project.id}>
-                            <td>{project.name}</td>
+                            <td id="foo">{project.name}</td>
                             <td>{project.description}</td>
                             </tr>
                         );

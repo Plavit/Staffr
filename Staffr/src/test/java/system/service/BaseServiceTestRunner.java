@@ -38,6 +38,6 @@ public abstract class BaseServiceTestRunner {
 //
 //    protected void persistUser(User p) {
 //        p.encodePassword(passwordEncoder);
-//        userDao.persist(p);
+//        userDao.create(p);
 //    }
 }

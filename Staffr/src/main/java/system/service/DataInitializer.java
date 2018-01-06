@@ -207,11 +207,11 @@ public class DataInitializer {
 
         Experience exp_asMoE = new Experience("Assistant","Ministry of Education",LocalDate.of(2005,1,1),LocalDate.of(2007,1,1));
 //        exp_asMoE.setUser(Peter_Smith);
-//        skillService.persist(exp_asMoE);
+//        skillService.create(exp_asMoE);
 
         Experience exp_csMoF = new Experience("Consultant","Ministry of Finance",LocalDate.of(2015,1,1),LocalDate.of(2017,1,1));
 //        exp_csMoF.setUser(Charlotte_Guido);
-//        skillService.persist(exp_csMoF);
+//        skillService.create(exp_csMoF);
 
 
         //FINISH - Skill to user stick
@@ -223,11 +223,11 @@ public class DataInitializer {
         skillsPS.add(exp_csMoF);
         Charlotte_Guido.setSkills(skillsCG);
 
-        //FINISH - persist users
-        userService.persist(u);
-        userService.persist(Peter_Smith);
-        userService.persist(Charlotte_Guido);
-        userService.persist(Ivan_Terrible);
+        //FINISH - create users
+        userService.create(u);
+        userService.create(Peter_Smith);
+        userService.create(Charlotte_Guido);
+        userService.create(Ivan_Terrible);
 
         //ALL-CONTAINING SETS INIT
         List<User> users = userService.findAll();

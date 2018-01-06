@@ -54,11 +54,11 @@
 //        p.setName("Project1");
 //        p.setDescription("Test project");
 //
-//        projectService.persist(p);
+//        projectService.create(p);
 //
 //        u.setUserProjects(upSet);
 //
-//        userService.persist(u);
+//        userService.create(u);
 //    }
 //
 //    @Test

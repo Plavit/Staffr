@@ -1,7 +1,7 @@
 import Reflux from "reflux";
 
 const Actions = Reflux.createActions([
-    'userInit'
+    'userInit',  'userLogout'
 ]);
 
 export default Actions;

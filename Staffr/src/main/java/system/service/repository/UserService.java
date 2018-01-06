@@ -34,9 +34,8 @@ public class UserService extends AbstractRepositoryService<User> {
         persistSkills(instance);
     }
 
-    @Override
     @Transactional
-    public void persist(User instance) {
+    public void create(User instance) {
         try {
             if (exists(instance.getUserName())) {
                 System.out.println("User already exists");

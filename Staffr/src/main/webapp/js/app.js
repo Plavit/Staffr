@@ -6,6 +6,7 @@ import loginPage from "./component/LoginPage";
 import userInterface from "./component/UserInterface";
 import testPage from "./component/TestPage";
 import projectPage from "./component/ProjectPage";
+import logoutPage from "./component/LogoutPage";
 
 import requireAuth from "./component/RequireAuth";
 import Actions from "./actions/Actions";
@@ -23,6 +24,7 @@ ReactDOM.render(
                 <IndexRoute component={userInterface}/>
                 <Route path="userInterface" component={userInterface}/>
             </Route>
+            <Route path="logout" component={logoutPage}/>
             <Route path="login" component={loginPage}/>
             <Route path="test" component={testPage}/>
             <Route path="projects" component={projectPage}/>

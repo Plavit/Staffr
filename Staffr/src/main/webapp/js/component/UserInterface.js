@@ -26,8 +26,9 @@ export default class UserInterface extends Reflux.Component {
     render() {
         return (
             <div>
-                <h1>Congratulations, you are logged in.</h1>
-                <Link to={`/projects`} activeClassName="active">Project</Link>
+                <h1 style={{color: '#0000FF'}}>Congratulations, you are logged in.</h1>
+                <Link to={"/projects"} activeClassName="active">Project</Link><br/>
+                <Link to={"/logout"} activeClassName="active">Logout</Link>
             </div>
         );
     }

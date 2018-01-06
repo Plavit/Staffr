@@ -43,7 +43,7 @@ export default class Login extends React.Component {
             username: this.state.username,
             password: this.state.password
         })).then(function (response) {
-            hashHistory.push({pathname: "/userInterface"});
+            hashHistory.push({pathname: ""});
         }).catch(function (error) {
             // console.log(error.toString());
             alert("Authentification error.");
@@ -59,7 +59,7 @@ export default class Login extends React.Component {
     render() {
         return (
             <div>
-                <h1 style={{color: '#0000FF'}}>Hello, my name is elder Price. And I have come to show you the most amazing book.</h1>
+                <h1>Hello, my name is elder Price. And I have come to show you the most amazing book.</h1>
                 <form className='form-horizontal'>
                     <p><label for="username">Username: </label><input type='text' name='username' id='username'
                                                                       onChange={this.onChange}/></p>

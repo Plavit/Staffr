@@ -9,8 +9,6 @@ import system.business.User;
 import system.business.enums.Role;
 import system.business.enums.SkillProfficiency;
 import system.business.enums.Status;
-import system.dao.UserDao;
-import system.service.repository.UserService;
 import system.service.BaseServiceTestRunner;
 
 import java.util.HashSet;
@@ -36,7 +34,7 @@ public class UserServiceTest extends BaseServiceTestRunner {
         skills.add(skl_word_3);
 
         user.setSkills(skills);
-        userService.persist(user);
+        userService.create(user);
 
         final User result = userService.find(user.getId());
         Assert.assertEquals(skills.size(), result.getSkills().size());

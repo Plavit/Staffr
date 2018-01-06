@@ -28,4 +28,22 @@ export default class UserStore extends Reflux.Store {
             hashHistory.push("/login");
         })
     }
+
+    onUserLogout() {
+        console.log("User is trying to log out.");
+        this.setState({
+            users: {}
+        });
+        console.log(this.state);
+        axios.get('j_spring_security_logout')
+            .then(function (response) {
+                console.log(response)
+                // window.location.reload();
+                // hashHistory.push("/");
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        console.log("Something")
+    };
 }
