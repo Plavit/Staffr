@@ -25,13 +25,20 @@ public class ProjectController {
         return service.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void create(@RequestBody Project project) {
         service.persist(project);
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void update(@RequestBody Project project) {
+        service.update(project);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Project get(@PathVariable("id") int id) {
         return service.find(id);
     }
+
+
 }

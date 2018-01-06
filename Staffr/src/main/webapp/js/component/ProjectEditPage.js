@@ -2,7 +2,9 @@ import React from "react";
 import Reflux from "reflux";
 import {Alert, Button, Panel} from "react-bootstrap";
 import {Link, Router, hashHistory} from "react-router";
+
 import axios from "axios";
+import querystring from "querystring";
 
 import ProjectStore from '../store/ProjectStore';
 import Actions from '../actions/Actions'
@@ -11,21 +13,27 @@ export default class ProjectEditPage extends Reflux.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentProject: {}
+            currentProject: {},
+            name: null,
+            description: null
         }
         this.store = ProjectStore;
     }
 
     componentDidMount() {
-        var id = this.props.params.projectId
+        var id = this.props.params.projectId;
         console.log("id of this project is:" + id);
+
         Actions.getProject(id);
+
+        this.state.name = this.state.currentProject.name;
+        this.state.description = this.state.currentProject.description;
+
         Actions.userInit();
     }
 
     componentWillMount() {
         super.componentWillMount();
-        console.log("cwm");
     }
 
     onChange = (e) => {
@@ -35,24 +43,28 @@ export default class ProjectEditPage extends Reflux.Component {
         this.setState(state);
     };
 
-    onKeyPress = (e) => {
-        if (e.key === 'Enter') {
-            this.login();
-        }
-    };
-
     update(e) {
         e.preventDefault();
-        console.log("Update trigger: " + this.state.currentProject);
-        // axios.post('/rest/project', querystring.stringify({
-        //     username: this.state.username,
-        //     password: this.state.password
-        // })).then(function (response) {
-        //     hashHistory.push({pathname: ""});
-        // }).catch(function (error) {
-        //     // console.log(error.toString());
-        //     alert("Authentification error.");
-        // });
+        console.log("Before:" + this.state.currentProject);
+        console.log("Update trigger: " + this.state.name);
+        console.log("Update trigger: " + this.state.description);
+
+        this.state.currentProject.name = this.state.name;
+        this.state.currentProject.description = this.state.description;
+        console.log("After:" + this.state.currentProject);
+
+
+        axios.post('/rest/project/update', this.state.currentProject).then(function (response) {
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+        Actions.getProject(this.state.currentProject.id);
+
+        hashHistory.push({
+            pathname: "/projects/" + this.state.currentProject.id,
+            query: {edit: true}
+        });
         return false;
     }
 
@@ -60,20 +72,20 @@ export default class ProjectEditPage extends Reflux.Component {
         console.log("project page render");
         return (
             <div>
-                
+
                 <h1>...on a slightly smaller page.</h1>
 
                 <form className='form-horizontal'>
                     <p>
-                        <label for="projectName">Project name:
-                            <input type='text' name='projectName' id='projectName'
+                        <label for="name">Project name:
+                            <input type='text' name='name' id='name'
                                    defaultValue={this.state.currentProject.name} onChange={this.onChange}/>
                         </label>
                     </p>
 
                     <p>
-                        <label for="projectDescription">Project description:
-                            <input type='textarea' name='projectDescription' id='projectDescription'
+                        <label for="description">Project description:
+                            <input type='textarea' name='description' id='description'
                                    defaultValue={this.state.currentProject.description} onChange={this.onChange}/>
                         </label>
                     </p>
@@ -84,7 +96,7 @@ export default class ProjectEditPage extends Reflux.Component {
                 </form>
 
                 <p>
-                    <Link to={'/projects/' + this.state.currentProject.id} activeClassName="active">back</Link>
+                    return <Link to={'/projects/' + this.state.currentProject.id} activeClassName="active">back</Link>
                 </p>
 
             </div>
