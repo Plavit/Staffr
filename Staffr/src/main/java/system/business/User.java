@@ -20,7 +20,6 @@ import java.util.Set;
 @Entity
 @Table(name = "usr")
 public class User extends AbstractBusinessObject {
-
     private String userName;
     private String password;
     private Role role;
@@ -50,7 +49,7 @@ public class User extends AbstractBusinessObject {
     @OneToMany(mappedBy = "user", orphanRemoval=true)
     private Set<Degree> degrees;
 
-    
+
     @OneToMany(mappedBy = "user", orphanRemoval=true)
     private Set<Position> positions;
 
