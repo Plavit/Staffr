@@ -71,7 +71,6 @@ public class UserController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void remove(@PathVariable("id") int id) {
-//        TODO: add to user service...
-//        service.removeById(id);
+        service.removeById(id);
     }
 }

@@ -37,6 +37,7 @@ export default class ProjectCreatePage extends Reflux.Component {
 
     create(e) {
         e.preventDefault();
+        console.log("PROJECT CREATE PAGE: create()");
         if (this.state.name != null && this.state.description != null) {
             this.state.currentProject.name = this.state.name;
             this.state.currentProject.description = this.state.description;
@@ -44,11 +45,14 @@ export default class ProjectCreatePage extends Reflux.Component {
             alert("Some fields are missing!");
             return false;
         }
-        console.log("Creating: " + this.state.currentProject);
+
         axios.post('/rest/project/create', this.state.currentProject).then(function (response) {
         }).catch(function (error) {
             console.log(error);
         });
+
+        Actions.getAllProjects();
+
         hashHistory.push({
             pathname: "/projects/",
             query: {edit: true}
@@ -56,39 +60,27 @@ export default class ProjectCreatePage extends Reflux.Component {
         return false;
     }
 
-    deleteProject() {
-        Actions.deleteProject(this.state.currentProject.id);
-        // Actions.deleteProject(this.state.curr.username, this.state.currentProject.id, this.state.userResponse.userRole);
-    };
-
     render() {
-        console.log("project page render");
         return (
             <div>
 
-                <h1>...on a slightly smaller page.</h1>
+                <h1>Create new project</h1>
 
                 <form className='form-horizontal'>
                     <p>
                         <label for="name">Project name:
-                            <input type='text' name='name' id='name'
-                                   defaultValue={this.state.currentProject.name} onChange={this.onChange}/>
+                            <input type='text' name='name' id='name' onChange={this.onChange}/>
                         </label>
                     </p>
 
                     <p>
                         <label for="description">Project description:
-                            <input type='textarea' name='description' id='description'
-                                   defaultValue={this.state.currentProject.description} onChange={this.onChange}/>
+                            <input type='textarea' name='description' id='description' onChange={this.onChange}/>
                         </label>
                     </p>
 
                     <p>
-                        <input type='button' name="submit" value="update" onClick={this.update.bind(this)}/>
-                    </p>
-                    <p>
-                        <p><input type='button' name="delete" value="delete" onClick={this.deleteProject.bind(this)}/>
-                        </p>
+                        <input type='button' name="submit" value="create" onClick={this.create.bind(this)}/>
                     </p>
                 </form>
 

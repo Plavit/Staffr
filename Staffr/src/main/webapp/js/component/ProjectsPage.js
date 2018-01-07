@@ -65,7 +65,7 @@ export default class ProjectsPage extends Reflux.Component {
                     </tbody>
                 </table>
                 </form>
-                <p><Link to={`/projects/create/`} activeClassName="active">create new project</Link></p>
+                <p><Link to={`/projects/create`} activeClassName="active">create new project</Link></p>
                 <p><Link to={`/`} activeClassName="active">back to main page</Link></p>
             </div>
         );

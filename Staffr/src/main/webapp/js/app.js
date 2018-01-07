@@ -11,6 +11,7 @@ import testPage from "./component/TestPage";
 import projectsPage from "./component/ProjectsPage";
 import projectPage from "./component/ProjectPage"
 import projectEditPage from "./component/ProjectEditPage";
+import projectCreatePage from "./component/ProjectCreatePage";
 
 import usersPage from "./component/UsersPage";
 import userPage from "./component/UserPage";
@@ -36,9 +37,12 @@ ReactDOM.render(
             <Route path="logout" component={logoutPage}/>
             <Route path="login" component={loginPage}/>
             <Route path="test" component={testPage}/>
+
             <Route path="projects" component={projectsPage}/>
+            <Route path="projects/create" component={projectCreatePage}/>
             <Route path="projects/:projectId" component={projectPage}/>
             <Route path="projects/edit/:projectId" component={projectEditPage}/>
+
             <Route path="users" component={usersPage}/>
             <Route path="users/:userId" component={userPage}/>
             <Route path="users/edit/:userId" component={userEditPage}/>

@@ -180,4 +180,10 @@ public class UserService extends AbstractRepositoryService<User> {
                                 )
                 );
     }
+
+
+    @Transactional
+    public void removeById(int id) {
+        super.remove(dao.find(id));
+    }
 }
