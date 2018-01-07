@@ -59,7 +59,7 @@ public class UserService extends AbstractRepositoryService<User> {
     }
 
     @Override
-    @PreAuthorize("(#instance.userName==principal.username)or(principal.authorities.contains('ADMIN_ROLE'))")//TODO - check if works - user can only edit own profile or if is admin
+//    @PreAuthorize("(#instance.userName==principal.username)or(principal.authorities.contains('ADMIN_ROLE'))")//TODO - check if works - user can only edit own profile or if is admin
     public void update(User instance) {
         try {
             if (!exists(instance.getUserName())) {

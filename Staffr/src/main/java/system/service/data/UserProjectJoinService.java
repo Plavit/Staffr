@@ -2,6 +2,7 @@
 package system.service.data;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import system.business.*;
@@ -20,31 +21,20 @@ import java.util.List;
 @Service
 @Transactional
 public class UserProjectJoinService {
+    @Autowired
+    UserDao userDao;
 
     @Autowired
-    UserProjectService userProjectService;
+    ProjectDao projectDao;
 
     @Autowired
-    UserService userService;
-
-    @Autowired
-    ProjectService projectService;
+    PasswordEncoder passwordEncoder;
 
     @Transactional
     public void joinUserWithProject(User user, Project project, UserProject userProject) {
-        userProject.setEmployee(user);
-        userProject.setProject(project);
         user.addUserProject(userProject);
         project.addUserProject(userProject);
-        if (!userService.exists(user.getId())) {
-            userService.create(user);
-        } else {
-            userService.update(user);
-        }
-        if (!projectService.exists(project.getId())) {
-            projectService.persist(project);
-        } else {
-            projectService.update(project);
-        }
+        userDao.update(user);
+        projectDao.update(project);
     }
 }

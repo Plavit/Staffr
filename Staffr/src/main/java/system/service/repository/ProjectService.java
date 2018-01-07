@@ -28,4 +28,8 @@ public class ProjectService extends AbstractRepositoryService<Project> {
     public void update(Project instance) {
         super.update(instance);
     }
+
+    public void removeById(int id) {
+        super.remove(dao.find(id));
+    }
 }
