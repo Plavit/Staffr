@@ -21,6 +21,10 @@ export default class ProjectEditPage extends Reflux.Component {
     }
 
     componentDidMount() {
+        Actions.userInit();
+    }
+
+    componentWillMount() {
         var id = this.props.params.projectId;
         console.log("id of this project is:" + id);
 
@@ -29,10 +33,6 @@ export default class ProjectEditPage extends Reflux.Component {
         this.state.name = this.state.currentProject.name;
         this.state.description = this.state.currentProject.description;
 
-        Actions.userInit();
-    }
-
-    componentWillMount() {
         super.componentWillMount();
     }
 
@@ -45,14 +45,18 @@ export default class ProjectEditPage extends Reflux.Component {
 
     update(e) {
         e.preventDefault();
-        console.log("Before:" + this.state.currentProject);
-        console.log("Update trigger: " + this.state.name);
-        console.log("Update trigger: " + this.state.description);
+        // console.log("Before:" + this.state.currentProject);
+        // console.log("Update trigger: " + this.state.name);
+        // console.log("Update trigger: " + this.state.description);
+        
+        if (this.state.name != null) {
+            this.state.currentProject.name = this.state.name;
+        }
+        if (this.state.description != null) {
+            this.state.currentProject.description = this.state.description;
+        }
 
-        this.state.currentProject.name = this.state.name;
-        this.state.currentProject.description = this.state.description;
         console.log("After:" + this.state.currentProject);
-
 
         axios.post('/rest/project/update', this.state.currentProject).then(function (response) {
         }).catch(function (error) {
@@ -99,7 +103,8 @@ export default class ProjectEditPage extends Reflux.Component {
                         <input type='button' name="submit" value="update" onClick={this.update.bind(this)}/>
                     </p>
                     <p>
-                        <p><input type='button' name="delete" value="delete" onClick={this.deleteProject.bind(this)}/></p>
+                        <p><input type='button' name="delete" value="delete" onClick={this.deleteProject.bind(this)}/>
+                        </p>
                     </p>
                 </form>
 

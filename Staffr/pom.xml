@@ -169,6 +169,26 @@
                 <version>1.10.19</version>
                 <scope>test</scope>
             </dependency>
+
+            <!--new dependencies-->
+            <!--<dependency>-->
+                <!--<groupId>com.fasterxml.jackson.module</groupId>-->
+                <!--<artifactId>jackson-module-parameter-names</artifactId>-->
+                <!--<version>${com.fasterxml.jackson.version}</version>-->
+            <!--</dependency>-->
+
+            <!--<dependency>-->
+                <!--<groupId>com.fasterxml.jackson.datatype</groupId>-->
+                <!--<artifactId>jackson-datatype-jdk8</artifactId>-->
+                <!--<version>${com.fasterxml.jackson.version}</version>-->
+            <!--</dependency>-->
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>${com.fasterxml.jackson.version}</version>
+            </dependency>
+
         </dependencies>
 
         <build>
