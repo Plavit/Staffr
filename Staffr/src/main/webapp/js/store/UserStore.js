@@ -11,7 +11,7 @@ export default class UserStore extends Reflux.Store {
         console.log("user store constructor")
         super(props);
         this.state = {
-            users: [],
+            userLogedIn: [],
             currentUser: {}
         };
         this.listenables = Actions;
@@ -21,7 +21,7 @@ export default class UserStore extends Reflux.Store {
         console.log("User is trying to log in.");
         axios.get("/rest/user/current").then((response) => {
             this.setState({
-                users: response.data
+                userLogedIn: response.data
             });
             console.log(this.state);
         }).catch((error) => {
@@ -33,7 +33,7 @@ export default class UserStore extends Reflux.Store {
     onUserLogout() {
         console.log("User is trying to log out.");
         this.setState({
-            users: {}
+            userLogedIn: {}
         });
         console.log(this.state);
         axios.get('j_spring_security_logout')

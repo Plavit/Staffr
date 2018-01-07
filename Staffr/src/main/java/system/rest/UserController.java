@@ -31,13 +31,13 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value="/current", produces=MediaType.APPLICATION_JSON_VALUE)
-    public String getCurrent(Principal pr) {
+    public User getCurrent(Principal pr) {
         String userName = pr.getName();
         User ret = service.findUserByUsername(userName);
-        return ret.getUserName();
+        return ret;
     }
 
-    @RequestMapping(value = "/current", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/current", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateCurrentUser(@RequestBody User user) {
         service.update(user);
@@ -51,7 +51,6 @@ public class UserController {
     @RequestMapping(method = RequestMethod.GET, value="/admin", produces=MediaType.APPLICATION_JSON_VALUE)
     public User getAdmin() {
         User ret = service.findUserByUsername("admin");
-//        return ret.getUserName();
         return ret;
     }
 
@@ -69,5 +68,11 @@ public class UserController {
     public List<User> getUsersOnProject(@PathVariable("projectId") int id) {
         Project p = projectService.find(id);
         return service.findUsersByProject(p);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public void remove(@PathVariable("id") int id) {
+//        TODO: add to user service...
+//        service.removeById(id);
     }
 }
