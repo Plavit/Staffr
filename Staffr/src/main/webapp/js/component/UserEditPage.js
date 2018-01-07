@@ -14,25 +14,20 @@ export default class UserEditPage extends Reflux.Component {
         super(props);
         this.state = {
             currentUser: {},
-            name: null,
-            description: null
+            firstName: null,
+            lastName: null
         }
         this.store = UserStore;
     }
 
-    componentDidMount() {userId;
-        console.log("id of this user is:" + id);
-
-        Actions.getUser(id);
-
-        this.state.name = this.state.currentUser.name;
-        this.state.description = this.state.currentUser.description;
-
+    componentDidMount() {
         Actions.userInit();
     }
 
     componentWillMount() {
         super.componentWillMount();
+        var id = this.props.params.userId;
+        Actions.getUser(id);
     }
 
     onChange = (e) => {
@@ -45,16 +40,24 @@ export default class UserEditPage extends Reflux.Component {
     update(e) {
         e.preventDefault();
         console.log("Before:" + this.state.currentUser);
-        console.log("Update trigger: " + this.state.name);
-        console.log("Update trigger: " + this.state.description);
+        console.log(this.state.currentUser);
 
-        this.state.currentUser.name = this.state.name;
-        this.state.currentUser.description = this.state.description;
-        console.log("After:" + this.state.currentUser);
+        if (this.state.firstName != null) {
+            this.state.currentUser.firstName = this.state.firstName;
+        }
 
+        if (this.state.lastName != null) {
+            this.state.currentUser.lastName = this.state.lastName;
+        }
 
-        axios.post('/rest/user/update', this.state.currentUser).then(function (response) {
-        }).catch(function (error) {
+        console.log("After:");
+        console.log(this.state.currentUser);
+
+        axios.post('/rest/user/update', this.state.currentUser)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
             console.log(error);
         });
 
@@ -73,7 +76,6 @@ export default class UserEditPage extends Reflux.Component {
     };
 
     render() {
-        console.log("user page render");
         return (
             <div>
 
@@ -86,16 +88,16 @@ export default class UserEditPage extends Reflux.Component {
 
                 <form className='form-horizontal'>
                     <p>
-                        <label for="name">User name:
-                            <input type='text' name='name' id='name'
-                                   defaultValue={this.state.currentUser.name} onChange={this.onChange}/>
+                        <label for="name">First Name:
+                            <input type='text' name='firstName' id='firstName'
+                                   defaultValue={this.state.currentUser.firstName} onChange={this.onChange}/>
                         </label>
                     </p>
 
                     <p>
-                        <label for="description">User description:
-                            <input type='textarea' name='description' id='description'
-                                   defaultValue={this.state.currentUser.description} onChange={this.onChange}/>
+                        <label for="description">Last Name:
+                            <input type='text' name='lastName' id='lastName'
+                                   defaultValue={this.state.currentUser.lastName} onChange={this.onChange}/>
                         </label>
                     </p>
 

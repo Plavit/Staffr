@@ -43,6 +43,11 @@ public class UserController {
         service.update(user);
     }
 
+    @RequestMapping(value = "/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void update(@RequestBody User user) {
+        service.update(user);
+    }
+
     @RequestMapping(method = RequestMethod.GET, value="/admin", produces=MediaType.APPLICATION_JSON_VALUE)
     public User getAdmin() {
         User ret = service.findUserByUsername("admin");
@@ -50,12 +55,17 @@ public class UserController {
         return ret;
     }
 
+    @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
+    public User getUser(@PathVariable("userId") int id) {
+        return service.find(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void create(@RequestBody User user) {
         service.create(user);
     }
 
-    @RequestMapping(value = "/{projectId}", method = RequestMethod.GET)
+    @RequestMapping(value = "onProject/{projectId}", method = RequestMethod.GET)
     public List<User> getUsersOnProject(@PathVariable("projectId") int id) {
         Project p = projectService.find(id);
         return service.findUsersByProject(p);

@@ -14,7 +14,6 @@ export default class UserPage extends Reflux.Component {
             currentUser: {}
         }
         this.store = UserStore;
-
     }
 
     componentDidMount() {
@@ -23,11 +22,11 @@ export default class UserPage extends Reflux.Component {
 
     componentWillMount() {
         super.componentWillMount();
-        Actions.getUser(this.props.params.userId);
+        var id = this.props.params.userId;
+        Actions.getUser(id);
     }
 
     render() {
-        console.log("user page render");
         var info = '';
         if (this.props.location.query.edit != null){
             info = "Update was succesfull\n";
@@ -37,8 +36,8 @@ export default class UserPage extends Reflux.Component {
                 {info}
                 <h1>Two by two we're marching door to door! <br/>
                     'Cause God loves Users and he wants some more!</h1>
-                <h2>{this.state.currentUser.name}</h2>
-                <p>{this.state.currentUser.description}</p>
+                <h2>{this.state.currentUser.firstName}</h2>
+                <p>{this.state.currentUser.lastName}</p>
                 <p><Link to={`/users/edit/${this.state.currentUser.id}`}>edit</Link></p>
                 <p><Link to={`/users`} activeClassName="active">back to users page</Link></p>
             </div>

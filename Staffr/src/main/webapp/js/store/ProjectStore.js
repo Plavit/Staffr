@@ -6,7 +6,7 @@ import {Link, Router, hashHistory} from "react-router";
 import Actions from "../actions/Actions";
 import axios from "axios";
 
-export default class UserStore extends Reflux.Store {
+export default class ProjectStore extends Reflux.Store {
     constructor(props) {
         console.log("project store constructor")
         super(props);

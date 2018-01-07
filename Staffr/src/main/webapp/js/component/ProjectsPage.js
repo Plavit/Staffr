@@ -7,7 +7,7 @@ import axios from "axios";
 import ProjectStore from '../store/ProjectStore';
 import Actions from '../actions/Actions'
 
-export default class ProjectPage extends Reflux.Component {
+export default class ProjectsPage extends Reflux.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -47,6 +47,7 @@ export default class ProjectPage extends Reflux.Component {
                     </tr>
                     </thead>
                     <tbody>
+
                     {
                         this.state.projects.map(project => {
                             return (

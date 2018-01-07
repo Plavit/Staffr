@@ -11,7 +11,7 @@ export default class UsersPage extends Reflux.Component {
     constructor(props) {
         super(props);
         this.state = {
-            users: []
+            allUsers: []
         }
         this.store = UserStore;
     }
@@ -24,7 +24,7 @@ export default class UsersPage extends Reflux.Component {
         console.log("componentWillMount");
         super.componentWillMount();
         Actions.getAllUsers();
-        console.log(this.state.users);
+        console.log("Users in state"+this.state.allUsers);
     }
 
     render() {
@@ -44,13 +44,27 @@ export default class UsersPage extends Reflux.Component {
                         <tr>
                             <th>First Name</th>
                             <th>Last Name</th>
+                            <th>Birth Year</th>
+                            <th>Email</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
-
-                        {/*TODO add table content*/}
-
+                        {
+                            this.state.allUsers.map(user => {
+                                return (
+                                    <tr key={user.id}>
+                                        <td>{user.firstName}</td>
+                                        <td>{user.lastName}</td>
+                                        <td>{user.birthYear}</td>
+                                        <td>{user.email}</td>
+                                        <td>
+                                            <Link to={`/users/${user.id}`} activeClassName="active">show user page</Link>
+                                        </td>
+                                    </tr>
+                                );
+                            })
+                        }
                         </tbody>
                     </table>
                 </form>

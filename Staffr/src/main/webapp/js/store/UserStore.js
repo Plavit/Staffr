@@ -53,7 +53,7 @@ export default class UserStore extends Reflux.Store {
         console.log("onGetAllUsers");
         axios.get("/rest/user").then((response) => {
             this.setState({
-                users: response.data
+                allUsers: response.data
             });
             console.log("got em!")
         }).catch((error) => {
@@ -62,12 +62,10 @@ export default class UserStore extends Reflux.Store {
     }
 
     onGetUser(id) {
-        console.log("onGetUser by id: " + id);
-        axios.get("/rest/user/" + id).then((response) => {
+        axios.get("/rest/user/"+id).then((response) => {
             this.setState({
                 currentUser: response.data
             });
-            console.log("got it!")
         }).catch((error) => {
             console.log(error);
         })

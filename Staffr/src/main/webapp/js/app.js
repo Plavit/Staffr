@@ -3,15 +3,19 @@ import ReactDOM from "react-dom";
 import {browserHistory, hashHistory, IndexRoute, Route, Router, Redirect} from "react-router";
 
 import loginPage from "./component/LoginPage";
+import logoutPage from "./component/LogoutPage";
+
 import userInterface from "./component/UserInterface";
 import testPage from "./component/TestPage";
+
 import projectsPage from "./component/ProjectsPage";
 import projectPage from "./component/ProjectPage"
 import projectEditPage from "./component/ProjectEditPage";
+
 import usersPage from "./component/UsersPage";
-import userPage from "./component/UserPage"
+import userPage from "./component/UserPage";
 import userEditPage from "./component/UserEditPage";
-import logoutPage from "./component/LogoutPage";
+
 
 import requireAuth from "./component/RequireAuth";
 import Actions from "./actions/Actions";
