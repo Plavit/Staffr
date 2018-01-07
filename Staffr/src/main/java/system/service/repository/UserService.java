@@ -24,6 +24,9 @@ public class UserService extends AbstractRepositoryService<User> {
     private final UserDao dao;
 
     @Autowired
+    private SkillService skillService;
+
+    @Autowired
     private ProjectService projectService;
 
     @Autowired
@@ -81,44 +84,58 @@ public class UserService extends AbstractRepositoryService<User> {
         return dao.findByUsername(username);
     }
 
-    public List<User> findUsersBySkill(Skill skill) {
+    public List<User> findUsersBySkill(int skillId) {
+
+        //TODO check and fix if skill not found
+
         List<User> found = new LinkedList<>();
-        for (User user : dao.findAll()) {
-            for (Skill s : user.getSkills()) {
-                if (s.getName() == skill.getName()) {
-                    found.add(user);
+
+        if (skillService.exists(skillId)) {
+            Skill skill = skillService.find(skillId);
+
+            for (User user : dao.findAll()) {
+                for (Skill s : user.getSkills()) {
+                    if (s.getName() == skill.getName()) {
+                        found.add(user);
+                    }
                 }
             }
         }
         return found;
     }
 
-    public List<User> findUsersBySkillProfficiency(Skill skill) {
+    public List<User> findUsersBySkillProfficiency(int skillId) {
+
+
         List<User> found = new LinkedList<>();
-        SkillProfficiency prof = skill.getProfficiency();
-        List<SkillProfficiency> allowed = new LinkedList<>();
-        // BEGINNER, INTERMEDIATE, PROFFICIENT, ADVANCED, MASTER
-        allowed.add(SkillProfficiency.MASTER);
-        if (prof != SkillProfficiency.MASTER) {
-            allowed.add(SkillProfficiency.ADVANCED);
-            if (prof != SkillProfficiency.ADVANCED) {
-                allowed.add(SkillProfficiency.PROFFICIENT);
-                if (prof != SkillProfficiency.PROFFICIENT) {
-                    allowed.add(SkillProfficiency.INTERMEDIATE);
-                    if (prof != SkillProfficiency.INTERMEDIATE) {
-                        allowed.add(SkillProfficiency.BEGINNER);
-                        if (prof != SkillProfficiency.BEGINNER) {
-                            System.out.println("This is not okay bro - how come this person searched a weird undefined profficiency? EXPLAIN!");
+
+        if (skillService.exists(skillId)) {
+            Skill skill = skillService.find(skillId);
+            SkillProfficiency prof = skill.getProfficiency();
+            List<SkillProfficiency> allowed = new LinkedList<>();
+            // BEGINNER, INTERMEDIATE, PROFFICIENT, ADVANCED, MASTER
+            allowed.add(SkillProfficiency.MASTER);
+            if (prof != SkillProfficiency.MASTER) {
+                allowed.add(SkillProfficiency.ADVANCED);
+                if (prof != SkillProfficiency.ADVANCED) {
+                    allowed.add(SkillProfficiency.PROFFICIENT);
+                    if (prof != SkillProfficiency.PROFFICIENT) {
+                        allowed.add(SkillProfficiency.INTERMEDIATE);
+                        if (prof != SkillProfficiency.INTERMEDIATE) {
+                            allowed.add(SkillProfficiency.BEGINNER);
+                            if (prof != SkillProfficiency.BEGINNER) {
+                                System.out.println("This is not okay bro - how come this person searched a weird undefined profficiency? EXPLAIN!");
+                            }
                         }
                     }
                 }
             }
-        }
 
-        for (User user : dao.findAll()) {
-            for (Skill s : user.getSkills()) {
-                if (s.getName() == skill.getName() && allowed.contains(s.getProfficiency())) {
-                    found.add(user);
+            for (User user : dao.findAll()) {
+                for (Skill s : user.getSkills()) {
+                    if (s.getName() == skill.getName() && allowed.contains(s.getProfficiency())) {
+                        found.add(user);
+                    }
                 }
             }
         }

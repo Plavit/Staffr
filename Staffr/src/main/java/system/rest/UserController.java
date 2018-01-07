@@ -73,4 +73,24 @@ public class UserController {
     public void remove(@PathVariable("id") int id) {
         service.removeById(id);
     }
+
+    @RequestMapping(value = "getUsersByProject/{projectId}", method = RequestMethod.GET)
+    public List<User> getUsersByProject(@PathVariable("projectId") int id) {
+        return service.findUsersByProject(id);
+    }
+
+    @RequestMapping(value = "getUsersByProjectDuration/{projectId}/{duration}", method = RequestMethod.GET)
+    public List<User> getUsersByProjectDuration(@PathVariable("projectId") int id, @PathVariable("duration") long days) {
+        return service.findUsersByProjectByDuration(id,days);
+    }
+
+    @RequestMapping(value = "getUsersBySkill/{skillId}", method = RequestMethod.GET)
+    public List<User> getUsersBySkill(@PathVariable("skillId") int id) {
+        return service.findUsersBySkill(id);
+    }
+
+    @RequestMapping(value = "getUsersBySkillProfficiency/{skillId}", method = RequestMethod.GET)
+    public List<User> getUsersBySkillProfficiency(@PathVariable("skillId") int id) {
+        return service.findUsersBySkillProfficiency(id);
+    }
 }
