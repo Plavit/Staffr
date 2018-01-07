@@ -24,6 +24,9 @@ public class UserServiceTest extends BaseServiceTestRunner {
     private UserService us;
 
     @Autowired
+    private ProjectService skillService;
+
+    @Autowired
     private ProjectService projectService;
 
     Skill testSkill1B = new Skill("testSkill1",SkillProfficiency.BEGINNER);
@@ -77,32 +80,50 @@ public class UserServiceTest extends BaseServiceTestRunner {
     }
 
     @Test
-    public void findUsersBySkill() throws Exception {
+    public void findUsersBySkillCorrect() throws Exception {
 
-        List<User> output = us.findUsersBySkill(testSkill1B);
+        List<User> output = us.findUsersBySkill(testSkill1B.getId());
         assert (output.contains(testUser));
 
-        output=us.findUsersBySkill(testSkill1P);
+    }
+
+    @Test
+    public void findUsersBySkillDifProfficiency() throws Exception {
+        //TODO this has wrong setup, will deal with later
+        List<User> output=us.findUsersBySkill(testSkill1P.getId());
         assert (output.contains(testUser));
 
-        output = us.findUsersBySkill(testSkill2B);
+    }
+
+    @Test
+    public void findUsersBySkillWrong() throws Exception {
+
+
+        List<User> output = us.findUsersBySkill(testSkill2B.getId());
         assert (!output.contains(testUser));
     }
 
     @Test
-    public void findUsersBySkillProfficiency() throws Exception {
+    public void findUsersBySkillProfficiencyFound() throws Exception {
 
-        List<User> output = us.findUsersBySkillProfficiency(testSkill1B);
+        List<User> output = us.findUsersBySkillProfficiency(testSkill1B.getId());
         assert (output.contains(testUser));
-
-        output=us.findUsersBySkillProfficiency(testSkill1P);
-        assert (!output.contains(testUser));
-
-        output = us.findUsersBySkillProfficiency(testSkill2B);
-        assert (!output.contains(testUser));
     }
 
-    //TODO test project duration tests
+    @Test
+    public void findUsersBySkillProfficiencyWrongProfficiency() throws Exception {
+
+        List<User> output=us.findUsersBySkillProfficiency(testSkill1P.getId());
+        assert (!output.contains(testUser));
+
+    }
+
+    @Test
+    public void findUsersBySkillProfficiencyWrongSkill() throws Exception {
+
+        List<User> output = us.findUsersBySkillProfficiency(testSkill2B.getId());
+        assert (!output.contains(testUser));
+    }
 
     @Test
     public void findUsersByProjectContains() throws Exception {

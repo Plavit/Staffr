@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import system.business.Project;
-import system.dao.ProjectDao;
 import system.service.repository.ProjectService;
 
 import java.util.List;
@@ -43,6 +42,11 @@ public class ProjectController {
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void remove(@PathVariable("id") int id) {
         service.removeById(id);
+    }
+
+    @RequestMapping(value = "getProjectsByUser/{userId}", method = RequestMethod.GET)
+    public List<Project> getProjectsByUser(@PathVariable("userId") int id) {
+        return service.findProjectsByUser(id);
     }
 
 
