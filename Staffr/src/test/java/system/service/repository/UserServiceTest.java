@@ -68,10 +68,6 @@ public class UserServiceTest extends BaseServiceTestRunner {
         //us.getPrimaryDao().remove(testUser);
     }
 
-
-
-
-
     @Test
     public void findUsersBySkill() throws Exception {
 

@@ -1,6 +1,4 @@
-
 package system.service.data;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -13,7 +11,6 @@ import system.dao.UserProjectDao;
 import system.service.repository.ProjectService;
 import system.service.repository.UserProjectService;
 import system.service.repository.UserService;
-
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;

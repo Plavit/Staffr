@@ -225,7 +225,6 @@ public class DataInitializer {
         List<User> users = userService.findAll();
         List<Project> projectsRet = userProjectSearchService.getUsersProjectsFromDate(u,LocalDate.of(2000,1,1));
         List<Skill> skillsRet = skillService.getAllSkillsByUser(u);
-//
 
         System.out.println("Data initialization complete");
 

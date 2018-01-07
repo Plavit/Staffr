@@ -17,12 +17,16 @@ import java.time.Duration;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 
 @Service
 public class UserService extends AbstractRepositoryService<User> {
 
     private final UserDao dao;
+
+    @Autowired
+    private ProjectService projectService;
 
     @Autowired
     public UserService(UserDao dao) {
@@ -124,10 +128,11 @@ public class UserService extends AbstractRepositoryService<User> {
     }
 
     public List<User> findUsersByProject(Project project) {
-        List<User> found = new LinkedList<>();
-        for (User user:dao.findAll()) {
-            for (UserProject up:user.getUserProjects()){
-                if (up.getProject()==project){
+        List<User> found = findAll();
+
+        for (User user : dao.findAll()) {
+            for (UserProject up : user.getUserProjects()) {
+                if (up.getProject() == project) {
                     found.add(user);
                 }
             }
@@ -135,18 +140,10 @@ public class UserService extends AbstractRepositoryService<User> {
         return found;
     }
 
+    //TODO: do this the stupid way
     public List<User> findUsersByProjectByDuration(Project project, long duration) {
-        List<User> found = new LinkedList<>();
-        for (User user:dao.findAll()) {
-            for (UserProject up:user.getUserProjects()){
-                //System.out.println("Duration found for project '"+up.getProject().getName()+"' is:"+Duration.between(up.getEnd().atStartOfDay(), up.getFrom().atStartOfDay()));
-                if (up.getProject()==project&&(Duration.between(up.getFrom().atStartOfDay(), up.getEnd().atStartOfDay()).toDays()>=duration))
-                {
-                    found.add(user);
-                }
-            }
-        }
-        return found;
+        List<User> users = findAll();
+        return null;
     }
 
     public boolean exists(String username) {
