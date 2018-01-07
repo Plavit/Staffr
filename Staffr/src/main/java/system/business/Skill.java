@@ -4,6 +4,7 @@ package system.business;
  * Created by Marek on 3.9.2017.
  */
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import system.business.enums.SkillProfficiency;
 
 import javax.persistence.*;
@@ -24,7 +25,7 @@ public class Skill extends AbstractBusinessObject {
     @Enumerated()
     private SkillProfficiency profficiency;
 
-//    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JsonIgnore
     @ManyToOne()
     @JoinColumn(name = "USER_ID")
     private User user;

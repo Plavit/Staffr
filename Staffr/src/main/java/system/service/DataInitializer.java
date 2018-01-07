@@ -134,46 +134,45 @@ public class DataInitializer {
         Skill skl_excel_1=new SoftSkill();
         skl_excel_1.setName("Excel");
         skl_excel_1.setProfficiency(SkillProfficiency.BEGINNER);
-        skl_excel_1.setUser(Peter_Smith);
+
         Skill skl_excel_2=new SoftSkill();
         skl_excel_2.setName("Excel");
         skl_excel_2.setProfficiency(SkillProfficiency.INTERMEDIATE);
-        skl_excel_2.setUser(Ivan_Terrible);
+
         Skill skl_excel_3=new SoftSkill();
         skl_excel_3.setName("Excel");
         skl_excel_3.setProfficiency(SkillProfficiency.ADVANCED);
-        skl_excel_3.setUser(Charlotte_Guido);
 
         Skill skl_eng_1=new SoftSkill();
         skl_eng_1.setName("English");
         skl_eng_1.setProfficiency(SkillProfficiency.BEGINNER);
-        skl_eng_1.setUser(Charlotte_Guido);
+
         Skill skl_eng_2=new SoftSkill();
         skl_eng_2.setName("English");
         skl_eng_2.setProfficiency(SkillProfficiency.INTERMEDIATE);
-        skl_eng_2.setUser(Ivan_Terrible);
+
         Skill skl_eng_3=new SoftSkill();
         skl_eng_3.setName("English");
         skl_eng_3.setProfficiency(SkillProfficiency.ADVANCED);
-        skl_eng_3.setUser(Peter_Smith);
+
 
         Skill skl_word_1=new SoftSkill();
         skl_word_1.setName("Word");
         skl_word_1.setProfficiency(SkillProfficiency.BEGINNER);
-        skl_word_1.setUser(Ivan_Terrible);
+
         Skill skl_word_2=new SoftSkill();
         skl_word_2.setName("Word");
         skl_word_2.setProfficiency(SkillProfficiency.INTERMEDIATE);
-        skl_word_2.setUser(Charlotte_Guido);
+
         Skill skl_word_3=new SoftSkill();
         skl_word_3.setName("Word");
         skl_word_3.setProfficiency(SkillProfficiency.ADVANCED);
-        skl_word_3.setUser(Peter_Smith);
+
 
         //EXPERIENCES
         Skill exp = new Experience();
         exp.setName("SkillExp extend test");
-        skillService.persist(exp);
+//        skillService.persist(exp);
 
         Experience exp_asMoE = new Experience("Assistant","Ministry of Education",LocalDate.of(2005,1,1),LocalDate.of(2007,1,1));
 //        exp_asMoE.setUser(Peter_Smith);

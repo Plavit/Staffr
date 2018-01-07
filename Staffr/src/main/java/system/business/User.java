@@ -1,5 +1,6 @@
 package system.business;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import system.business.enums.Role;
 import system.business.enums.Status;
@@ -45,13 +46,16 @@ public class User extends AbstractBusinessObject {
     )
     private Set<User> users;
 
+
     @OneToMany(mappedBy = "user", orphanRemoval=true)
     private Set<Degree> degrees;
 
+    
     @OneToMany(mappedBy = "user", orphanRemoval=true)
     private Set<Position> positions;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
+    @JsonIgnore
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("name")
     private Set<Skill> skills;
 
