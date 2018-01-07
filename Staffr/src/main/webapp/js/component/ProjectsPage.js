@@ -27,7 +27,7 @@ export default class ProjectPage extends Reflux.Component {
     }
 
     render() {
-        console.log("project page render");
+        console.log("projects page overview render");
         var info = '';
         if (this.props.location.query.del != null){
             info = "Project deleted\n";
