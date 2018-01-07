@@ -30,6 +30,7 @@ public class UserServiceTest extends BaseServiceTestRunner {
     Skill testSkill1P = new Skill("testSkill1",SkillProfficiency.PROFFICIENT);
     Skill testSkill2B = new Skill("testSkill2",SkillProfficiency.BEGINNER);
     User testUser = new User("tstUser","tstPass",Role.USER_ROLE);
+    User testUser2 = new User("tstUser","tstPass",Role.USER_ROLE);
     final Project p = new Project();
     final UserProject up = new UserProject();
     Set<UserProject> upSet = new HashSet<>();
@@ -46,20 +47,27 @@ public class UserServiceTest extends BaseServiceTestRunner {
 
         p.setName("ProjectT1");
         p.setDescription("Test project");
-        projectService.persist(p);
 
+        //up.setProject(p);
+        //up.setEmployee(testUser);
 
-        up.setProject(p);
-        up.setEmployee(testUser);
         //2 weeks
         up.setFrom(LocalDate.ofYearDay(2017,333));
         up.setEnd(LocalDate.ofYearDay(2017,347));
 
         upSet.add(up);
-        testUser.setUserProjects(upSet);
 
+        p.setUserProject(upSet);
+        projectService.persist(p);
+
+        testUser.setUserProjects(upSet);
         us.create(testUser);
 
+        testUser2.setFirstName("Kwek");
+        testUser2.setLastName("Kookal");
+        testUser2.setEmail("Poems@Yahoo.com");
+        testUser2.setRole(Role.USER_ROLE);
+        us.create(testUser2);
 
     }
 
@@ -97,23 +105,43 @@ public class UserServiceTest extends BaseServiceTestRunner {
     //TODO test project duration tests
 
     @Test
-    public void findUsersByProject() throws Exception {
-        List<User> output = us.findUsersByProject(p);
+    public void findUsersByProjectContains() throws Exception {
+        List<User> output = us.findUsersByProject(p.getId());
         assert (output.contains(testUser));
     }
 
     @Test
-    public void findUsersByProjectByDuration() throws Exception {
-        List<User> output = us.findUsersByProjectByDuration(p,1);
-        assert (output.contains(testUser));
-
-        output = us.findUsersByProjectByDuration(p,12);
-        assert (output.contains(testUser));
-
-        output = us.findUsersByProjectByDuration(p,32);
-        assert (!output.contains(testUser));
+    public void findUsersByProjectNotContains() throws Exception {
+        List<User> output = us.findUsersByProject(p.getId());
+        assert (!output.contains(testUser2));
     }
 
+    @Test
+    public void findUsersByProjectByDurationSearchMin() throws Exception {
+        List<User> output = us.findUsersByProjectByDuration(p.getId(),1);
+        assert (output.contains(testUser));
+
+    }
+
+    @Test
+    public void findUsersByProjectByDurationSearchMed() throws Exception {
+        List<User> output = us.findUsersByProjectByDuration(p.getId(),12);
+        assert (output.contains(testUser));
+
+    }
+
+    @Test
+    public void findUsersByProjectByDurationSearchExact() throws Exception {
+        List<User> output = us.findUsersByProjectByDuration(p.getId(),14);
+        assert (output.contains(testUser));
+    }
+
+    @Test
+    public void findUsersByProjectByDurationSearchOver() throws Exception {
+
+        List<User> output = us.findUsersByProjectByDuration(p.getId(),32);
+        assert (!output.contains(testUser));
+    }
 
     @Test
     public void persistCascadesForSkills() {

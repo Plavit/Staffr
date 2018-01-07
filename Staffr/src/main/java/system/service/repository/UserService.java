@@ -12,6 +12,7 @@ import system.business.enums.SkillProfficiency;
 import system.dao.GenericDao;
 import system.dao.UserDao;
 
+import java.time.Duration;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -124,23 +125,42 @@ public class UserService extends AbstractRepositoryService<User> {
         return found;
     }
 
-    public List<User> findUsersByProject(Project project) {
-        List<User> found = findAll();
+    public List<User> findUsersByProject(int projectId) {
+
+        //user>up
+        //project>up
+        //up has NO connections
+
+        List<User> found = new LinkedList<>();
+
+        Project proj = projectService.find(projectId);
 
         for (User user : dao.findAll()) {
             for (UserProject up : user.getUserProjects()) {
-                if (up.getProject() == project) {
-                    found.add(user);
+                for (UserProject upp : proj.getUserProject()) {
+                    if (up.getId() == upp.getId()) {
+                        found.add(user);
+                    }
                 }
             }
         }
         return found;
     }
 
-    //TODO: do this the stupid way
-    public List<User> findUsersByProjectByDuration(Project project, long duration) {
-        List<User> users = findAll();
-        return null;
+    public List<User> findUsersByProjectByDuration(int projectId, long duration) {
+        List<User> found = new LinkedList<>();
+        Project proj = projectService.find(projectId);
+
+        for (User user : dao.findAll()) {
+            for (UserProject up : user.getUserProjects()) {
+                for (UserProject upp : proj.getUserProject()) {
+                    if ((up.getId() == upp.getId()) & ((Duration.between(up.getFrom().atStartOfDay(), up.getEnd().atStartOfDay()).toDays() >= duration))) {
+                        found.add(user);
+                    }
+                }
+            }
+        }
+        return found;
     }
 
     public boolean exists(String username) {

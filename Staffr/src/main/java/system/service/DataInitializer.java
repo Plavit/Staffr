@@ -202,22 +202,27 @@ public class DataInitializer {
         //TODO: This should properly be handled by service
         final UserProject up = new UserProject();
         up.setFrom(LocalDate.now());
+        up.setEnd(LocalDate.now());
         userProjectJoinService.joinUserWithProject(u,p,up);
 
         final UserProject upPS = new UserProject();
         upPS.setFrom(LocalDate.now());
+        upPS.setEnd(LocalDate.now());
         userProjectJoinService.joinUserWithProject(Peter_Smith,prj_duedil1,upPS);
 
         final UserProject upCG1 = new UserProject();
         upCG1.setFrom(LocalDate.now());
+        upCG1.setEnd(LocalDate.now());
         userProjectJoinService.joinUserWithProject(Charlotte_Guido,prj_duedil1,upCG1);
 
         final UserProject upCG2 = new UserProject();
         upCG2.setFrom(LocalDate.now());
+        upCG2.setEnd(LocalDate.now());
         userProjectJoinService.joinUserWithProject(Charlotte_Guido,prj_pmi1,upCG2);
 
         final UserProject upIT = new UserProject();
         upIT.setFrom(LocalDate.now());
+        upIT.setEnd(LocalDate.now());
         userProjectJoinService.joinUserWithProject(Ivan_Terrible,prj_pmi1,upIT);
 
         //ALL-CONTAINING SETS INIT

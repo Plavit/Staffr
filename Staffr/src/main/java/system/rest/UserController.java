@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import system.business.Project;
 import system.business.User;
 import system.service.repository.ProjectService;
 import system.service.repository.UserService;
@@ -66,8 +65,8 @@ public class UserController {
 
     @RequestMapping(value = "onProject/{projectId}", method = RequestMethod.GET)
     public List<User> getUsersOnProject(@PathVariable("projectId") int id) {
-        Project p = projectService.find(id);
-        return service.findUsersByProject(p);
+        //Project p = projectService.find(id);
+        return service.findUsersByProject(id);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
