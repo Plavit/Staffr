@@ -17,6 +17,11 @@ import usersPage from "./component/UsersPage";
 import userPage from "./component/UserPage";
 import userEditPage from "./component/UserEditPage";
 
+import selectUserPage from "./component/SelectUserPage";
+import selectProjectPage from "./component/SelectProjectPage";
+
+import userSearchPage from "./component/UserSearchPage";
+
 
 import requireAuth from "./component/RequireAuth";
 import Actions from "./actions/Actions";
@@ -46,6 +51,12 @@ ReactDOM.render(
             <Route path="users" component={usersPage}/>
             <Route path="users/:userId" component={userPage}/>
             <Route path="users/edit/:userId" component={userEditPage}/>
+
+            <Route path="selectUser/:projectId" component={selectUserPage}/>
+            <Route path="selectProject/:userId" component={selectProjectPage}/>
+
+            <Route path="userSearch" component={userSearchPage}/>
+
         </Route>
     </Router>,
     app

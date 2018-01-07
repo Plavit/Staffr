@@ -75,6 +75,12 @@ export default class UserEditPage extends Reflux.Component {
         // Actions.deleteUser(this.state.curr.username, this.state.currentUser.id, this.state.userResponse.userRole);
     };
 
+    addProject(){
+        hashHistory.push({
+            pathname: "/selectProject/" + this.state.currentUser.id,
+        });
+    }
+
     render() {
         return (
             <div>
@@ -100,7 +106,9 @@ export default class UserEditPage extends Reflux.Component {
                                    defaultValue={this.state.currentUser.lastName} onChange={this.onChange}/>
                         </label>
                     </p>
-
+                    <p>
+                        <input type='button' name="submit" value="addProject" onClick={this.addProject.bind(this)}/>
+                    </p>
                     <p>
                         <input type='button' name="submit" value="update" onClick={this.update.bind(this)}/>
                     </p>
@@ -110,7 +118,7 @@ export default class UserEditPage extends Reflux.Component {
                 </form>
 
                 <p>
-                    return <Link to={'/users/' + this.state.currentUser.id} activeClassName="active">back</Link>
+                    <Link to={'/users/' + this.state.currentUser.id} activeClassName="active">back</Link>
                 </p>
 
             </div>
