@@ -9,8 +9,10 @@ import system.business.UserProject;
 import system.dao.GenericDao;
 import system.dao.ProjectDao;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @Transactional
@@ -42,21 +44,33 @@ public class ProjectService extends AbstractRepositoryService<Project> {
     }
 
     public List<Project> findProjectsByUser(int userId) {
+        List<Project> ret = new LinkedList<>();
+        Set<UserProject> result = new HashSet<>();
 
-        List<Project> found = new LinkedList<>();
+        Set<UserProject> allUserProjectsInProjects = new HashSet<>();
 
-        User user = userService.find(userId);
+        for (Project p : findAll()) {
+            allUserProjectsInProjects.addAll(p.getUserProject());
+        }
 
-        for (Project project : dao.findAll()) {
-            for (UserProject up : project.getUserProject()) {
-                for (UserProject upp : user.getUserProjects()) {
-                    if (up.getId() == upp.getId()) {
-                        found.add(project);
-                    }
+        Set<UserProject> allUserProjectsinUser = userService.find(userId).getUserProjects();
+
+        for (UserProject a : allUserProjectsInProjects) {
+            for (UserProject b : allUserProjectsinUser) {
+                if (a.getFuj().equals(b.getFuj())) {
+                    result.add(a);
                 }
             }
         }
-        return found;
-    }
 
+        for (Project p : findAll()) {
+            for (UserProject up : result) {
+                if(p.getUserProject().contains(up)){
+                    ret.add(p);
+                }
+            }
+        }
+
+        return ret;
+    }
 }

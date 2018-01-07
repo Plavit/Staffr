@@ -13,7 +13,15 @@ export default class requireAuth extends Reflux.Component {
     };
 
     render() {
-        console.log("Require Auth render");
-        return (<div>{this.props.children}</div>)
+        return (
+            <div>
+
+                {this.props.children}
+            </div>
+        )
+    }
+
+    componentDidMount() {
+        Actions.userInit();
     }
 }

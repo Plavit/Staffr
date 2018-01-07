@@ -14,6 +14,7 @@ import system.service.repository.UserService;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -29,6 +30,7 @@ public class UserProjectJoinService {
 
     @Transactional
     public void joinUserWithProject(User user, Project project, UserProject userProject) {
+        userProject.setFuj(UUID.randomUUID().toString());
         user.addUserProject(userProject);
         project.addUserProject(userProject);
         userDao.update(user);

@@ -15,7 +15,7 @@ export default class UserInterface extends Reflux.Component {
     }
 
     componentDidMount() {
-        Actions.userInit();
+
     }
 
     onChange = (e) => {

@@ -36,28 +36,31 @@ ReactDOM.render(
     <Router history={hashHistory}>
         <Route path="/">
             <Route component={requireAuth}>
-                {/*<Route component={userInterface}/>*/}
                 <IndexRoute component={userInterface}/>
                 <Route path="userInterface" component={userInterface}/>
+
+                <Route path="logout" component={logoutPage}/>
+
+                <Route path="projects" component={projectsPage}/>
+                <Route path="projects/create" component={projectCreatePage}/>
+                <Route path="projects/:projectId" component={projectPage}/>
+                <Route path="projects/edit/:projectId" component={projectEditPage}/>
+
+                <Route path="users" component={usersPage}/>
+                <Route path="users/:userId" component={userPage}/>
+                <Route path="users/edit/:userId" component={userEditPage}/>
+
+                <Route path="selectUser/:projectId" component={selectUserPage}/>
+                <Route path="selectProject/:userId" component={selectProjectPage}/>
+
+                <Route path="userSearch" component={userSearchPage}/>
+                <Route path="/userSearchPage/searchCriteria/:projectId" component={userSearchCriteriaPage}/>
+
+                <Route path="test" component={testPage}/>
             </Route>
-            <Route path="logout" component={logoutPage}/>
+
             <Route path="login" component={loginPage}/>
-            <Route path="test" component={testPage}/>
 
-            <Route path="projects" component={projectsPage}/>
-            <Route path="projects/create" component={projectCreatePage}/>
-            <Route path="projects/:projectId" component={projectPage}/>
-            <Route path="projects/edit/:projectId" component={projectEditPage}/>
-
-            <Route path="users" component={usersPage}/>
-            <Route path="users/:userId" component={userPage}/>
-            <Route path="users/edit/:userId" component={userEditPage}/>
-
-            <Route path="selectUser/:projectId" component={selectUserPage}/>
-            <Route path="selectProject/:userId" component={selectProjectPage}/>
-
-            <Route path="userSearch" component={userSearchPage}/>
-            <Route path="/userSearchPage/searchCriteria/:projectId" component={userSearchCriteriaPage}/>
 
         </Route>
     </Router>,

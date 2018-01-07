@@ -1,5 +1,6 @@
 package system.business;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -14,6 +15,7 @@ import javax.persistence.*;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 /**
  * Created by krystof on 9/3/17.
@@ -40,10 +42,12 @@ public class UserProject extends AbstractBusinessObject {
     @Column(name = "ending_date")
     private LocalDate end;
 
+    //    @JsonIgnore
     @ManyToOne()
     @JoinColumn(name = "USER_ID")
     private User user;
 
+    //    @JsonIgnore
     @ManyToOne()
     @JoinColumn(name = "PROJECT_ID")
     private Project project;
@@ -91,6 +95,16 @@ public class UserProject extends AbstractBusinessObject {
     public void setProject(Project project) {
         this.project = project;
     }
+
+    private String fuj;
+
+    public void setFuj(String fuj) {
+        this.fuj = fuj;
+    }
+
+    public String getFuj() {
+        return fuj;
+    }
 }
 
 class LocalDateDeserializer extends StdDeserializer<LocalDate> {
@@ -114,7 +128,7 @@ class LocalDateSerializer extends StdSerializer<LocalDate> {
 
     private static final long serialVersionUID = 1L;
 
-    public LocalDateSerializer(){
+    public LocalDateSerializer() {
         super(LocalDate.class);
     }
 

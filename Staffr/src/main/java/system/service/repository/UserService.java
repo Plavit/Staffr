@@ -13,9 +13,7 @@ import system.dao.GenericDao;
 import system.dao.UserDao;
 
 import java.time.Duration;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 
 @Service
@@ -143,41 +141,46 @@ public class UserService extends AbstractRepositoryService<User> {
     }
 
     public List<User> findUsersByProject(int projectId) {
+        List<User> ret = new LinkedList<>();
+        Set<UserProject> result = new HashSet<>();
 
-        //user>up
-        //project>up
-        //up has NO connections
+        List<User> allUsers = findAll();
+        Set<UserProject> allUserProjectsInProjects = projectService.find(projectId).getUserProject();
 
-        List<User> found = new LinkedList<>();
-
-        Project proj = projectService.find(projectId);
-
-        for (User user : dao.findAll()) {
-            for (UserProject up : user.getUserProjects()) {
-                for (UserProject upp : proj.getUserProject()) {
-                    if (up.getId() == upp.getId()) {
-                        found.add(user);
+        for (User u : allUsers) {
+            for (UserProject b : allUserProjectsInProjects) {
+                for (UserProject a : u.getUserProjects()) {
+                    if (a.getFuj().equals(b.getFuj())) {
+                        ret.add(u);
                     }
                 }
             }
         }
-        return found;
+
+        return ret;
     }
 
     public List<User> findUsersByProjectByDuration(int projectId, long duration) {
-        List<User> found = new LinkedList<>();
-        Project proj = projectService.find(projectId);
+        List<User> ret = new LinkedList<>();
 
-        for (User user : dao.findAll()) {
-            for (UserProject up : user.getUserProjects()) {
-                for (UserProject upp : proj.getUserProject()) {
-                    if ((up.getId() == upp.getId()) & ((Duration.between(up.getFrom().atStartOfDay(), up.getEnd().atStartOfDay()).toDays() >= duration))) {
-                        found.add(user);
+        List<User> allUsers = findAll();
+        Set<UserProject> allUserProjectsInProjects = projectService.find(projectId).getUserProject();
+
+        for (User u : allUsers) {
+            for (UserProject b : allUserProjectsInProjects) {
+                for (UserProject a : u.getUserProjects()) {
+                    if (
+                            a.getFuj().equals(b.getFuj())
+                                    &&
+                                    (Duration.between(a.getFrom().atStartOfDay(), a.getEnd().atStartOfDay()).toDays() >= duration)
+                            ) {
+                        ret.add(u);
                     }
                 }
             }
         }
-        return found;
+
+        return ret;
     }
 
     public boolean exists(String username) {

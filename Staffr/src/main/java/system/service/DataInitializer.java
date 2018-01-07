@@ -131,40 +131,40 @@ public class DataInitializer {
 
         //SKILLS
         // todo - would be best to move proficiency to relational table USERSKILLS for better instantialization
-        Skill skl_excel_1=new SoftSkill();
+        Skill skl_excel_1 = new SoftSkill();
         skl_excel_1.setName("Excel");
         skl_excel_1.setProfficiency(SkillProfficiency.BEGINNER);
 
-        Skill skl_excel_2=new SoftSkill();
+        Skill skl_excel_2 = new SoftSkill();
         skl_excel_2.setName("Excel");
         skl_excel_2.setProfficiency(SkillProfficiency.INTERMEDIATE);
 
-        Skill skl_excel_3=new SoftSkill();
+        Skill skl_excel_3 = new SoftSkill();
         skl_excel_3.setName("Excel");
         skl_excel_3.setProfficiency(SkillProfficiency.ADVANCED);
 
-        Skill skl_eng_1=new SoftSkill();
+        Skill skl_eng_1 = new SoftSkill();
         skl_eng_1.setName("English");
         skl_eng_1.setProfficiency(SkillProfficiency.BEGINNER);
 
-        Skill skl_eng_2=new SoftSkill();
+        Skill skl_eng_2 = new SoftSkill();
         skl_eng_2.setName("English");
         skl_eng_2.setProfficiency(SkillProfficiency.INTERMEDIATE);
 
-        Skill skl_eng_3=new SoftSkill();
+        Skill skl_eng_3 = new SoftSkill();
         skl_eng_3.setName("English");
         skl_eng_3.setProfficiency(SkillProfficiency.ADVANCED);
 
 
-        Skill skl_word_1=new SoftSkill();
+        Skill skl_word_1 = new SoftSkill();
         skl_word_1.setName("Word");
         skl_word_1.setProfficiency(SkillProfficiency.BEGINNER);
 
-        Skill skl_word_2=new SoftSkill();
+        Skill skl_word_2 = new SoftSkill();
         skl_word_2.setName("Word");
         skl_word_2.setProfficiency(SkillProfficiency.INTERMEDIATE);
 
-        Skill skl_word_3=new SoftSkill();
+        Skill skl_word_3 = new SoftSkill();
         skl_word_3.setName("Word");
         skl_word_3.setProfficiency(SkillProfficiency.ADVANCED);
 
@@ -174,11 +174,11 @@ public class DataInitializer {
         exp.setName("SkillExp extend test");
 //        skillService.persist(exp);
 
-        Experience exp_asMoE = new Experience("Assistant","Ministry of Education",LocalDate.of(2005,1,1),LocalDate.of(2007,1,1));
+        Experience exp_asMoE = new Experience("Assistant", "Ministry of Education", LocalDate.of(2005, 1, 1), LocalDate.of(2007, 1, 1));
 //        exp_asMoE.setUser(Peter_Smith);
 //        skillService.create(exp_asMoE);
 
-        Experience exp_csMoF = new Experience("Consultant","Ministry of Finance",LocalDate.of(2015,1,1),LocalDate.of(2017,1,1));
+        Experience exp_csMoF = new Experience("Consultant", "Ministry of Finance", LocalDate.of(2015, 1, 1), LocalDate.of(2017, 1, 1));
 //        exp_csMoF.setUser(Charlotte_Guido);
 //        skillService.create(exp_csMoF);
 
@@ -203,31 +203,50 @@ public class DataInitializer {
         final UserProject up = new UserProject();
         up.setFrom(LocalDate.now());
         up.setEnd(LocalDate.now());
-        userProjectJoinService.joinUserWithProject(u,p,up);
+        userProjectJoinService.joinUserWithProject(u, p, up);
 
         final UserProject upPS = new UserProject();
         upPS.setFrom(LocalDate.now());
         upPS.setEnd(LocalDate.now());
-        userProjectJoinService.joinUserWithProject(Peter_Smith,prj_duedil1,upPS);
+        userProjectJoinService.joinUserWithProject(Peter_Smith, prj_duedil1, upPS);
 
         final UserProject upCG1 = new UserProject();
         upCG1.setFrom(LocalDate.now());
         upCG1.setEnd(LocalDate.now());
-        userProjectJoinService.joinUserWithProject(Charlotte_Guido,prj_duedil1,upCG1);
+        userProjectJoinService.joinUserWithProject(Charlotte_Guido, prj_duedil1, upCG1);
 
         final UserProject upCG2 = new UserProject();
         upCG2.setFrom(LocalDate.now());
         upCG2.setEnd(LocalDate.now());
-        userProjectJoinService.joinUserWithProject(Charlotte_Guido,prj_pmi1,upCG2);
+        userProjectJoinService.joinUserWithProject(Charlotte_Guido, prj_pmi1, upCG2);
 
         final UserProject upIT = new UserProject();
         upIT.setFrom(LocalDate.now());
         upIT.setEnd(LocalDate.now());
-        userProjectJoinService.joinUserWithProject(Ivan_Terrible,prj_pmi1,upIT);
+        userProjectJoinService.joinUserWithProject(Ivan_Terrible, prj_pmi1, upIT);
+
+        userProjectJoinService.joinUserWithProject(u, prj_pmi1, new UserProject());
+        userProjectJoinService.joinUserWithProject(u, prj_duedil1, new UserProject());
+
+
+//        Set<UserProject> allUserProjects = new HashSet<>();
+//        allUserProjects.addAll(p.getUserProject());
+//        allUserProjects.addAll(prj_pmi1.getUserProject());
+//        allUserProjects.addAll(prj_duedil1.getUserProject());
+//        for (UserProject k : u.getUserProjects()) {
+//            for (UserProject l: allUserProjects) {
+//                if (k.getFuj() == l.getFuj()){
+//                    System.out.println();
+//                }
+//                if (k.getFuj().equals(l.getFuj())){
+//                    System.out.println();
+//                }
+//            }
+//        }
 
         //ALL-CONTAINING SETS INIT
         List<User> users = userService.findAll();
-        List<Project> projectsRet = userProjectSearchService.getUsersProjectsFromDate(u,LocalDate.of(2000,1,1));
+        List<Project> projectsRet = userProjectSearchService.getUsersProjectsFromDate(u, LocalDate.of(2000, 1, 1));
         List<Skill> skillsRet = skillService.getAllSkillsByUser(u);
 
         System.out.println("Data initialization complete");
