@@ -13,7 +13,8 @@ export default class ProjectStore extends Reflux.Store {
         this.state = {
             projects: [],
             currentProject: {},
-            usersOnProject: []
+            usersOnProject: [],
+            usersOnProjectSearchResult: []
         }
         this.listenables = Actions;
     }
@@ -61,6 +62,17 @@ export default class ProjectStore extends Reflux.Store {
         axios.get("/rest/user/onProject/"+projectId).then((response) => {
             this.setState({
                 usersOnProject: response.data
+            });
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
+
+    getUsersByProjectDuration(projectId, duration){
+        console.log("PROJECT STORE: getUsersByProjectDuration");
+        axios.get("/rest/user/getUsersByProjectDuration/"+projectId+"/"+duration).then((response) => {
+            this.setState({
+                usersOnProjectSearchResult: response.data
             });
         }).catch((error) => {
             console.log(error);

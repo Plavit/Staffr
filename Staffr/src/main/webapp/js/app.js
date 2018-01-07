@@ -21,6 +21,7 @@ import selectUserPage from "./component/SelectUserPage";
 import selectProjectPage from "./component/SelectProjectPage";
 
 import userSearchPage from "./component/UserSearchPage";
+import userSearchCriteriaPage from "./component/UserSearchCriteriaPage";
 
 
 import requireAuth from "./component/RequireAuth";
@@ -56,6 +57,7 @@ ReactDOM.render(
             <Route path="selectProject/:userId" component={selectProjectPage}/>
 
             <Route path="userSearch" component={userSearchPage}/>
+            <Route path="/userSearchPage/searchCriteria/:projectId" component={userSearchCriteriaPage}/>
 
         </Route>
     </Router>,

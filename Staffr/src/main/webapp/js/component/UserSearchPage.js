@@ -2,23 +2,19 @@ import React from "react";
 import Reflux from "reflux";
 import {Alert, Button, Panel} from "react-bootstrap";
 import {Link, Router, hashHistory} from "react-router";
-
 import axios from "axios";
-import querystring from "querystring";
 
-import UserStore from '../store/UserStore';
+import ProjectStore from '../store/ProjectStore';
 import Actions from '../actions/Actions'
-import ProjectStore from "../store/ProjectStore";
 
 export default class UserSearchPage extends Reflux.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentUser: {},
-            time: {},
-            project: {}
+            projects: [],
+            userId: {}
         }
-        this.store = UserStore;
+        this.store = ProjectStore;
     }
 
     componentDidMount() {
@@ -27,40 +23,47 @@ export default class UserSearchPage extends Reflux.Component {
 
     componentWillMount() {
         super.componentWillMount();
-    }
-
-    onChange = (e) => {
-        const state = this.state;
-        state[e.target.name] = e.target.value;
-        state.alertVisible = false;
-        this.setState(state);
-    };
-
-    search(e) {
-        e.preventDefault();
-        return false;
+        this.state.userId = this.props.params.userId;
+        Actions.getAllProjects();
     }
 
     render() {
         return (
             <div>
+                <style>{`table td{border:1px solid black; padding: 5px}`}</style>
                 <h1>Search users on project</h1>
-                <form className='form-horizontal'>
-                    <p>
-                        Selector...
-                    </p>
-                    <p>
-                        <label for="description">Minimal time spent on project:
-                            <input type='date' name='time' id='time' onChange={this.onChange}/>
-                        </label>
-                    </p>
-                    <p>
-                        <input type='button' name="search" value="addProject" onClick={this.search.bind(this)}/>
-                    </p>
+                <p>select project:</p>
+                <form>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {
+                            this.state.projects.map(project => {
+                                return (
+                                    <tr key={project.id}>
+                                        <td>{project.name}</td>
+                                        <td>{project.description}</td>
+                                        <td>
+                                            <Link
+                                                to={`/userSearchPage/searchCriteria/${project.id}`}
+                                                activeClassName="active">
+                                                select project
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                );
+                            })
+                        }
+                        </tbody>
+                    </table>
                 </form>
-                <p>
-                    <Link to={'/'} activeClassName="active">back to main menu</Link>
-                </p>
+                <p><Link to={`/`} activeClassName="active">back to main menu</Link></p>
             </div>
         );
     }
