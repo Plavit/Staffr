@@ -129,31 +129,6 @@ public class DataInitializer {
         Ivan_Terrible.setEmail("Impala@google.com");
         //u.setId(126);
 
-
-        //USERPROJECTS
-        //TODO: This should properly be handled by service
-        final UserProject up = new UserProject();
-        up.setFrom(LocalDate.now());
-        userProjectJoinService.joinUserWithProject(u,p,up);
-
-        final UserProject upPS = new UserProject();
-        upPS.setFrom(LocalDate.now());
-        userProjectJoinService.joinUserWithProject(Peter_Smith,prj_duedil1,upPS);
-
-        final UserProject upCG1 = new UserProject();
-        upCG1.setFrom(LocalDate.now());
-        userProjectJoinService.joinUserWithProject(Charlotte_Guido,prj_duedil1,upCG1);
-
-        final UserProject upCG2 = new UserProject();
-        upCG2.setFrom(LocalDate.now());
-        userProjectJoinService.joinUserWithProject(Charlotte_Guido,prj_pmi1,upCG1);
-        userProjectJoinService.joinUserWithProject(Charlotte_Guido,prj_duedil1,upCG1);
-
-        final UserProject upIT = new UserProject();
-        upIT.setFrom(LocalDate.now());
-        userProjectJoinService.joinUserWithProject(Ivan_Terrible,prj_pmi1,upIT);
-
-
         //SKILLS
         // todo - would be best to move proficiency to relational table USERSKILLS for better instantialization
         Skill skl_excel_1=new SoftSkill();
@@ -195,8 +170,6 @@ public class DataInitializer {
         skl_word_3.setProfficiency(SkillProfficiency.ADVANCED);
         skl_word_3.setUser(Peter_Smith);
 
-
-
         //EXPERIENCES
         Skill exp = new Experience();
         exp.setName("SkillExp extend test");
@@ -221,18 +194,38 @@ public class DataInitializer {
         Charlotte_Guido.setSkills(skillsCG);
 
         //FINISH - create users
-        userService.update(u);
-        userService.update(Peter_Smith);
-        userService.update(Charlotte_Guido);
-        userService.update(Ivan_Terrible);
+        userService.create(u);
+        userService.create(Peter_Smith);
+        userService.create(Charlotte_Guido);
+        userService.create(Ivan_Terrible);
+
+        //USERPROJECTS
+        //TODO: This should properly be handled by service
+        final UserProject up = new UserProject();
+        up.setFrom(LocalDate.now());
+        userProjectJoinService.joinUserWithProject(u,p,up);
+
+        final UserProject upPS = new UserProject();
+        upPS.setFrom(LocalDate.now());
+        userProjectJoinService.joinUserWithProject(Peter_Smith,prj_duedil1,upPS);
+
+        final UserProject upCG1 = new UserProject();
+        upCG1.setFrom(LocalDate.now());
+        userProjectJoinService.joinUserWithProject(Charlotte_Guido,prj_duedil1,upCG1);
+
+        final UserProject upCG2 = new UserProject();
+        upCG2.setFrom(LocalDate.now());
+        userProjectJoinService.joinUserWithProject(Charlotte_Guido,prj_pmi1,upCG2);
+
+        final UserProject upIT = new UserProject();
+        upIT.setFrom(LocalDate.now());
+        userProjectJoinService.joinUserWithProject(Ivan_Terrible,prj_pmi1,upIT);
 
         //ALL-CONTAINING SETS INIT
         List<User> users = userService.findAll();
         List<Project> projectsRet = userProjectSearchService.getUsersProjectsFromDate(u,LocalDate.of(2000,1,1));
         List<Skill> skillsRet = skillService.getAllSkillsByUser(u);
 
-        projectService.remove(p);
-//        userService.remove(Ivan_Terrible);
         System.out.println("Data initialization complete");
 
     }

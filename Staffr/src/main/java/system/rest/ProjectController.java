@@ -40,5 +40,10 @@ public class ProjectController {
         return service.find(id);
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public void remove(@PathVariable("id") int id) {
+        service.removeById(id);
+    }
+
 
 }
