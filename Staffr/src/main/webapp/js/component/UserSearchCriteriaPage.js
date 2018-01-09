@@ -66,6 +66,9 @@ export default class UserSearchCriteriaPage extends Reflux.Component {
                             <th>Last Name</th>
                             <th>Birth Year</th>
                             <th>Email</th>
+                            <th>Date start</th>
+                            <th>Date end</th>
+                            <th>Duration</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -78,6 +81,9 @@ export default class UserSearchCriteriaPage extends Reflux.Component {
                                         <td>{user.lastName}</td>
                                         <td>{user.birthYear}</td>
                                         <td>{user.email}</td>
+                                        <td>TBD</td>
+                                        <td>TBD</td>
+                                        <td>TBD</td>
                                         <td>
                                             <Link to={`/users/${user.id}`} activeClassName="active">show user
                                                 page</Link>
