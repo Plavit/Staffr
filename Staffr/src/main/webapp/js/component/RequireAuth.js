@@ -15,8 +15,9 @@ export default class requireAuth extends Reflux.Component {
     render() {
         return (
             <div>
-
+WRAPPER
                 {this.props.children}
+                WRAPPERIO
             </div>
         )
     }
