@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import system.business.User;
+import system.business.UserProject;
 import system.service.repository.ProjectService;
 import system.service.repository.UserService;
 
@@ -80,8 +81,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "getUsersByProjectDuration/{projectId}&{duration}", method = RequestMethod.GET)
-    public List<User> getUsersByProjectDuration(@PathVariable("projectId") int id, @PathVariable("duration") long days) {
-        return service.findUsersByProjectByDuration(id,days);
+    public List<UserProject> getUsersByProjectDuration(@PathVariable("projectId") int id, @PathVariable("duration") long days) {
+        return service.findUserProjectsByProjectByDuration(id,days);
     }
 
     @RequestMapping(value = "getUsersBySkill/{skillId}", method = RequestMethod.GET)

@@ -17,7 +17,9 @@ export default class UserSearchCriteriaPage extends Reflux.Component {
             days: 0,
             serched: false,
             projectId: {},
-            usersOnProjectSearchResult: []
+            usersOnProjectSearchResult: [],
+            currentUserProject: {},
+            userProjects: []
         }
         this.store = ProjectStore;
     }
@@ -48,11 +50,23 @@ export default class UserSearchCriteriaPage extends Reflux.Component {
             "; with min days: "
             + this.state.days
         );
-
         Actions.getUsersByProjectDuration(this.state.projectId, this.state.days);
-
-        console.log(this.state);
         this.state.serched = true;
+
+        // Actions.getUserServiceForUserOnProject(
+        //     this.state.currentProject.id,
+        //     8
+        // );
+        // console.log("HERE");
+        // console.log(this.state);
+
+        // this.state.usersOnProjectSearchResult.map(user => {
+        //     Actions.getUserServiceForUserOnProject(
+        //         this.state.currentProject.id,
+        //         user.id
+        //     );
+        //     this.state.userProjects[user.id] = this.state.currentProject;
+        // });
     }
 
     result() {
@@ -68,24 +82,22 @@ export default class UserSearchCriteriaPage extends Reflux.Component {
                             <th>Email</th>
                             <th>Date start</th>
                             <th>Date end</th>
-                            <th>Duration</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
                         {
-                            this.state.usersOnProjectSearchResult.map(user => {
+                            this.state.usersOnProjectSearchResult.map(userProject => {
                                 return (
-                                    <tr key={user.id}>
-                                        <td>{user.firstName}</td>
-                                        <td>{user.lastName}</td>
-                                        <td>{user.birthYear}</td>
-                                        <td>{user.email}</td>
-                                        <td>TBD</td>
-                                        <td>TBD</td>
-                                        <td>TBD</td>
+                                    <tr key={userProject.employee.id}>
+                                        <td>{userProject.employee.firstName}</td>
+                                        <td>{userProject.employee.lastName}</td>
+                                        <td>{userProject.employee.birthYear}</td>
+                                        <td>{userProject.employee.email}</td>
+                                        <td>{userProject.from}</td>
+                                        <td>{userProject.end}</td>
                                         <td>
-                                            <Link to={`/users/${user.id}`} activeClassName="active">show user
+                                            <Link to={`/users/${userProject.employee.id}`} activeClassName="active">show user
                                                 page</Link>
                                         </td>
                                     </tr>
@@ -101,6 +113,7 @@ export default class UserSearchCriteriaPage extends Reflux.Component {
 
     render() {
         console.log("project page render");
+        console.log(this.state);
         return (
             <div>
 

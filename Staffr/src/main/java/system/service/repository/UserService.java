@@ -151,6 +151,20 @@ public class UserService extends AbstractRepositoryService<User> {
         return ret;
     }
 
+    public List<UserProject> findUserProjectsByProjectByDuration(int projectId, long duration) {
+        Set<UserProject> upSet = projectService.find(projectId).getUserProject();
+        List<UserProject> ret = new LinkedList<>();
+        for (UserProject up : upSet) {
+            if (Duration.between(
+                    up.getFrom().atStartOfDay(),
+                    up.getEnd().atStartOfDay()).toDays()
+                    >= duration){
+                ret.add(up);
+            }
+        }
+        return ret;
+    }
+
     public List<User> findUsersByProjectByDuration(int projectId, long duration) {
         Set<UserProject> upSet = projectService.find(projectId).getUserProject();
         List<User> ret = new LinkedList<>();

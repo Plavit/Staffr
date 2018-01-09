@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import system.business.Project;
+import system.business.UserProject;
 import system.service.repository.ProjectService;
+import system.service.repository.UserProjectService;
 
 import java.util.List;
 
@@ -18,6 +20,9 @@ public class ProjectController {
 
     @Autowired
     private ProjectService service;
+
+    @Autowired
+    private UserProjectService userProjectService;
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Project> getAll() {
@@ -49,5 +54,9 @@ public class ProjectController {
         return service.findProjectsByUser(id);
     }
 
-
+    @RequestMapping(value = "getUserProjectFor/{projectId}&{userId}", method = RequestMethod.GET)
+    public UserProject getUserProjectForUserOnProject(@PathVariable("projectId") int projectId, @PathVariable("userId") int userId) {
+        UserProject ret = userProjectService.getUserServisForUserOnProject(userId,projectId);
+        return ret;
+    }
 }
