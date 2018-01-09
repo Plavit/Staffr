@@ -52,21 +52,7 @@ export default class UserSearchCriteriaPage extends Reflux.Component {
         );
         Actions.getUsersByProjectDuration(this.state.projectId, this.state.days);
         this.state.serched = true;
-
-        // Actions.getUserServiceForUserOnProject(
-        //     this.state.currentProject.id,
-        //     8
-        // );
-        // console.log("HERE");
-        // console.log(this.state);
-
-        // this.state.usersOnProjectSearchResult.map(user => {
-        //     Actions.getUserServiceForUserOnProject(
-        //         this.state.currentProject.id,
-        //         user.id
-        //     );
-        //     this.state.userProjects[user.id] = this.state.currentProject;
-        // });
+        console.log(this.state);
     }
 
     result() {
@@ -82,6 +68,7 @@ export default class UserSearchCriteriaPage extends Reflux.Component {
                             <th>Email</th>
                             <th>Date start</th>
                             <th>Date end</th>
+                            <th>Duration</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -96,6 +83,7 @@ export default class UserSearchCriteriaPage extends Reflux.Component {
                                         <td>{userProject.employee.email}</td>
                                         <td>{userProject.from}</td>
                                         <td>{userProject.end}</td>
+                                        <td>{userProject.duration}</td>
                                         <td>
                                             <Link to={`/users/${userProject.employee.id}`} activeClassName="active">show user
                                                 page</Link>

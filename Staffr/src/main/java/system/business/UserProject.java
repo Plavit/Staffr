@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
 import javax.persistence.*;
 import java.io.IOException;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
@@ -52,8 +53,28 @@ public class UserProject extends AbstractBusinessObject {
     @JoinColumn(name = "PROJECT_ID")
     private Project project;
 
+    private long duration;
+
     public UserProject() {
 
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public long getDuration() {
+        return  Duration.between(
+                getFrom().atStartOfDay(),
+                getEnd().atStartOfDay()).toDays();
+    }
+
+    public void setDuration(long duration) {
+        this.duration = duration;
     }
 
     public String getRole() {

@@ -18,7 +18,7 @@ export default class LogoutPage extends Reflux.Component {
         return (
             <div>
                 <p>You have succesfuly loged out.</p>
-                <Link to={"/"} activeClassName="active">Back to index.</Link><br/>
+                <Link to={"/login"} activeClassName="active">Back to index.</Link><br/>
             </div>
         );
     }
