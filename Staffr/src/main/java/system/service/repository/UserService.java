@@ -159,7 +159,7 @@ public class UserService extends AbstractRepositoryService<User> {
                 ret.add(up);
             }
         }
-        return sortListUsers(ret);
+        return ret;
     }
 
     public List<User> findUsersByProjectByDuration(int projectId, long duration) {
