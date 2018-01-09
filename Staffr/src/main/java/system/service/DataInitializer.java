@@ -86,10 +86,10 @@ public class DataInitializer {
 
 
         //PROJECTS
-        final Project p = new Project();
-        p.setName("Project1");
-        p.setDescription("Test project");
-        projectService.persist(p);
+//        final Project p = new Project();
+//        p.setName("Project1");
+//        p.setDescription("Test project");
+//        projectService.persist(p);
 
         final Project prj_pmi1 = new Project();
         prj_pmi1.setName("PMI for Avast-AVG");
@@ -219,8 +219,11 @@ public class DataInitializer {
         upIT.setEnd(LocalDate.ofYearDay(2017,250));
         userProjectJoinService.joinUserWithProject(Ivan_Terrible,prj_pmi1,upIT);
 
-        userProjectJoinService.joinUserWithProject(u, prj_pmi1, new UserProject());
-        userProjectJoinService.joinUserWithProject(u, prj_duedil1, new UserProject());
+        final UserProject up1 = new UserProject();
+        upIT.setFrom(LocalDate.ofYearDay(2017,1));
+        upIT.setEnd(LocalDate.now());
+        userProjectJoinService.joinUserWithProject(u, prj_pmi1, up1);
+        //userProjectJoinService.joinUserWithProject(u, prj_duedil1, up1);
 
 
 //        Set<UserProject> allUserProjects = new HashSet<>();

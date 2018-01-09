@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import system.business.Project;
 import system.business.Skill;
 import system.business.User;
 import system.business.UserProject;
@@ -13,7 +12,10 @@ import system.dao.GenericDao;
 import system.dao.UserDao;
 
 import java.time.Duration;
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 
 @Service
@@ -143,7 +145,11 @@ public class UserService extends AbstractRepositoryService<User> {
     public List<User> findUsersByProject(int projectId) {
         Set<UserProject> upSet = projectService.find(projectId).getUserProject();
         List<User> ret = new LinkedList<>();
+
+        System.out.println("Finding users for project: "+projectService.find(projectId).getName());
+
         for (UserProject up : upSet) {
+            System.out.println("FOUND: '"+up.getEmployee().getFirstName()+" "+up.getEmployee().getLastName()+"', start:"+up.getFrom()+"/end: "+up.getEnd()+"; Duration: "+Duration.between(up.getFrom().atStartOfDay(), up.getEnd().atStartOfDay()).toDays());
             ret.add(up.getEmployee());
         }
         return ret;
@@ -152,12 +158,17 @@ public class UserService extends AbstractRepositoryService<User> {
     public List<User> findUsersByProjectByDuration(int projectId, long duration) {
         Set<UserProject> upSet = projectService.find(projectId).getUserProject();
         List<User> ret = new LinkedList<>();
+
+        System.out.println("Finding users for project: "+projectService.find(projectId).getName());
+
         for (UserProject up : upSet) {
-            if ((Duration.between(up.getFrom().atStartOfDay(), up.getEnd().atStartOfDay()).toDays() >= duration)) {
+            System.out.println("Trying: '"+up.getEmployee().getFirstName()+" "+up.getEmployee().getLastName()+"', start:"+up.getFrom()+"/end: "+up.getEnd()+"; Duration: "+Duration.between(up.getFrom().atStartOfDay(), up.getEnd().atStartOfDay()).toDays());
+            if (Duration.between(up.getFrom().atStartOfDay(), up.getEnd().atStartOfDay()).toDays() >= duration) {
                 ret.add(up.getEmployee());
+                System.out.println("Added");
             }
         }
-
+        System.out.println("Returning: "+ret);
         return ret;
     }
 

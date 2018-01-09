@@ -68,9 +68,9 @@ export default class ProjectStore extends Reflux.Store {
         })
     }
 
-    getUsersByProjectDuration(projectId, duration){
-        console.log("PROJECT STORE: getUsersByProjectDuration");
-        axios.get("/rest/user/getUsersByProjectDuration/"+projectId+"/"+duration).then((response) => {
+    onGetUsersByProjectDuration(projectId, duration){
+        console.log("PROJECT STORE: getUsersByProjectDuration"+projectId+"&"+duration);
+        axios.get("/rest/user/getUsersByProjectDuration/"+projectId+"&"+duration).then((response) => {
             this.setState({
                 usersOnProjectSearchResult: response.data
             });

@@ -140,7 +140,7 @@ public class UserServiceTest extends BaseServiceTestRunner {
 
     @Test
     public void findUsersByProjectByDurationSearchMin() throws Exception {
-        List<User> output = us.findUsersByProjectByDuration(p.getId(),1);
+        List<User> output = us.findUsersByProjectByDuration(p.getId(),0);
         assert (output.contains(testUser));
 
     }

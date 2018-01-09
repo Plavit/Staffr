@@ -55,6 +55,7 @@ ReactDOM.render(
 
                 <Route path="userSearch" component={userSearchPage}/>
                 <Route path="/userSearchPage/searchCriteria/:projectId" component={userSearchCriteriaPage}/>
+                <Route path="/userSearchPage/searchCriteria&:projectId&:days" component={userSearchCriteriaPage}/>
 
                 <Route path="test" component={testPage}/>
             </Route>

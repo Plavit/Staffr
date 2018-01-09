@@ -45,7 +45,7 @@ export default class UserSearchCriteriaPage extends Reflux.Component {
         console.log(
             "USER SEATCH CRITERIA PAGE: searching for projectId: "
             + this.state.projectId +
-            "with min days: "
+            "; with min days: "
             + this.state.days
         );
 
@@ -107,7 +107,7 @@ export default class UserSearchCriteriaPage extends Reflux.Component {
                 <h1>Result page</h1>
                 <form className='form-horizontal'>
                     <p>
-                        <label for="name">Specifi minimal number of days spent on project
+                        <label for="name">Specify minimal number of days spent on project
                             <input type='text' name='days' id='days'
                                    defaultValue={0} onChange={this.onChange}/>
                         </label>

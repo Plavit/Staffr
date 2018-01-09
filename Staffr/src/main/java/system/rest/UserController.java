@@ -79,7 +79,7 @@ public class UserController {
         return service.findUsersByProject(id);
     }
 
-    @RequestMapping(value = "getUsersByProjectDuration/{projectId}/{duration}", method = RequestMethod.GET)
+    @RequestMapping(value = "getUsersByProjectDuration/{projectId}&{duration}", method = RequestMethod.GET)
     public List<User> getUsersByProjectDuration(@PathVariable("projectId") int id, @PathVariable("duration") long days) {
         return service.findUsersByProjectByDuration(id,days);
     }
