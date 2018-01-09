@@ -12,10 +12,7 @@ import system.dao.GenericDao;
 import system.dao.UserDao;
 
 import java.time.Duration;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 
 @Service
@@ -101,7 +98,7 @@ public class UserService extends AbstractRepositoryService<User> {
                 }
             }
         }
-        return found;
+        return sortListUsers(found);
     }
 
     public List<User> findUsersBySkillProfficiency(int skillId) {
@@ -139,7 +136,7 @@ public class UserService extends AbstractRepositoryService<User> {
                 }
             }
         }
-        return found;
+        return sortListUsers(found);
     }
 
     public List<User> findUsersByProject(int projectId) {
@@ -148,7 +145,7 @@ public class UserService extends AbstractRepositoryService<User> {
         for (UserProject up : upSet) {
             ret.add(up.getEmployee());
         }
-        return ret;
+        return sortListUsers(ret);
     }
 
     public List<UserProject> findUserProjectsByProjectByDuration(int projectId, long duration) {
@@ -162,7 +159,7 @@ public class UserService extends AbstractRepositoryService<User> {
                 ret.add(up);
             }
         }
-        return ret;
+        return sortListUsers(ret);
     }
 
     public List<User> findUsersByProjectByDuration(int projectId, long duration) {
@@ -176,7 +173,7 @@ public class UserService extends AbstractRepositoryService<User> {
                 ret.add(up.getEmployee());
             }
         }
-        return ret;
+        return sortListUsers(ret);
     }
 
     public boolean exists(String username) {
@@ -200,5 +197,10 @@ public class UserService extends AbstractRepositoryService<User> {
     @Transactional
     public void removeById(int id) {
         super.remove(dao.find(id));
+    }
+
+    private List<User> sortListUsers(List<User> list){
+        list.sort(Comparator.comparing(User::getLastName));
+        return list;
     }
 }
