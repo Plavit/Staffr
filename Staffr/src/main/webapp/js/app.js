@@ -39,8 +39,6 @@ ReactDOM.render(
                 <IndexRoute component={userInterface}/>
                 <Route path="userInterface" component={userInterface}/>
 
-                <Route path="logout" component={logoutPage}/>
-
                 <Route path="projects" component={projectsPage}/>
                 <Route path="projects/create" component={projectCreatePage}/>
                 <Route path="projects/:projectId" component={projectPage}/>
@@ -60,6 +58,7 @@ ReactDOM.render(
                 <Route path="test" component={testPage}/>
             </Route>
 
+            <Route path="logout" component={logoutPage}/>
             <Route path="login" component={loginPage}/>
 
 
