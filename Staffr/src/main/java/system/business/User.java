@@ -66,6 +66,7 @@ public class User extends AbstractBusinessObject {
     @JoinColumn(name = "ADDRESS_ID")
     private Address address;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user",cascade = CascadeType.PERSIST)
     private Set<UserProject> userProjects;
 

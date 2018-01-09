@@ -1,5 +1,7 @@
 package system.business;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -32,6 +34,7 @@ public class Project extends AbstractBusinessObject {
 
     private Date endOfProject;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "project",cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<UserProject> userProject;
 

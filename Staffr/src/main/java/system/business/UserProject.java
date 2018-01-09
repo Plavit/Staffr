@@ -42,12 +42,12 @@ public class UserProject extends AbstractBusinessObject {
     @Column(name = "ending_date")
     private LocalDate end;
 
-    //    @JsonIgnore
+    @JsonIgnore
     @ManyToOne()
     @JoinColumn(name = "USER_ID")
     private User user;
 
-    //    @JsonIgnore
+    @JsonIgnore
     @ManyToOne()
     @JoinColumn(name = "PROJECT_ID")
     private Project project;
