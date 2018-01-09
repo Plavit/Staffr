@@ -19,13 +19,12 @@ export default class UserPage extends Reflux.Component {
 
     componentDidMount() {
         Actions.userInit();
+        Actions.getUser(this.props.params.userId);
+        Actions.getUsersProjects(this.props.params.userId);
     }
 
     componentWillMount() {
         super.componentWillMount();
-        var id = this.props.params.userId;
-        Actions.getUser(id);
-        Actions.getUsersProjects(id);
     }
 
     render() {
