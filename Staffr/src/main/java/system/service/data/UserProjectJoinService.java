@@ -31,6 +31,8 @@ public class UserProjectJoinService {
     @Transactional
     public void joinUserWithProject(User user, Project project, UserProject userProject) {
         userProject.setFuj(UUID.randomUUID().toString());
+        userProject.setProject(project);
+        userProject.setEmployee(user);
         user.addUserProject(userProject);
         project.addUserProject(userProject);
         userDao.update(user);

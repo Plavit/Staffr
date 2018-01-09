@@ -44,33 +44,11 @@ public class ProjectService extends AbstractRepositoryService<Project> {
     }
 
     public List<Project> findProjectsByUser(int userId) {
+        Set<UserProject> upSet = userService.find(userId).getUserProjects();
         List<Project> ret = new LinkedList<>();
-        Set<UserProject> result = new HashSet<>();
-
-        Set<UserProject> allUserProjectsInProjects = new HashSet<>();
-
-        for (Project p : findAll()) {
-            allUserProjectsInProjects.addAll(p.getUserProject());
+        for (UserProject up : upSet) {
+            ret.add(up.getProject());
         }
-
-        Set<UserProject> allUserProjectsinUser = userService.find(userId).getUserProjects();
-
-        for (UserProject a : allUserProjectsInProjects) {
-            for (UserProject b : allUserProjectsinUser) {
-                if (a.getFuj().equals(b.getFuj())) {
-                    result.add(a);
-                }
-            }
-        }
-
-        for (Project p : findAll()) {
-            for (UserProject up : result) {
-                if(p.getUserProject().contains(up)){
-                    ret.add(p);
-                }
-            }
-        }
-
         return ret;
     }
 }

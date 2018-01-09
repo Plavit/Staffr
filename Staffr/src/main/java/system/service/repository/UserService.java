@@ -141,42 +141,20 @@ public class UserService extends AbstractRepositoryService<User> {
     }
 
     public List<User> findUsersByProject(int projectId) {
+        Set<UserProject> upSet = projectService.find(projectId).getUserProject();
         List<User> ret = new LinkedList<>();
-        Set<UserProject> result = new HashSet<>();
-
-        List<User> allUsers = findAll();
-        Set<UserProject> allUserProjectsInProjects = projectService.find(projectId).getUserProject();
-
-        for (User u : allUsers) {
-            for (UserProject b : allUserProjectsInProjects) {
-                for (UserProject a : u.getUserProjects()) {
-                    if (a.getFuj().equals(b.getFuj())) {
-                        ret.add(u);
-                    }
-                }
-            }
+        for (UserProject up : upSet) {
+            ret.add(up.getEmployee());
         }
-
         return ret;
     }
 
     public List<User> findUsersByProjectByDuration(int projectId, long duration) {
+        Set<UserProject> upSet = projectService.find(projectId).getUserProject();
         List<User> ret = new LinkedList<>();
-
-        List<User> allUsers = findAll();
-        Set<UserProject> allUserProjectsInProjects = projectService.find(projectId).getUserProject();
-
-        for (User u : allUsers) {
-            for (UserProject b : allUserProjectsInProjects) {
-                for (UserProject a : u.getUserProjects()) {
-                    if (
-                            a.getFuj().equals(b.getFuj())
-                                    &&
-                                    (Duration.between(a.getFrom().atStartOfDay(), a.getEnd().atStartOfDay()).toDays() >= duration)
-                            ) {
-                        ret.add(u);
-                    }
-                }
+        for (UserProject up : upSet) {
+            if ((Duration.between(up.getFrom().atStartOfDay(), up.getEnd().atStartOfDay()).toDays() >= duration)) {
+                ret.add(up.getEmployee());
             }
         }
 
