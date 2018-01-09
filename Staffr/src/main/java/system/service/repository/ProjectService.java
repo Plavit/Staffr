@@ -46,8 +46,8 @@ public class ProjectService extends AbstractRepositoryService<Project> {
     public List<Project> findProjectsByUser(int userId) {
         Set<UserProject> upSet = userService.find(userId).getUserProjects();
         List<Project> ret = new LinkedList<>();
-        for (UserProject up : upSet) {
-            ret.add(up.getProject());
+        for (UserProject up: upSet) {
+    ret.add(up.getProject());
         }
         return ret;
     }

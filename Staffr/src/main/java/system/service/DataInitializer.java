@@ -220,8 +220,8 @@ public class DataInitializer {
         userProjectJoinService.joinUserWithProject(Ivan_Terrible,prj_pmi1,upIT);
 
         final UserProject up1 = new UserProject();
-        upIT.setFrom(LocalDate.ofYearDay(2017,1));
-        upIT.setEnd(LocalDate.now());
+        up1.setFrom(LocalDate.ofYearDay(2017,1));
+        up1.setEnd(LocalDate.now());
         userProjectJoinService.joinUserWithProject(u, prj_pmi1, up1);
         //userProjectJoinService.joinUserWithProject(u, prj_duedil1, up1);
 

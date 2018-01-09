@@ -20,4 +20,6 @@ public class UserProjectService extends AbstractRepositoryService<UserProject> {
     protected GenericDao<UserProject> getPrimaryDao() {
         return dao;
     }
+
+    
 }

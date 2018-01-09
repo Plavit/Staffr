@@ -145,11 +145,7 @@ public class UserService extends AbstractRepositoryService<User> {
     public List<User> findUsersByProject(int projectId) {
         Set<UserProject> upSet = projectService.find(projectId).getUserProject();
         List<User> ret = new LinkedList<>();
-
-        System.out.println("Finding users for project: "+projectService.find(projectId).getName());
-
         for (UserProject up : upSet) {
-            System.out.println("FOUND: '"+up.getEmployee().getFirstName()+" "+up.getEmployee().getLastName()+"', start:"+up.getFrom()+"/end: "+up.getEnd()+"; Duration: "+Duration.between(up.getFrom().atStartOfDay(), up.getEnd().atStartOfDay()).toDays());
             ret.add(up.getEmployee());
         }
         return ret;
@@ -158,22 +154,18 @@ public class UserService extends AbstractRepositoryService<User> {
     public List<User> findUsersByProjectByDuration(int projectId, long duration) {
         Set<UserProject> upSet = projectService.find(projectId).getUserProject();
         List<User> ret = new LinkedList<>();
-
-        System.out.println("Finding users for project: "+projectService.find(projectId).getName());
-
         for (UserProject up : upSet) {
-            System.out.println("Trying: '"+up.getEmployee().getFirstName()+" "+up.getEmployee().getLastName()+"', start:"+up.getFrom()+"/end: "+up.getEnd()+"; Duration: "+Duration.between(up.getFrom().atStartOfDay(), up.getEnd().atStartOfDay()).toDays());
-            if (Duration.between(up.getFrom().atStartOfDay(), up.getEnd().atStartOfDay()).toDays() >= duration) {
+            if (Duration.between(
+                    up.getFrom().atStartOfDay(),
+                    up.getEnd().atStartOfDay()).toDays()
+                    >= duration){
                 ret.add(up.getEmployee());
-                System.out.println("Added");
             }
         }
-        System.out.println("Returning: "+ret);
         return ret;
     }
 
     public boolean exists(String username) {
-//        Objects.requireNonNull(username);
         return dao.exists(username);
     }
 

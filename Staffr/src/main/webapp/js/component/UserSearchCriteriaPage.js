@@ -105,6 +105,7 @@ export default class UserSearchCriteriaPage extends Reflux.Component {
             <div>
 
                 <h1>Result page</h1>
+                <p>for project {this.state.currentProject.name}</p>
                 <form className='form-horizontal'>
                     <p>
                         <label for="name">Specify minimal number of days spent on project
