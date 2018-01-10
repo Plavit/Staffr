@@ -47,6 +47,7 @@ export default class ProjectsPage extends Reflux.Component {
                 <div style={{textAlign: 'center', padding: '50px', position: 'relative'}}>
                     <Paper zDepth={3} style={{width: '80%', margin: 'auto', padding: '12px'}}>
                         <h1>Projects</h1>
+                        <h3>{info}</h3>
                         <form>
                             <Table>
                                 <TableHeader

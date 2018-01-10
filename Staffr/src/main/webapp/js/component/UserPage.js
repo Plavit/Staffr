@@ -7,6 +7,11 @@ import axios from "axios";
 import UserStore from '../store/UserStore';
 import Actions from '../actions/Actions'
 
+import {
+    MuiThemeProvider, Paper, Table, TableBody, TableHeader, TableHeaderColumn, TableRow,
+    TableRowColumn
+} from "material-ui";
+
 export default class UserPage extends Reflux.Component {
     constructor(props) {
         super(props);
@@ -33,46 +38,52 @@ export default class UserPage extends Reflux.Component {
             info = "Update was succesfull\n";
         }
         return (
-            <div>
-                <style>{`table td{border:1px solid black; padding: 5px}`}</style>
+            <MuiThemeProvider>
+                <div style={{textAlign: 'center', padding: '50px', position: 'relative'}}>
+                    <Paper zDepth={3} style={{width: '80%', margin: 'auto', padding: '12px'}}>
+                        <h1>{this.state.currentUser.firstName} {this.state.currentUser.lastName}</h1>
                 {info}
-                <h1>Two by two we're marching door to door! <br/>
-                    'Cause God loves Users and he wants some more!</h1>
-                <h2>{this.state.currentUser.firstName}</h2>
-                <p>{this.state.currentUser.lastName}</p>
-                <p><Link to={`/users/edit/${this.state.currentUser.id}`}>edit</Link></p>
-                <p><Link to={`/users`} activeClassName="active">back to users page</Link></p>
+                {/*<h1>Two by two we're marching door to door! <br/>*/}
+                    {/*'Cause God loves Users and he wants some more!</h1>*/}
+                <h2><Link to={`/users/edit/${this.state.currentUser.id}`}>edit</Link></h2>
+                <h2><Link to={`/users`} activeClassName="active">back to users page</Link></h2>
                 <h3>Users on project:</h3>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
+                <Table>
+                    <TableHeader
+                        displaySelectAll={false}
+                    >
+                    <TableRow>
+                        <TableHeaderColumn>Name</TableHeaderColumn>
+                        <TableHeaderColumn>Description</TableHeaderColumn>
+                        <TableHeaderColumn></TableHeaderColumn>
+                    </TableRow>
+                    </TableHeader>
+                    <TableBody
+                        displayRowCheckbox={false}
+                    >
                     {
                         this.state.usersProjects.map(project => {
                             if (!(this.state.usersProjects.length > 0)) {
                                 return <p>There are no users on this project.</p>
                             } else {
                                 return (
-                                    <tr key={project.id}>
-                                        <td id="foo">{project.name}</td>
-                                        <td>{project.description}</td>
-                                        <td>
-                                            <Link to={`/projects/${project.id}`} activeClassName="active">show project
+                                    <TableRow key={project.id}>
+                                        <TableRowColumn id="foo">{project.name}</TableRowColumn>
+                                        <TableRowColumn>{project.description}</TableRowColumn>
+                                        <TableRowColumn>
+                                            <Link to={`/projects/${project.id}`} activeClassName="active">Show project
                                                 page</Link>
-                                        </td>
-                                    </tr>
+                                        </TableRowColumn>
+                                    </TableRow>
                                 );
                             }
                         })
                     }
-                    </tbody>
-                </table>
+                    </TableBody>
+                </Table>
+                    </Paper>
             </div>
+            </MuiThemeProvider>
         );
     }
 

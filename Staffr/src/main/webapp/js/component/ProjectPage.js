@@ -7,6 +7,11 @@ import axios from "axios";
 import ProjectStore from '../store/ProjectStore';
 import Actions from '../actions/Actions'
 
+import {
+    MuiThemeProvider, Paper, Table, TableBody, TableHeader, TableHeaderColumn, TableRow,
+    TableRowColumn
+} from "material-ui";
+
 export default class ProjectPage extends Reflux.Component {
     constructor(props) {
         super(props);
@@ -35,48 +40,55 @@ export default class ProjectPage extends Reflux.Component {
             info = "Update was succesfull\n";
         }
         return (
-            <div>
-                <style>{`table td{border:1px solid black; padding: 5px}`}</style>
-                {info}
-                <h1>Every project needs a side dish...</h1>
-                <h2>{this.state.currentProject.name}</h2>
-                <p>{this.state.currentProject.description}</p>
-                <p><Link to={`/projects/edit/${this.state.currentProject.id}`}>edit</Link></p>
-                <p><Link to={`/projects`} activeClassName="active">back to projects page</Link></p>
-                <h3>Users on project:</h3>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Birth Year</th>
-                        <th>Email</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {
-                        this.state.usersOnProject.map(user => {
-                            if (!(this.state.usersOnProject.length > 0)) {
-                                return <p>There are no users on this project.</p>
-                            } else {
-                                return (
-                                    <tr key={user.id}>
-                                        <td>{user.firstName}</td>
-                                        <td>{user.lastName}</td>
-                                        <td>{user.birthYear}</td>
-                                        <td>{user.email}</td>
-                                        <td>
-                                            <Link to={`/users/${user.id}`} activeClassName="active">show user page</Link>
-                                        </td>
-                                    </tr>
-                                );
+            <MuiThemeProvider>
+                <div style={{textAlign: 'center', padding: '50px', position: 'relative'}}>
+                    <Paper zDepth={3} style={{width: '80%', margin: 'auto', padding: '12px'}}>
+                        <h1>{this.state.currentProject.name}</h1><br/>
+                        <h3>{this.state.currentProject.description}</h3>
+                        {info}
+                        <p><Link to={`/projects/edit/${this.state.currentProject.id}`}>edit</Link></p>
+                        <p><Link to={`/projects`} activeClassName="active">back to projects page</Link></p>
+                        <h3>Users on project:</h3>
+                        <Table>
+                            <TableHeader
+                                displaySelectAll={false}
+                            >
+                            <TableRow>
+                                <TableHeaderColumn>First Name</TableHeaderColumn>
+                                <TableHeaderColumn>Last Name</TableHeaderColumn>
+                                <TableHeaderColumn>Birth Year</TableHeaderColumn>
+                                <TableHeaderColumn>Email</TableHeaderColumn>
+                                <TableHeaderColumn></TableHeaderColumn>
+                            </TableRow>
+                            </TableHeader>
+                            <TableBody
+                                displayRowCheckbox={false}
+                            >
+                            {
+                                this.state.usersOnProject.map(user => {
+                                    if (!(this.state.usersOnProject.length > 0)) {
+                                        return <p>There are no users on this project.</p>
+                                    } else {
+                                        return (
+                                            <TableRow key={user.id}>
+                                                <TableRowColumn>{user.firstName}</TableRowColumn>
+                                                <TableRowColumn>{user.lastName}</TableRowColumn>
+                                                <TableRowColumn>{user.birthYear}</TableRowColumn>
+                                                <TableRowColumn>{user.email}</TableRowColumn>
+                                                <TableRowColumn>
+                                                    <Link to={`/users/${user.id}`} activeClassName="active">Show user
+                                                        page</Link>
+                                                </TableRowColumn>
+                                            </TableRow>
+                                        );
+                                    }
+                                })
                             }
-                        })
-                    }
-                    </tbody>
-                </table>
-            </div>
+                            </TableBody>
+                        </Table>
+                    </Paper>
+                </div>
+            </MuiThemeProvider>
         );
     }
 

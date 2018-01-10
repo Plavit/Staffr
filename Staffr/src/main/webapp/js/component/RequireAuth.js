@@ -4,15 +4,13 @@ import Actions from "../actions/Actions";
 import UserStore from "../store/UserStore";
 import FontIcon from 'material-ui/FontIcon';
 import {hashHistory} from "react-router";
-import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
-import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
-const recentsIcon = <FontIcon className="material-icons">restore</FontIcon>;
-const favoritesIcon = <FontIcon className="material-icons">favorite</FontIcon>;
-const nearbyIcon = <IconLocationOn />;
+
+
 import {
-    AppBar, Drawer, FlatButton, IconButton, MenuItem, MuiThemeProvider,
-    NavigationClose
+    AppBar, Drawer, FlatButton, IconButton, MenuItem, MuiThemeProvider
 } from "material-ui";
+import {NavigationMenu} from "material-ui/svg-icons/index";
+import {white} from "material-ui/styles/colors";
 
 const footerStyle = {
     backgroundColor: "black",
@@ -100,16 +98,17 @@ export default class requireAuth extends Reflux.Component {
                         <MenuItem onClick={this.handleClose}>Close</MenuItem>
                     </Drawer>
                     <AppBar
-                         title={<span onClick={()=>this.handleToggle()}>Menu</span>}
-                         onTitleClick={this.handleOpen}
-                         onLeftIconButtonClick={this.handleOpen}
-                         showMenuIconButton={false}
-                         iconElementRight={<FlatButton label="Logout" secondary={true} onClick={()=>this.logout()}/>}
+                         title={<span onClick={()=>this.handleToggle()}>Staffr 1.0</span>}
+                         // onTitleClick={this.handleOpen}
+                         // onLeftIconButtonClick={this.handleOpen}
+                         // showMenuIconButton={false}
+                         iconElementLeft={<IconButton onClick={()=>this.handleToggle()} color={white}> <NavigationMenu onClick={()=>this.handleToggle()} color={white}/></IconButton>}
+                         iconElementRight={<FlatButton label="Logout" onClick={()=>this.logout()}/>}
                     />
 
                     {this.props.children}
                     <Footer>
-                        <span>Copyright 2017-2018 Kryštof Sýkora, Marek Szeles</span>
+                        <span>Copyright (c) 2017-2018 Kryštof Sýkora, Marek Szeles</span>
                     </Footer>
                 </div>
             </MuiThemeProvider>

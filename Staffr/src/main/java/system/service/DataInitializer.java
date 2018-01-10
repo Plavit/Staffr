@@ -114,18 +114,21 @@ public class DataInitializer {
         final User Peter_Smith = new User();
         Peter_Smith.setFirstName("Peter");
         Peter_Smith.setLastName("Smith");
+        Peter_Smith.setBirthYear(1990);
         Peter_Smith.setEmail("P.SmithYo@Yahoo.com");
         //u.setId(124);
 
         final User Charlotte_Guido = new User();
         Charlotte_Guido.setFirstName("Charlotte");
         Charlotte_Guido.setLastName("Guido");
+        Charlotte_Guido.setBirthYear(1986);
         Charlotte_Guido.setEmail("CG-see-gay@seznam.cz");
         //u.setId(125);
 
         final User Ivan_Terrible = new User();
         Ivan_Terrible.setFirstName("Ivan");
         Ivan_Terrible.setLastName("Terrible");
+        Ivan_Terrible.setBirthYear(1875);
         Ivan_Terrible.setEmail("Impala@google.com");
         //u.setId(126);
 
