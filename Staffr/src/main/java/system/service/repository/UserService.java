@@ -159,7 +159,7 @@ public class UserService extends AbstractRepositoryService<User> {
                 ret.add(up);
             }
         }
-        return ret;
+        return sortListUserProjectsByUser(ret);
     }
 
     public List<User> findUsersByProjectByDuration(int projectId, long duration) {
@@ -201,6 +201,11 @@ public class UserService extends AbstractRepositoryService<User> {
 
     private List<User> sortListUsers(List<User> list){
         list.sort(Comparator.comparing(User::getLastName));
+        return list;
+    }
+
+    private List<UserProject> sortListUserProjectsByUser(List<UserProject> list){
+        Collections.sort(list, Comparator.comparing(o -> o.getEmployee().getLastName()));
         return list;
     }
 }

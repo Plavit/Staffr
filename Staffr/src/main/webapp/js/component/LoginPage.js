@@ -18,6 +18,7 @@ export default class Login extends React.Component {
         };
     }
 
+
     componentDidMount() {
     }
 
@@ -63,23 +64,32 @@ export default class Login extends React.Component {
     render() {
         return (
             <MuiThemeProvider>
-            <div>
+                <div style={{textAlign: 'center', padding: '50px', position: 'relative'}}>
 
-                <h1 style={{color: '#FF0000'}}>Hello, my name is elder Price. And I have come to show you the most amazing book.</h1>
-                <Paper zDepth={3} >
-                <form className='form-horizontal'>
-                    <p><label for="username">Username: </label>
-                        <TextField type='text' name='username' id='username' onChange={this.onChange}/>
 
-                    </p>
-                    <p><label for="password">Password: </label>
-                        <TextField type='password' name='password' id='password' onChange={this.onChange}/>
-                    </p>
-                    <RaisedButton label="Login" primary={true}	name="submit" value="login" onClick={this.login.bind(this)}/>
-                    </form>
-                </Paper>
-            </div>
-    </MuiThemeProvider>
+                    <Paper zDepth={3} style={{width: '80%', margin: 'auto', padding: '12px'}}>
+                        <img src="../../resources/img/Staffr_logo_med.png" style={{height: '40%'}}/>
+                        <h1>Login</h1>
+                        <form className='form-horizontal'>
+
+                            <br/>
+                            <TextField type='text' floatingLabelText="Username" name='username' id='username' style={{padding: '4px'}} onChange={this.onChange}/>
+
+
+                            <br/>
+                            <TextField type='password' floatingLabelText="Password" name='password' id='password' style={{padding: '4px'}} onChange={this.onChange}/>
+                            <br/>
+                            <RaisedButton label="Login" primary={true} name="submit" value="login" fullWidth={false} style={{display: 'block', margin: '12px'}}
+                                          onClick={this.login.bind(this)}/>
+                        </form>
+                    </Paper>
+                </div>
+
+            </MuiThemeProvider>
+
         );
     }
 }
+
+// <h1 style={{color: '#FF0000'}}>Hello, my name is elder Price. And I have come to show you the most
+//     amazing book.</h1>
