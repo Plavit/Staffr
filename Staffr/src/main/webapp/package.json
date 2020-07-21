@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.15.3",
+    "axios": "^0.19.2",
     "browserify": "^13.3.0",
     "flux": "^3.1.2",
     "history": "^4.4.0",
