@@ -24,7 +24,7 @@
             <com.fasterxml.jackson.version>2.10.0</com.fasterxml.jackson.version>
             <org.postgresql.version>9.4.1209</org.postgresql.version>
             <ch.qos.logback.version>1.1.6</ch.qos.logback.version>
-            <junit.version>4.12</junit.version>
+            <junit.version>4.13.1</junit.version>
         </properties>
 
         <dependencies>
