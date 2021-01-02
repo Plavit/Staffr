@@ -1,7 +1,7 @@
 ![Staffr logo horizontal wiki icon](graphics/Logo/Staffr_logo_color_new_wiki.png)
 
 # **Introduction**
-Staffr is a simple REACT/Java EE based enterprise system tool to administer employees in a workplace.
+Staffr is an Open Source REACT/Java EE based enterprise system tool to administer employees in a workplace.
 [Introduction document / status report from October 5th, 2017 (.pdf)](docs/Staffr_status_1.pdf)
 
 # **Team**
