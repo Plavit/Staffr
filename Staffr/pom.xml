@@ -21,7 +21,7 @@
             <!-- Declare versions as properties, so we can easily change them -->
             <org.springframework.version>5.2.7.RELEASE</org.springframework.version>
             <org.springframework.security.version>5.3.10.RELEASE</org.springframework.security.version>
-            <com.fasterxml.jackson.version>2.10.0</com.fasterxml.jackson.version>
+            <com.fasterxml.jackson.version>2.12.6.1</com.fasterxml.jackson.version>
             <org.postgresql.version>9.4.1209</org.postgresql.version>
             <ch.qos.logback.version>1.2.0</ch.qos.logback.version>
             <junit.version>4.13.1</junit.version>
